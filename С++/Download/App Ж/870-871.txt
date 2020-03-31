@@ -1,0 +1,61 @@
+//ex8_4.cpp
+//работа перегружаемых арифметических операций с типом Int
+#include <iostream>
+using namespace std;
+#include <process.h>         //для exit()
+///////////////////////////////////////////////////////////
+class Int
+    {
+    private:
+      int i;
+    public:
+      Int():i(0)             //конструктор без аргументов
+        {}
+      Int(int ii):i(ii)      //конструктор с одним
+                             //аргументом
+        {}                   //(из int в Int)
+      void putInt()          //вывод Int
+        {cout <<i;}
+      void getInt()          //чтение Int с клавиатуры
+        {cin >>i;}
+      operator int()         //операция преобразования
+        {return i;}          //(Int в int)
+      Int operator +(Int i2) //сложение
+        {return checkit(long double(i)+long double(i2));}
+      Int operator -(Int i2) //вычитание
+        {return checkit(long double(i)-long double(i2));}
+      Int operator *(Int i2) //умножение
+        {return checkit(long double(i)*long double(i2));}
+      Int operator /(Int i2) //деление
+        {return checkit(long double(i)/long double(i2));}
+      Int checkit(long double answer) //проверка
+                                      //результатов
+        {
+        if(answer >2147483647.0L ||answer <-2147483647.0L )
+          {cout <<"\nОшибка переполнения\n ";exit(1);}
+        return Int(int(answer));
+        }
+    };
+///////////////////////////////////////////////////////////
+int main()
+    {
+    Int alpha =20;
+    Int beta =7;
+    Int delta,gamma;
+    gamma =alpha +beta;     //27
+    cout <<"\ngamma=";gamma.putInt();
+    gamma =alpha -beta;      //13
+    cout <<"\ngamma=";gamma.putInt();
+    gamma =alpha *beta;      //140
+    cout <<"\ngamma=";gamma.putInt();
+    gamma =alpha /beta;      //2
+    cout <<"\ngamma=";gamma.putInt();
+    delta =2147483647;
+    gamma =delta +alpha;    //ошибка переполнения
+    delta =-2147483647;
+    gamma =delta -alpha;     //ошибка переполнения
+    cout <<endl;
+    return 0;
+    }
+
+

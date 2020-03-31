@@ -1,0 +1,22 @@
+// comline.cpp
+// Демонстрация работы с аргументами командной строки
+#include <iostream>
+using namespace std;
+
+int main(int argc, char* argv[] )
+  {
+  cout << "\nargc = " << argc << endl; // число аргументов 
+
+  for(int j=0; j<argc; j++)            // вывести аргументы
+    cout << "Аргумент " << j << " = " << argv[j] << endl;
+  return 0;
+  }
+А вот пример работы этой программы:
+C:\C++BOOK\Chap12>comline uno dos tres
+argc = 4
+Аргумент 0 = C:\C++BOOK\CHAP12>COMLINE.exe
+Аргумент 1 = uno
+Аргумент 2 = dos
+Аргумент 3 = tres
+
+

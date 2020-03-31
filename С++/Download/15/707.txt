@@ -1,0 +1,19 @@
+class SmartPointer
+   {
+   private:
+      float* p;   //обычный указатель
+   public:
+      float operator*()
+         { }
+      float operator++()
+         { }
+   };
+void main()
+   {
+   . . .
+   SmartPointer sptr = start_address;
+   for(int j=0; j<SIZE; j++)
+      cout << *sptr++;
+   }
+
+

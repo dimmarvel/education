@@ -1,0 +1,30 @@
+// itercopy.cpp
+// использование итераторов с алгоритмом copy()
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+   {
+   int beginRange, endRange;
+   int arr[] = { 11, 13, 15, 17, 19, 21, 23, 25, 27, 29 };
+   vector<int> v1(arr, arr+10);  // инициализированный вектор
+   vector<int> v2(10);           //неинициализированный вектор
+   cout << "Введите диапазон копирования (пример: 2 5): ";
+   cin >> beginRange >> endRange;
+
+   vector<int>::iterator iter1 = v1.begin() + beginRange;
+   vector<int>::iterator iter2 = v1.begin() + endRange;
+   vector<int>::iterator iter3;
+                                 // копировать диапазон из v1 в v2
+   iter3 = copy( iter1, iter2, v2.begin() );
+               // (it3 -> последний скопированный элемент)
+   iter1 = v2.begin();           // итерация по диапазону
+   while(iter1 != iter3)         // вывести значения из v2
+      cout << *iter1++ << ' ';
+   cout << endl;
+   return 0;
+   }
+
+

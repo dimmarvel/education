@@ -1,0 +1,24 @@
+KuangThu,	Bruce		телефон: 4157300
+Deauville,	William	телефон: 8435150
+Wellington,	John		телефон: 9207404
+Bartoski,	Peter		телефон: 6946473
+Fredericks,	Roger		телефон: 7049982
+McDonald,	Stacey	телефон: 3327563
+
+Упорядочены указатели:
+KuangThu,	Bruce		телефон: 4157300
+Deauville,	William	телефон: 8435150
+Wellington,	John		телефон: 9207404
+Bartoski,	Peter		телефон: 6946473
+Fredericks,	Roger		телефон: 7049982
+McDonald,	Stacey	телефон: 3327563
+
+Упорядочены персональные данные:
+Bartoski,	Peter		телефон: 6946473
+Deauville,	William	телефон: 8435150
+Fredericks,	Roger		телефон: 7049982
+KuangThu,	Bruce		телефон: 4157300
+McDonald,	Stacey	телефон: 3327563
+Wellington,	John		телефон: 9207404
+
+

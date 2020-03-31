@@ -1,0 +1,32 @@
+// wdcount.cpp
+// подсчет числа слов в предложении с использованием перечислений
+#include <iostream>
+using namespace std;
+#include <conio.h>             // для getche()
+enum itsaWord { NO, YES };     // NO=0, YES=1
+int main()
+{
+  itsaWord isWord = NO;        // isWord равно YES, когда
+  // вводится слово, и NO, когда вводятся пробелы
+  char ch='a';                 // считывание символа с клавиатуры
+  int wordcount = 0;           // число слов
+  cout << "Введите предложение: \n";
+  do {
+    ch = getche();             // ввод символа
+    if( ch==' ' || ch=='\r' )  // если введен пробел,
+    {
+      if( isWord == YES )      // а до этого вводилось слово,
+      {                        // значит, слово закончилось
+        wordcount++;           // учет слова
+        isWord = NO;           // сброс флага
+      }
+    }                          // в противном случае
+    else                       // ввод слова продолжается
+    if ( isWord == NO )        // если начался ввод слова,
+    isWord = YES;              // то устанавливаем флаг
+    } while( ch !='\r ' );     // выход по нажатию Enter
+  cout << "\n---Число слов: " << wordcount << "---\n";
+  return 0;
+}
+
+

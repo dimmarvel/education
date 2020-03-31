@@ -1,0 +1,28 @@
+  class Token                      // јбстрактный базовый класс
+    {
+    public:
+      virtual float getNumber()=0; // чиста€ виртуальна€
+                                   // функци€
+      virtual char getOperator()=0;
+    };
+  class Operator : public Token
+    {
+    private:
+      char oper;             // ќператоры +, Ц, *, /
+    public:
+      Operator(char);        // конструктор устанавливает значение
+      char getOperator();    // получить значение
+      float getNumber();     // просто нека€ функци€
+    };
+  class Number : public Token
+    {
+    private:
+      float fnum;            // число
+    public:
+      Number(float);         // конструктор устанавливает значение
+      float getNumber();     // получить значение
+      char getOperator();    // просто нека€ функци€
+    };
+Token* atoken[100];    //содержит типы Operator* и Number*
+
+

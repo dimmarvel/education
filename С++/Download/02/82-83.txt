@@ -1,0 +1,17 @@
+// sqrt.cpp
+// использование библиотечной функции sqrt()
+#include <iostream>      //дл€ cout и т.п.
+#include <cmath>         //дл€ sqrt()
+using namespace std;
+int main()
+{
+  double number,answer;  //аргументы типа double дл€ функции sqrt()
+  cout << "¬ведите число: ";
+  cin >> number;         // ввод числа
+  answer = sqrt(number); // извлечение корн€
+  cout << " вадратный корень равен "
+  << answer << endl;     // вывод результата
+  return 0;
+}
+
+

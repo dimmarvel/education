@@ -1,0 +1,24 @@
+// passref.cpp
+// передача аргумента по ссылке
+#include <iostream>
+using namespace std;
+
+int main ( )
+{
+  void centimize ( double& ); // прототип функции
+
+  double var = 10.0;          // значение переменной var равно 10 (дюймов)
+  cout << "var = " << var << "дюймов" << endl;
+
+  centimize ( var );          // переведем дюймы в сантиметры
+  cout << "var= " << var << "сантиметров" << endl;
+
+  return 0;
+}
+///////////////////////////////////////////////////////////
+void centimize ( double& v )
+{
+  v *= 2.54; // v Ч это то же самое, что и var
+}
+
+

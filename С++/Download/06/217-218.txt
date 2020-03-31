@@ -1,0 +1,27 @@
+// smallobj.cpp
+// демонстрирует простой небольшой объект
+#include <iostream>
+using namespace std;
+//////////////////////////////////////////////////////////
+class smallobj               // определение класса
+{
+  private:
+    int somedata;            // поле класса
+  public:
+    void setdata(int d)      // метод класса, измен€ющий значение пол€
+        { somedata = d; }
+    void showdata()          // метод класса, отображающий значение пол€
+      { cout << "«начение пол€ равно " << somedata << endl; }
+};
+//////////////////////////////////////////////////////////
+int main()
+{
+  smallobj s1, s2;           // определение двух объектов класса smallobj
+  s1.setdata(1066);          // вызовы метода setdata()
+  s2.setdata(1776);
+  s1.showdata();             // вызовы метода showdata()
+  s2.showdata();
+  return 0;
+}
+
+

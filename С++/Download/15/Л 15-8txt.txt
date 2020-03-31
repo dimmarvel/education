@@ -1,0 +1,30 @@
+// find_if.cpp
+// ищет в массиве типа string первое вхождение слова
+//«Дмитрий»
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+//---------------------------------------------------------
+bool isDon(string name)      // возвращает true, если
+                             //name=="Дмитрий"
+   {
+   return name == "Дмитрий";
+   }
+//---------------------------------------------------------
+string names[] = { "Сергей", "Татьяна", "Елена", "Дмитрий", "Михаил", "Владимир" };
+int main()
+   {
+   string* ptr;
+   ptr = find_if( names, names+5, isDon );
+
+   if(ptr==names+5)
+      cout << "Дмитрия нет в списке.\n";
+   else
+      cout << "Дмитрий записан в позиции "
+        << (ptr-names)
+        << " в списке.\n";
+   return 0;
+   }
+
+

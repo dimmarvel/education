@@ -1,0 +1,49 @@
+// englaray.cpp
+// объекты для английских мер
+#include <iostream>
+using namespace std;
+///////////////////////////////////////////////////////////
+class Distance
+{
+  private:
+    int feet;
+    float inches;
+  public:
+    void getdist ( ) // получение информации
+      {
+        cout << "\n  Введите футы: "; cin >> feet;
+        cout << "  Введите дюймы: "; cin >> inches;
+      }
+    void showdist ( ) const // показ информации
+      { cout << feet << "\'-" << inches '\"'; }
+};
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  Distance dist [ 100 ]; // массив переменных
+  int n = 0;             // счетчик данных
+  char ans;              // ответ пользователя (д/н)
+
+  cout << endl;
+
+  do
+  {
+    cout << "Введите длину номер " << n + 1;
+    dist [ n++ ].getdist ( );      // получаем и сохраняем длину
+    cout << "Продолжить ввод (д/н)?: ";
+    cin >> ans;
+  }
+  while ( ans != 'н' );            // продолжать, пока не будет введено 'н'
+
+  // показываем все введенное
+  for ( int j = 0; j < n; j++ )
+  {
+    cout << "\nДлина номер " << j + 1 << " : ";
+    dist [ j ].showdist ( );
+  }
+
+  cout << endl;
+
+  return 0;
+}
+

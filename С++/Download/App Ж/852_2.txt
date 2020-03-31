@@ -1,0 +1,27 @@
+//ex3_4.cpp
+//Моделирует калькулятор с 4-мя функциями
+#include <iostream>
+using namespace std;
+int main()
+    {
+    double n1,n2,ans;
+    char oper,ch;
+    do {
+      cout <<"\nВведите первый операнд, операцию, второй операнд:";
+      cin >>n1 >>oper >>n2;
+      switch(oper)
+        {
+        case '+':ans =n1 +n2;break;
+        case '-':ans =n1 -n2;break;
+        case '*':ans =n1 *n2;break;
+        case '/':ans =n1 /n2;break;
+        default:ans =0;
+        }
+      cout <<"Ответ =" <<ans;
+      cout <<"\nПродолжать (Введите 'y ' или 'n ')?";
+      cin >>ch;
+      } while(ch !='n' ));
+    return 0;
+    }
+
+

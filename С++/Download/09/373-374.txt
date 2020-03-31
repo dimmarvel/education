@@ -1,0 +1,74 @@
+// englen.cpp
+// наследование в программе перевода английских мер длины
+#include <iostream>
+using namespace std;
+enum posneg { pos, neg };
+///////////////////////////////////////////////////////////
+class Distance // класс дл€ английских мер длины
+{
+  protected:   // заметьте, что private использовать нельз€
+    int feet;
+    float inches;
+  public:
+    // конструктор без параметров
+    Distance ( ) : feet ( 0 ), inches ( 0.0 )
+      { }
+    // конструктор с двум€ параметрами
+    Distance ( int ft, float in ) : feet ( ft ), inches ( in )
+      { }
+    // получение значений от пользовател€
+    void getdist ( )
+      {
+        cout << "\n¬ведите футы: "; cin >> feet;
+        cout << "¬ведите дюймы: "; cin >> inches;
+      }
+    // вывод значений на экран
+    void showdist ( )
+      { cout << feet << "\'" << inches << '\"'; }
+};
+///////////////////////////////////////////////////////////
+class DistSing : public Distance // добавление знака к длине
+{
+  private:
+    posneg sing;                 // значение может быть pos или neg
+  public:
+    // конструктор без параметров
+    DistSign ( ) : Distance ( )
+      { sign = pos; }
+    // конструктор с двум€ или трем€ параметрами
+    DistSign ( int ft, float in, posneg sg = pos ) :
+      Distance ( ft, in )      // вызов конструктора базового класса
+      { sign = sg; }           // начальна€ установка знака
+    void getdist ( )           // ввод пользователем длины
+      {
+        Distance::getdist ( ); // вызов функции getdist из базового класса
+        char ch;               // запрос знака
+        cout << "¬ведите знак (+ или -): "; cin >> ch;
+        sign = ( ch == '+' ) ? pos : neg;
+      }
+    void showdist ( ) const    // вывод рассто€ни€
+      {
+        // вывод всей информации, включа€ знак
+        cout << ( ( sign == pos ) ? "(+)" : "(-)" );
+        Distance::showdist ( );
+      }
+};
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  DistSign alpha;                   // используем конструктор по умолчанию
+  alpha.getdist ( );                // получаем данные от пользовател€
+
+  DistSign beta ( 11, 6.25 );       // конструктор с двум€ аргументами
+
+  DistSign gamma ( 100, 5.5, neg ); // конструктор с трем€ аргументами
+
+  // выводим данные дл€ всех переменных
+  cout << "\nA = "; alpha.showdist ( );
+  cout << "\nB = "; beta.showdist ( );
+  cout << "\nC = "; gamma.showdist ( );
+  cout << endl;
+  return 0;
+}
+
+

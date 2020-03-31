@@ -1,0 +1,17 @@
+//ex3_3.cpp
+//—оздает число из отдельных цифр
+#include <iostream>
+using namespace std;
+#include <conio.h>//дл€ getche()
+int main()
+    {
+    char ch;
+    unsigned long total =0;      //в этой переменной Ч число
+    cout <<"\n¬ведите число:";
+    while((ch=getche())!='\r ' ))//выход по нажатию Enter
+    total =total*10 +ch-'0';     //прибавить число к total*10
+    cout <<"\nѕолучилось число:" <<total <<endl;
+    return 0;
+    }
+
+

@@ -1,0 +1,19 @@
+// safetyin.cpp
+// избежание переполнения буфера
+#include <iostream>
+#include <iomanip>
+using namespace std;
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  const int MAX =20;          // максимальный размер строки
+  char str [ MAX ];           // сама строка
+
+  cout << "\nВведите строку: ";
+  cin >> setw ( MAX ) >> str; // ввод не более чем MAX символов
+
+  cout << "Вы ввели: " << str << endl;
+
+  return 0;
+}
+

@@ -1,0 +1,14 @@
+// endon0.cpp
+// применение цикла WHILE
+#include <iostream>
+using namespace std;
+int main()
+{
+  int n = 99;           // n не должна быть равна 0 перед началом цикла
+  while(n != 0 )        // цикл, пока значение n не равно 0
+  cin >> n;             // считывание n с клавиатуры
+  cout << endl;
+  return 0;
+}
+
+

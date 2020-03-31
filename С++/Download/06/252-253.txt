@@ -1,0 +1,32 @@
+//constObj.cpp
+//constant Distance objects
+#include <iostream>
+using namespace std;
+//////////////////////////////////////////////////////////
+class Distance               // длина в английской системе
+{
+  private:
+    int feet;
+    float inches;
+  public:                    // конструктор с двум€ аргументами
+    Distance(int ft, float in) : feet(ft), inches(in)
+      { }
+    void getdist()           // неконстантный метод
+    {
+      cout << "\n¬ведите число футов: "; cin >> feet;
+      cout << "¬ведите число дюймов: "; cin >> inches;
+    }
+void showdist() const        // константный метод
+  { cout << feet << "\'-" << inches << '\"'; }
+};
+//////////////////////////////////////////////////////////
+int main()
+{
+  const Distance football(300,0);
+  //football.getdist();      // ошибка: метод getdist() неконстантный
+  cout << " ƒлина пол€ равна ";
+  football.showdist();       // корректно
+  cout << endl;
+  return 0;
+}
+

@@ -1,0 +1,37 @@
+//ex5_2.cpp
+//функци€ возводит число в степень
+#include <iostream>
+using namespace std;
+double power(double n,int p=2);//p has default value 2
+int main()
+		{
+		double number,answer;
+		int pow;
+		char yeserno;
+		cout <<"\n¬ведите число:";//get number
+		cin >>number;
+		cout <<"Ѕудете вводить степень (y/n)?";
+		cin >>yeserno;
+		if(yeserno =='y ' ))//пользователю нужен не квадрат 									//числа?
+			{
+			cout <<"¬ведите степень:";
+			cin >>pow;
+			answer=power(number,pow);//возвести число в степень
+			}
+		else
+			answer =power(number);//квадрат числа
+		cout <<"ќтвет " <<answer <<endl;
+		return 0;
+		}
+//---------------------------------------------------------
+//power()
+//возвращает число n, возведенное в степень p
+double power(double n,int p )
+		{
+		double result =1.0;//начать с 1
+		for(int j=0;j<p;j++)//умножить на n
+		result *=n;//p раз
+		return result;
+		}
+
+

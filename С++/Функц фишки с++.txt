@@ -1,0 +1,77 @@
+КОНСТРУКТОР
+
+dremer, но если он генерируется самостоятельно, то зачем его писать (имею ввиду пустой конструктор)?
+
+неправда. он не генерируется самостоятельно.
+точнее генерируется только, если иных конструкторов не определено.
+В твоём же случае при наличии card (int n, int s) СГЕНЕРИРОВАННЫХ конструкторов по умолчанию не будет, т.к.
+подразумевается, что ты определил, что объект класса должен создаваться только, принимая 2 аргумента.
+Чтобы всё же можно было конструировать объекты по-умолчанию, конструктор по-умолчанию ты обязан объявить явно!
+
+#include<iostream>
+using namespace std;
+
+int main() {
+setlocale(LC_ALL, "Rus");
+
+system("pause");
+}
+
+11 стандарт:
+________________________________________________
+size_t ArraySize(){ return 42; }
+int some_array[ArraySize()] - было ошибкой тк компилятор С++ не знал о 42 в функции
+constexpr size_t ArraySize(){ return 42; } - ключевое слово constexpr 
+int some_array[ArraySize()] - allright :)
+ещё 1 пример с факториалом
+size_t Factorial(size_t n){
+   return n == 0 ? 1 : n * Factorial(n-1);
+}
+size_t foo { return Factorial(8); }
+_________________________________________________
+ключевое слово auto:
+int bar();
+auto i = 0; int 
+auto ui = 0u; unsigned int
+volatile auto ci = i; volatile int
+const volatile auto cvi = i; const volatile int
+auto j = cvi; int
+
+auto &ri = i; int &
+const auto &cri = i; const int &
+
+auto &&fri = i; int &
+auto &&fcri = cri; const int &
+
+auto &&frv = 0; int &&
+auto &&frvf = bar(); int &&
+____________________________________________
+Лямбда функции []() mutable ->some{}
+Видны только локально внутри функции например и больше нигде тип возвращаемого
+значения не известен(decltype\auto)
+____________________________________________
+ключевое слово default
+Конструкторы
+SomeClass(){}
+SomeClass(const SomeClass &other):name{other.name},surname{other.surname}{}
+SomeClass &operator=(const SomeClass &other) : name{other.name}, surname{other.surname{}
+Можно писать так
+SomeClass() = default;
+SomeClass(const SomeClass &other) = default;
+SomeClass &operator=(const SomeClass &other) = default;
+Компилятор будет обязан вставить код конструкторов в первом примере + добавить noexecpt если
+это будет необходимо
+____________________________________________
+ключевое слово delete
+Необходимо для того чтобы никто не мог вызвать конструктор
+пишется так же как и default
+SomeClass() = default;
+SomeClass(const SomeClass &other) = delete;
+SomeClass &operator=(const SomeClass &other) = delete;
+
+ 1) setlocale(LC_ALL, "Rus"); - руссификация
+ 2) int *Array = new int[size]; - динамический массив
+ 3) int Array[size]; - массив
+ 4) #include<CTYPE.H> - библиотека для функции определения регистра буквы, ISLOWER(переменная с буквой), если ответ > 0 то нижний регистр.
+ 5) SetConsoleCP(1251); задаем кодировку для вывода символов на экран
+    SetConsoleOutputCP(1251); задаем кодировку для ввода символов с клавиатуры в консоль

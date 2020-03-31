@@ -1,0 +1,28 @@
+//ex3_2.cpp
+//переводит фаренгейты  в градусы и обратно
+#include <iostream>
+using namespace std;
+int main()
+    {
+    int response;
+    double temper;
+    cout <<"\nНажмите 1 для перевода из Фаренгейта в градусы Цельсия,"
+    <<"\n 2 для обратного перевода:";
+    cin >>response;
+    if(response ==1 )
+      {
+      cout <<"Введите температуру (в Фаренгейтах):";
+      cin >>temper;
+      cout <<"В градусах Цельсия это " <<5.0/9.0*(temper-32.0);
+      }
+    else
+      {
+      cout <<"Введите температуру в гр. Цельсия:";
+      cin >>temper;
+      cout <<"В градусах Фаренгейта это " <<9.0/5.0*temper +32.0;
+      }
+    cout <<endl;
+    return 0;
+    }
+
+

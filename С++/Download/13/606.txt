@@ -1,0 +1,16 @@
+//fileH.h
+extern int gloVar;            //объявление переменной
+int gloFunc(int);             //объявление функции
+
+//fileA.cpp
+int gloVar;                   //определение переменной
+int gloFunc(int n)            //определение функции
+  { return n; }
+
+//fileB.cpp
+#include "fileH.h"
+. . .
+gloVar = 5;                  //работа с переменной
+int gloVraB=gloFunc(gloVar); //работа с функцией
+
+

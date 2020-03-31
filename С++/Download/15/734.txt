@@ -1,0 +1,17 @@
+Число записей: 8
+Bartoski,	Peter		телефон: 6946473
+Deauville,	William	телефон: 8435150
+Fredericks,	Roger		телефон: 7049982
+KuangThu,	Bruce		телефон: 4157300
+McDonald,	Amanda	телефон: 8435150
+McDonald,	Stacey	телефон: 3327563
+McDonald,	Stacey	телефон: 7764987
+Wellington,	John		телефон: 9207404
+
+Введите фамилию искомого человека: McDonald
+Введите имя: Stacey
+Число людей с таким именем: 2
+McDonald,	Stacey	телефон: 3327563
+McDonald,	Stacey	телефон: 7764987
+
+

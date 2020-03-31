@@ -1,0 +1,24 @@
+//fileH.h
+class someClass;               //определение класса
+  {
+  private:
+    int memVar;  
+  public:
+    int memFunc(int, int);
+  };
+//fileA.cpp
+#include "fileH.h"
+int main()
+  {
+someClass Obj1;                //создание объекта
+int var1 = Obj1.memFunc(2, 3); //работа с объектом
+   }
+//fileB.cpp
+#include "fileH.h"
+int func()
+  {
+someClass Obj2;                //создание объекта
+int var2 = Obj2.memFunc(4, 5); //работа с объектом
+   }
+
+

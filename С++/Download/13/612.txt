@@ -1,0 +1,17 @@
+//fileA.cpp
+namespace            //неименованное пространство, для fileA.cpp
+  {
+  int gloVar = 111;
+  }
+funcA()
+  {cout << gloVar; } //Выводит: 111
+
+//fileB.cpp
+namespace            //неименованное пространство, для fileB.cpp
+  {
+  int gloVar = 222;
+  }
+funcB()
+  {cout << gloVar; } //Выводит: 222
+
+

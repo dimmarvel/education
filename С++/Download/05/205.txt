@@ -1,0 +1,30 @@
+// extern.cpp
+// демонстрирует глобальные переменные
+#include <iostream>
+using namespace std;
+#include <conio.h>           // для getch()
+char ch = 'a';               // глобальная переменная ch
+void getachar();             // прототипы функций
+void putachar();
+int main()
+{
+  while( ch != '\r' )        // main()использует значение ch
+  {
+    getachar();
+    putachar();
+  }
+  cout << endl;
+  return 0;
+}
+//--------------------------------------------------------
+void getachar()              // getachar()использует значение ch
+{
+  ch = getch();
+}
+//--------------------------------------------------------
+void putachar()              // putachar() использует значение ch
+{
+  cout << ch;
+}
+
+

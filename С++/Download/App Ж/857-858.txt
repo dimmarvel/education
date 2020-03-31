@@ -1,0 +1,26 @@
+//ex5_3.cpp
+//функция устанавливает наименьшее из двух чисел в ноль
+#include <iostream>
+using namespace std;
+int main()
+    {
+    void zeroSmaller(int&,int&);
+    int а=4,б=7,в=11,г=9;
+    zeroSmaller(а,б);
+    zeroSmaller(в,г);
+    cout <<"\na=" <<а <<" б==" <<б
+        <<" в==" <<в <<" г==" <<г;
+    return 0;
+    }
+//---------------------------------------------------------
+//zeroSmaller()
+//устанавливает наименьшее из двух чисел в ноль
+void zeroSmaller(int&first,int&second)
+    {
+    if(first <second )
+      first =0;
+    else
+      second =0;
+    }
+
+

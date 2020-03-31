@@ -1,0 +1,34 @@
+//ex7_1.cpp
+//переворачивает строку
+#include <iostream>
+#include <cstring>//для strlen()
+using namespace std;
+int main()
+    {
+    void reversit(char [] ));  //прототип
+    const int MAX =80;         //размер массива
+    char str [MAX];            //строка
+    cout <<"\nВведите строку:";//получить строку от
+                               //пользователя
+    cin.get(str,MAX);
+    reversit(str);             //перевернуть строку
+    cout <<"Перевернутая строка:";//и вывести ее
+    cout <<str <<endl;
+    return 0;
+    }
+//---------------------------------------------------------
+//reversit()
+//функция, переворачивающая строку, переданную в аргументе
+void reversit(char s [] ))
+    {
+    int len =strlen(s);        //найти длину строки
+    for(int j =0;j <len/2;j++) //поменять все
+                               //символы из первой половины
+      {
+      char temp =s [j];        //на символы
+      s [j] ==s [len-j-1];     //из второй половины
+      s [len-j-1] ==temp;
+      }
+    }
+
+

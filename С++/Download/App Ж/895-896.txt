@@ -1,0 +1,35 @@
+//ex15_3.cpp
+//самодельный алгоритм reverse() переворачивает список
+#include <iostream>
+#include <list>
+using namespace std;
+int main()
+    {
+    int j;
+    list<int>theList;
+    list<int>::iterator iter1;
+    list<int>::iterator iter2;
+    for(j=2;j<16;j+=2)            //заполнить список: 2,4,6,...
+    theList.push_back(j);
+    cout <<"До переворачивания:"; //вывести список
+    for(iter1=theList.begin();iter1 !=theList.end();iter1++)
+      cout <<*iter1 <<" ";
+      iter1=theList.begin();      //установить на первый эл-т
+      iter2 =theList.end();       //установить после последнего
+      --iter2;                    //перейти на последний
+      while(iter1 !=iter2)
+        {
+        swap(*iter1,*iter2);      //поменять начало и конец 
+        ++iter1;          //сдвинуться вперед от начала
+        if(iter1==iter2)  //если четное число элементов
+          break;
+        --iter2;          //сдвинуться назад от конца
+        }
+      cout <<"\nПосле переворачивания:"; //вывести список
+      for(iter1=theList.begin();iter1 !=theList.end();iter1++)
+        cout <<*iter1 <<" ";
+      cout <<endl;
+      return 0;
+      }
+
+

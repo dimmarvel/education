@@ -1,0 +1,49 @@
+// arrover1.cpp
+// демонстраци€ создани€ безопасного массива, провер€ющего
+// свои индексы при использовании
+// используютс€ отдельные функции дл€ установки и получени€ значени€
+#include <iostream>
+using namespace std;
+#include <process.h>    // дл€ функции exit
+const int LIMIT = 100;  // размер массива
+///////////////////////////////////////////////////////////
+class safearray
+{
+  private:
+    int arr [ LIMIT ];
+  public:
+    // установка значени€ элемента массива
+    void putel ( int n, int elvalue )
+      {
+        if ( n < 0 || n >= LIMIT )
+          { cout << "\nќшибочный индекс!"; exit ( 1 ); }
+        arr [ n ] = elvalue;
+      }
+    // получение значени€ элемента массива
+    int getel ( int n ) const
+      {
+        if ( n < 0 || n >= LIMIT )
+          { cout << "\nќшибочный индекс!"; exit ( 1 ); }
+        return arr [ n ];
+      }
+};
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  safearray sa1;
+
+  // задаем значени€ элементов
+  for ( int j = 0; j < LIMIT; j++ )
+    sa1.putel ( j, j * 10 );
+
+  // показываем элементы
+  for ( j = 0; j < LIMIT; j++ )
+  {
+    int temp = sa1.getel ( j );
+    cout << "Ёлемент " << j << " равен " << temp << endl;
+  }
+
+  return 0;
+}
+
+

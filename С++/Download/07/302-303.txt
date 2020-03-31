@@ -1,0 +1,26 @@
+// sstrchar.cpp
+// доступ к символам в строке
+#include <iostream>
+#include <string>
+using namespace std;
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  char charray [ 80 ];
+  string word;
+
+  cout << "Введите слово: ";
+  cin >> word;
+  int wlen = word.length ( );     // длина строки
+  cout << "По одному символу: ";
+  for ( int j = 0; j < wlen; j++ )
+    cout << word.at ( j );        // тут будет проверка на выход за пределы строки
+    // cout << word [ j ];        // а тут проверки не будет
+
+  word.copy ( charray, wlen, 0 ); // копируем строку в массив
+  charray [ wlen ] = 0;
+  cout << "\nМассив содержит: " << charray << endl;
+
+  return 0;
+}
+

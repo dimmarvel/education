@@ -1,0 +1,28 @@
+// advenor.cpp
+// применение операции логического ИЛИ
+#include <iostream>
+using namespace std;
+#include <process.h>         // для exit()
+#include <conio.h>           // для getche()
+int main()
+{
+  char dir='a';
+  int x=10, y=10;
+  while( dir != '\r ' )      //выход при нажатии Enter
+  {
+    cout << "\n\nВаши координаты: " << x << ", " << y;
+    if( x<5 || x>15 )        //если x меньше 5 или больше 15
+    cout << "\nОсторожно – драконы!";
+    cout <<"\nВыберите направление (n,s,e,w): ";
+    dir = getche();          //выбор направления
+    switch(dir)
+    {
+      case 'n': y--; break;  // обновление координат
+      case 's': y++; break;
+      case 'e': x++; break;
+      case 'w': x--; break;
+    }                        // конец switch
+  }                          // конец while
+  return 0;
+}                            // конец main()
+

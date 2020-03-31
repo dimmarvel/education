@@ -1,0 +1,20 @@
+Число записей: 8
+Deauville,	William	телефон: 8435150
+McDonald,	Stacey	телефон: 3327563
+Bartoski,	Peter		телефон: 6946473
+KuangThu,	Bruce		телефон: 4157300
+Wellington,	John		телефон: 9207404
+McDonald,	Amanda	телефон: 8435150
+Fredericks,	Roger		телефон: 7049982
+McDonald,	Stacey	телефон: 7764987
+
+Введите фамилию искомого человека: Wellington
+Введите имя: John
+Есть такой человек (такие люди) в списке:
+Wellington,	John		телефон: 9207404
+Введите номер телефона (формат 1234567): 8435150
+Есть человек (или несколько) с таким номером телефона.
+Deauville,	William	телефон: 8435150
+McDonald,	Amanda	телефон: 8435150
+
+

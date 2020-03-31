@@ -1,0 +1,17 @@
+void somefunc()
+{
+  int somevar;               // локальные переменные
+  float othervar;
+  somevar = 10;              // корректно
+  othervar = 11;             // корректно
+  nextvar = 12;              // некорректно: nextvar невидима в somefunc()
+}
+void otherfunc()
+{
+  int nextvar;               // локальная переменная
+  somevar = 20;              // некорректно: somevar и othervar 
+  othervar = 21;             // невидимы в otherfunc()
+  nextvar = 22;              // корректно
+}
+
+

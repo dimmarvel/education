@@ -1,0 +1,38 @@
+// перегрузка функций
+#include <iostream>
+using namespace std;
+
+void repchar();              // прототипы
+void repchar(char);
+void repchar(char, int);
+
+int main()
+{
+	repchar();
+	repchar('=');
+	repchar('+', 30);
+	system("pause");
+}
+
+// выводит на экран 45 символов '*'
+void repchar()
+{
+	for (int j = 0; j < 45; j++)    // цикл, выполн€ющийс€ 45 раз вывод символа '*'
+		cout << '*';               
+	cout << endl;
+}
+// выводит 45 заданных символов
+void repchar(char ch)
+{
+	for (int j = 0; j < 45; j++)    // цикл, выполн€ющийс€ 45 раз
+		cout << ch;                // вывод заданного символа
+	cout << endl;
+}
+// выводит заданный символ заданное число раз
+void repchar(char ch, int n)
+{
+	for (int j = 0; j < n; j++)     // цикл, выполн€ющийс€ n раз
+		cout << ch;                // вывод заданного символа
+	cout << endl;
+}
+

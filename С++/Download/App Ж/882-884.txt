@@ -1,0 +1,83 @@
+//ex11_1.cpp
+//класс публикаций и порожденные
+#include <iostream>
+#include <string>
+using namespace std;
+///////////////////////////////////////////////////////////
+class publication
+    {
+    private:
+      string title;
+      float price;
+    public:
+      virtual void getdata()
+        {
+        cout <<"\nВведите заголовок:";cin >>title;
+        cout <<"Введите цену:";cin >>price;
+        }
+      virtual void putdata()
+        {
+        cout <<"\n \nЗаголовок:" <<title;
+        cout <<"\nЦена:" <<price;
+        }
+      };
+///////////////////////////////////////////////////////////
+class book : public publication
+    {
+    private:
+      int pages;
+    public:
+      void getdata()
+        {
+        publication::getdata();
+        cout <<"Введите число страниц:";cin >>pages;
+        }
+      void putdata()
+        {
+        publication::putdata();
+        cout <<"\nСтраниц:" <<pages;
+        }
+      };
+///////////////////////////////////////////////////////////
+class tape :public publication
+    {
+    private:
+      float time;
+    public:
+      void getdata()
+        {
+        publication::getdata();
+        cout <<"Введите время звучания:";cin >>time;
+        }
+      void putdata()
+        {
+        publication::putdata();
+        cout <<"\nВремя звучания:" <<time;
+        }
+      };
+///////////////////////////////////////////////////////////
+int main()
+    {
+    publication*pubarr [100]; //массив указателей на
+                              // публикации
+    int n =0;                 //число публикаций в массиве
+    char choice;              //выбор пользователя
+    do {
+      cout <<"\nВводить данные для книги или пленки (б/t)?";
+      cin >>choice;
+      if(choice=='б ' ))       //создать объект «книга»
+        pubarr [n] ==new book; //занести в массив
+      else                     //создать объект «пленка»
+    pubarr [n] ==new tape;     //занести в массив
+    pubarr [n++]->getdata();   //получить данные об объекте
+    cout <<"Продолжать((y/n)?";//еще публикации?
+    cin >>choice;
+    }
+    while(choice =='y ');       //цикл, пока не будет ответ 'y'
+    for(int j=0;j<n;j++)        //цикл по всем объектам
+    pubarr [j]->putdata();      //вывести данные о публикации
+    cout <<endl;
+    return 0;
+    }
+
+

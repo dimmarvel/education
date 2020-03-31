@@ -1,0 +1,15 @@
+//test1.cpp
+#include <iostream>
+#include <conio.h>
+using namespace std;
+//#pragma hdrstop        //не понадобитс€
+//#pragma argsused       // не понадобитс€ 
+
+int main()               //аргументы не требуютс€
+{
+cout <<"—частливы те, кто "
+<<"впервые компилирует программу.";
+getch();
+return 0;
+}
+

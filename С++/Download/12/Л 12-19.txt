@@ -1,0 +1,68 @@
+// englio2.cpp
+// перегружаемые операции << и >> могут работать с файлами
+#include <fstream>
+#include <iostream>
+using namespace std;
+class Distance            // класс английских рассто€ний
+  {
+  private:
+    int feet;
+    float inches;
+  public:
+    Distance() : feet(0), inches(0.0) // конструктор (без
+                                      // аргументов)
+      {  }                // конструктор (два аргумента)
+    Distance(int ft, float in) : feet(ft), inches(in)    
+      {  }
+    friend istream& operator >> (istream& s, Distance& d);
+    friend ostream& operator << (ostream& s, Distance& d);
+  };
+//---------------------------------------------------------
+istream& operator >> (istream& s, Distance& d) //получить
+                                               // данные
+  {                       // из файла или с клавиатуры
+  char dummy;             // дл€ ('), (-) и (")
+                          //с помощью перегруженного >>
+  s >> d.feet >> dummy >> dummy >> d.inches >> dummy;
+  return s;
+  }
+//---------------------------------------------------------
+ostream& operator << (ostream& s, Distance& d) // послать
+                          // данные типа Distance
+  {                       // в файл или
+  s << d.feet << "\'-" << d.inches << '\"';   // на экран
+  return s;               // перегруженным << 
+  }
+///////////////////////////////////////////////////////////
+int main()
+  {
+  char ch;
+  Distance dist1;
+  ofstream ofile;         // создать и открыть
+  ofile.open("DIST.DAT"); // выходной поток
+
+  do {
+    cout << "\n¬ведите рассто€ние: ";
+    cin >> dist1;         // получить данные от пользовател€
+    ofile << dist1;       // записать их в выходной поток
+    cout << "ѕродолжать (y/n)? ";
+    cin >> ch;
+    } while(ch != 'n');  
+  ofile.close();          // закрыть выходной поток
+
+  ifstream ifile;         // создать и открыть 
+  ifile.open("DIST.DAT"); // входной поток
+
+  cout << "\n—одержимое файла:\n";
+  while(true)
+    {
+    ifile >> dist1;       // чтение данных из потока
+    if( ifile.eof() )     // выход по EOF
+      break;
+    cout << "–ассто€ние = " << dist1 <<endl; //вывод
+                                             // рассто€ний
+    }
+  return 0;
+  }
+
+

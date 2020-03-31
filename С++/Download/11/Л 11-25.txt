@@ -1,0 +1,34 @@
+// typeid.cpp
+// демонстрация функции typeid()
+// RTTI должен быть активизирован
+#include <iostream>
+#include <typeinfo>        // для typeid()
+using namespace std;
+///////////////////////////////////////////////////////////
+class Base
+  {
+  virtual void virtFunc()  // для нужд typeid
+    {  }
+  };
+class Derv1 : public Base
+  { };
+class Derv2 : public Base
+  { };
+///////////////////////////////////////////////////////////
+void displayName(Base* pB)
+  {
+  cout << "указатель на объект класса "; // вывести имя класса
+  cout << typeid(*pB).name() << endl;    //на который
+                                         //указывает pB
+  }
+//---------------------------------------------------------
+int main()
+  {
+  Base* pBase = new Derv1;
+  displayName(pBase);  //"указатель на объект класса Derv1"
+  pBase = new Derv2;
+  displayName(pBase);  //" указатель на объект класса Derv2"
+  return 0;
+  }
+
+

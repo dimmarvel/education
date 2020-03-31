@@ -1,0 +1,71 @@
+//ex9_1.cpp
+//класс публикаций и порожденные из него
+#include <iostream>
+#include <string>
+using namespace std;
+///////////////////////////////////////////////////////////
+class publication //базовый класс
+    {
+    private:
+      string title;
+      float price;
+    public:
+      void getdata()
+        {
+        cout <<"\nВведите заголовок:";cin >>title;
+        cout <<"Введите цену:";cin >>price;
+        }
+      void putdata()const
+        {
+        cout <<"\nЗаголовок:" <<title;
+        cout <<"\nЦена:" <<price;
+        }
+      };
+///////////////////////////////////////////////////////////
+class book :private publication //порожденный класс
+    {
+    private:
+      int pages;
+      public:
+        void getdata()
+          {
+          publication::getdata();
+          cout <<"Введите число страниц:";cin >>pages;
+          }
+        void putdata()const
+          {
+          publication::putdata();
+          cout <<"\nСтраниц:" <<pages;
+          }
+        };
+///////////////////////////////////////////////////////////
+class tape :private publication //порожденный класс
+    {
+    private:
+      float time;
+    public:
+      void getdata()
+        {
+        publication::getdata();
+        cout <<"Введите время звучания:";cin >>time;
+        }
+      void putdata()const
+        {
+        publication::putdata();
+        cout <<"\nВремя звучания:" <<time;
+        }
+      };
+///////////////////////////////////////////////////////////
+int main()
+    {
+    book book1;                 //определить публикации
+    tape tape1;
+    book1.getdata();            //получить данные о них
+    tape1.getdata();
+    book1.putdata();            //вывести данные о них
+    tape1.putdata();
+    cout <<endl;
+    return 0;
+    }
+
+

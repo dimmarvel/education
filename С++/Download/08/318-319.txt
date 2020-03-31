@@ -1,0 +1,48 @@
+// postfix.cpp
+// префиксна€ и постфиксна€ операции ++ дл€ нашего класса
+#include <iostream>
+using namespace std;
+///////////////////////////////////////////////////////////
+class Counter
+{
+private:
+    unsigned int count;
+  public:
+    Counter ( ) : count ( 0 )
+      { }
+    Counter ( int c ) : count ( c )
+      { }
+    unsigned int get_count ( )
+      { return count; }
+    Counter operator++ ( )
+      {
+        return Counter ( ++count );
+      }
+     Counter operator++ ( int )
+      {
+        return Counter ( count++ );
+      }
+};
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  Counter c1, c2;                        // определ€ем переменные
+
+  cout << "\nc1 = " << c1.get_count ( ); // выводим на экран
+  cout << "\nc2 = " << c2.get_count ( );
+
+  ++c1;                                  // увеличиваем c1
+  c2 = ++c1;                             // c1=2, c2=2
+
+  cout << "\nc1 = " << c1.get_count ( ); // снова показываем значени€
+  cout << "\nc2 = " << c2.get_count ( );
+
+  c2 = c1++;
+
+  cout << "\nc1 = " << c1.get_count ( ); // и снова
+  cout << "\nc2 = " << c2.get_count ( ) << endl;
+
+  return 0;
+}
+
+

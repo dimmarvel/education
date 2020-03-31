@@ -1,0 +1,23 @@
+// sales.cpp
+// определение среднего дневного объема продаж
+#include <iostream>
+using namespace std;
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  const int SIZE = 6;
+  double sales [ SIZE ];
+
+  cout << "Введите объем продаж на каждый из шести дней\n";
+  for ( int j = 0; j < SIZE; j++ )
+    cin >> sales [ j ];
+  double total = 0;
+  for ( j = 0; j < SIZE; j++ )
+    total += sales [ j ];
+  double average = tital / SIZE;
+  cout << "Средний объем: " << average << endl;
+
+  return 0;
+}
+
+

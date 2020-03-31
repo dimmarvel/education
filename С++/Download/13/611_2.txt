@@ -1,0 +1,20 @@
+//fileA.h
+namespace alpha
+  {
+  void funcA();
+  }
+
+//fileB.h
+namespcae alpha
+  {
+  void funcB();
+  }
+
+//פאיכ Main.cpp
+#include "fileA.h"
+#include "fileB.h"
+using namespace alpha;
+funcA();
+funcB();
+
+

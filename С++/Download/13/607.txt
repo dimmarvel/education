@@ -1,0 +1,20 @@
+//fileH.h
+class someClass;            //определение класса
+  {
+  private:
+    int memVar;  
+  public:
+    int memFunc(int, int);  //объявление метода
+  };
+
+//fileA.cpp
+#include "fileH.h"
+int someClass::memFunc(int n1, int n2);  //определение метода
+   { return n1+n2; }
+
+//fileB.cpp
+#include "fileH.h"
+someClass anObj;                    //создание объекта
+int answer = anObj.memFunc(6, 7);   //работа метода
+
+

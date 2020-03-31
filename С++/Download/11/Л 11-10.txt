@@ -1,0 +1,55 @@
+// nofri.cpp
+// ограничение перегрузки оператора «+»
+#include <iostream>
+using namespace std;
+///////////////////////////////////////////////////////////
+class Distance             //Класс английских расстояний
+    {
+    private:
+      int feet;
+      float inches;
+    public:
+      Distance() : feet(0), inches(0.0) //конструктор
+                                        // (без аргументов)
+      {  }                              //конструктор (1 арг.)
+      Distance(float fltfeet)           //переводит float в
+                                        //Distance
+      {                                 //feet — это целая часть
+      feet = static_cast<int>(fltfeet);
+        inches = 12*(fltfeet-feet);     //слева — дюймы
+      }
+    Distance(int ft, float in)         //конструктор (2 арг.)
+      { feet = ft; inches = in; }
+    void showdist()                    //вывод на экран расстояния
+      { cout << feet << "\'-" << inches << '\"'; }
+    Distance operator + (Distance);
+    };
+//---------------------------------------------------------
+                    //прибавить расстояние к d2
+Distance Distance::operator + (Distance d2) //сумма
+    {
+    int f = feet + d2.feet;       //добавить футы
+    float i = inches + d2.inches; //добавить дюймы
+    if(i >= 12.0)                 //если сумма превышает 12.0,
+      { i -= 12.0; f++;  }        //уменьшить на 12 дюймов,
+                                  //прибавить 1 фут
+    return Distance(f,i);         //Новый Distance с суммой
+    }
+///////////////////////////////////////////////////////////
+int main()
+    {
+    Distance d1 = 2.5;           //конструктор переводит
+    Distance d2 = 1.25;          //feet типа float в Distance
+    Distance d3;
+    cout << "\nd1 = "; d1.showdist();
+    cout << "\nd2 = "; d2.showdist();
+
+    d3 = d1 + 10.0;              //distance + float: OK
+    cout << "\nd3 = "; d3.showdist();
+// d3 = 10.0 + d1;              //float + Distance: ОШИБКА
+// cout << "\nd3 = "; d3.showdist();
+    cout << endl;
+    return 0;
+    }
+
+

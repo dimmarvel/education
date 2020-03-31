@@ -1,0 +1,65 @@
+// englconv.cpp
+// перевод длины из класса Distance в метры и обратно
+#include <iostream>
+using namespace std;
+///////////////////////////////////////////////////////////
+class Distance          // класс английских мер длины
+{
+  private:
+    const float MTF;    // коэффициент перевода метров в футы
+    int feet;
+    float inches;
+  public:
+    // конструктор без параметров
+    Distance ( ) : feet ( 0 ), inches ( 0.0 ), MTF ( 3.280833F )
+      { }
+    // конструктор с одним параметром,
+    // перевод€щий метры в футы и дюймы
+    Distance ( float meters ) : MTF ( 3.280833F )
+      {
+        float fltfeet = MTF * meters;     // переводим в футы
+        feet = int ( fltfeet );           // берем число полных футов
+        inches = 12 * ( fltfeet Ц feet ); // остаток Ч это дюймы
+      }
+    // конструктор с двум€ параметрами
+    Distance ( int ft, float in ) : feet ( ft ), inches ( in ), MTF ( 3.280833F )
+      { }
+    // получение информации от пользовател€
+    void getdist ( )
+      {
+        cout << "\n¬ведите футы: "; cin >> feet;
+        cout << "¬ведите дюймы: ";  cin >> inches;
+      }
+    // показ информации
+    void showdist ( ) const
+      { cout << feet << "\'-" << inches << '\"' }
+    // оператор перевода дл€ получени€ метров из футов
+    operator float ( ) const
+      {
+        float fracfeet = inches / 12;           // переводим дюймы в футы
+        fracfeet += static_cast<float>( feet ); // добавл€ем целые футы
+        return fracfeet / MTF;                  // переводим в метры
+      }
+};
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  float mtrs;
+  Distance dist1 = 2.35F; // используетс€ конструктор, перевод€щий метры в футы и дюймы
+
+  cout << "\ndist1 = "; dist1.showdist ( );
+
+  mtrs = static_cast<flost>( dist1 ); // используем оператор перевода в метры
+
+  cout << "\ndist1 = " << mtrs << " meters\n";
+
+  Distance dist2 ( 5, 10.25 ); // используем конструктор с двум€ параметрами
+
+  mtrs = dist2; // не€вно используем перевод типа
+  cout << "\ndist2 = " << mtrs << " meters\n";
+
+  // dist2 = mtrs; // а вот это ошибка Ц так делать нельз€
+  return 0;
+}
+
+

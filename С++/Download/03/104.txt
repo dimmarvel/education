@@ -1,0 +1,22 @@
+// while4.cpp
+// возведение в четвертую степень целых чисел
+#include <iostream>
+#include <iomanip>                 //для setw
+using namespace std;
+int main()
+{
+  int pow = 1;                     // первое возводимое число равно 1
+  int numb = 1;                    // 1 в 4-й степени равна 1
+  while(pow < 10000)               // цикл, пока в степени 
+                                   // не более 4 цифр
+  {
+    cout << setw(2) << numb;       // вывод числа
+    cout << setw(5) << pow <<endl;	 // и его 4-й степени
+    ++numb;                        // инкремент текущего числа
+    pow = numb*numb*numb*numb;     // вычисление 4-й степени
+  }
+  cout << endl;
+  return 0;
+}
+
+

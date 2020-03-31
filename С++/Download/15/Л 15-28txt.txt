@@ -1,0 +1,45 @@
+// set.cpp
+// Множество, хранящее объекты типа string
+#pragma warning (disable:4786) //для работы с множествами //(только для компиляторов Microsoft)
+#include <iostream>
+#include <set>
+#include <string>
+using namespace std;
+
+int main()
+   {                           // Массив строковых объектов
+   string names[] = {"Juanita", "Robert",
+                     "Mary", "Amanda", "Marie"};
+                               // Инициализировать
+                               //множество массивом
+   set<string, less<string> > nameSet(names, names+5);
+                               // итератор для множества
+   set<string, less<string> >::iterator iter;
+
+   nameSet.insert("Yvette");   // вставка элементов
+   nameSet.insert("Larry");
+   nameSet.insert("Robert");   // никакого эффекта: такой
+                               //элемент уже имеется
+   nameSet.insert("Barry");
+   nameSet.erase("Mary");      // удаление элемента
+                               // вывод размера множества
+   cout << "\nРазмер=" << nameSet.size() << endl;
+   iter = nameSet.begin();     // вывод элементов множества
+   while( iter != nameSet.end() )
+      cout << *iter++ << '\n';
+
+   string searchName;          //получение искомого имени от
+                               //пользователя
+   cout << "\nВведите искомое имя: ";
+   cin >> searchName;
+                               // поиск соответствующего
+                               // запросу имени
+   iter = nameSet.find(searchName);
+   if( iter == nameSet.end() )
+      cout << "Имя " << searchName << " ОТСУТСТВУЕТ во множестве.";
+   else
+      cout << "Имя " << *iter << " ПРИСУТСТВУЕТ во множестве.";
+   cout << endl;
+   return 0;
+   }
+

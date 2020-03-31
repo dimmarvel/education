@@ -1,0 +1,31 @@
+// oprint.cpp
+// имитация команды print
+#include <fstream>        // для файловых функций
+#include <iostream>
+using namespace std;
+#include <process.h>      // для exit()
+
+int main(int argc, char* argv[] )
+  {
+  if(argc != 2)
+    {
+    cerr << "\nФормат команды: oprint имя_файла\n";
+    exit(-1);
+    }
+  char ch;                // символ для считывания
+  ifstream infile;        // создать входной файл
+  infile.open( argv[1] ); // открыть файл
+  if( !infile )           // проверить на наличие ошибок
+    {
+    cerr << "\nНевозможно открыть " << argv[1] << endl;
+    exit(-1);
+    }
+  ofstream outfile;       // Создать файл
+  outfile.open("PRN");    // открыть доступ принтера к нему
+  while( infile.get(ch) != 0 ) //считать символ
+    outfile.put(ch);           // отправить символ на печать
+  outfile.put('\x0C');         // прогон страницы
+  return 0;
+  }
+
+

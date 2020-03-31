@@ -1,0 +1,157 @@
+class student
+{ };
+class employee
+{ };
+class manager
+{
+  student stu;
+  employee emp;
+};
+class scientist
+{
+  student stu;
+  employee emp;
+};
+class laborer
+{
+  employee emp;
+};
+Вот полный листинг программы EMPCONT:
+// empcont.cpp
+// 
+#include <iostream>
+#include <string>
+using namespace std;
+///////////////////////////////////////////////////////////
+class student
+{
+  private:
+    string school;
+    string degree;
+  public:
+    void getedu ( )
+      {
+        cout << "  Введите название учебного заведения: ";
+        cin >> school;
+        cout << "  Введите уровень образования\n";
+        cout << "  (неполное высшее, бакалавр, магистр, кандидат наук): ";
+        cin >> degree;
+      }
+    void putedu ( ) const
+      {
+        cout << "\n  Учебное заведение: " << school;
+        cout << "\n  Степень: " << degree;
+      }
+};
+///////////////////////////////////////////////////////////
+class employee
+{
+  private:
+    string name;
+    unsigned long number;
+  public:
+    void getdata ( )
+      {
+        cout << "\n  Введите фамилию: "; cin >> name;
+        cout << "  Введите номер: ";     cin >> number;
+      }
+    void putdata ( ) const
+      {
+        cout << "\n  Фамилия: " << name;
+        cout << "\n  Номер: " << number;
+      }
+};
+///////////////////////////////////////////////////////////
+class manager
+{
+  private:
+    string title;
+    double dues;
+    employee emp;
+    student stu;
+  public:
+    void getdata ( )
+      {
+        emp.getdata ( );
+        cout << "  Введите должность: "; cin >> title;
+        cout << "  Введите сумму взносов в гольф-клуб: "; cin >> dues;
+        stu.getedu ( );
+      }
+    void putdata ( ) const
+      {
+        emp.putdata ( );
+        cout << "\n  Должность: " << title;
+        cout << "\n  Сумма взносов в гольф-клуб: " << dues;
+        stu.putedu ( );
+      }
+};
+///////////////////////////////////////////////////////////
+class scientist
+{
+  private:
+    int pubs;
+    employee emp;
+    student stu;
+  public:
+    void getdata ( )
+      {
+        emp.getdata ( );
+        cout << "  Введите количество публикаций: "; cin >> pubs;
+        stu.getedu ( );
+      }
+    void putdata ( ) const
+      {
+        emp.putdata ( );
+        cout << "\n  Количество публикаций: " << pubs;
+        stu.putedu ( );
+      }
+};
+///////////////////////////////////////////////////////////
+class laborer
+{
+  private:
+    employee emp;
+  public:
+    void getdata ( )
+      { emp.getdata ( ); }
+    void putdata ( ) const
+      { emp.putdata ( ); }
+};
+///////////////////////////////////////////////////////////
+int main ( )
+{
+  manager m1;
+  scientist s1, s2;
+  laborer l1;
+
+  // введем информацию о нескольких сотрудниках
+  cout << endl;
+  cout << "\nВвод информации о первом менеджере";
+  m1.getdata ( );
+
+  cout << "\nВвод информации о первом ученом";
+  s1.getdata ( );
+
+  cout << "\nВвод информации о втором ученом";
+  s2.getdata ( );
+
+  cout << "\nВвод информации о первом рабочем";
+  l1.getdata ( );
+
+  // выведем полученную информацию на экран
+  cout << "\nИнформация о первом менеджере";
+  m1.putdata ( );
+
+  cout << "\nИнформация о первом ученом";
+  s1.putdata ( );
+  cout << "\nИнформация о втором ученом";
+  s2.putdata ( );
+
+  cout << "\nИнформация о первом рабочем";
+  l1.putdata ( );
+
+  cout << endl;
+  return 0;
+}
+
+
