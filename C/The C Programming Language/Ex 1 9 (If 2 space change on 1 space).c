@@ -1,12 +1,13 @@
 #include<stdio.h>
 
 main() {
-	int counter = 0;
 	int c;
 	while ((c = getchar()) != EOF) {
-		if (c == ' ')
-			counter++;
+		putchar(c);
+		if (c == ' ') {
+			while ((c = getchar()) == ' ');
+			putchar(c);
+		}
 	}
-	printf("%d\n", counter);
 	system("pause");
 }
