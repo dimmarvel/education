@@ -30,11 +30,11 @@ main()
 			++wordLength;
 	
 
-	for (int i = 0; i < wCounter; i++)
+	for (int i = maxL; i >= 0; i--)
 	{
-		for (int j = 0; j < maxL; j++)
+		for (int j = 0; j < wCounter; j++)
 		{
-			if (wordInfo[i] > j)
+			if (wordInfo[j] > i)
 				printf("#");
 			else
 				printf(".");
