@@ -1,18 +1,19 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#define MAXLINE 10 
+#define MAXLINE 1000 // максимальный размер вводимой строки
 
 int getlin(char line[], int MAX);
 void copy(char to[], char from[]);
 
 
+/*печать самой длинной строки*/
 main()
 {
 	
-	int len; 
-	int max; 
-	char line[MAXLINE]; 
-	char longest[MAXLINE];
+	int len; //длина текущей строки
+	int max; //длина максимальной из просмотренных строк
+	char line[MAXLINE]; //текущая строка
+	char longest[MAXLINE]; //самая длинная строка
 	int c;
 
 	max = 0;
@@ -21,27 +22,14 @@ main()
 		if (line[len - 1] != '\n')
 			while ((c = getchar()) != EOF && c != '\n')
 				len++;
-		if (len > max)
-		{
-			max = len;
-			copy(longest, line);
+		if (len > 80) {
+			printf("%s\nLen - %d\n", line, len);
 		}
 	}
-	if (max < MAXLINE) 
-		max--;
-	if (max > 0)
-	{
-		printf("Most biggest string:\n");
-		if (max > MAXLINE)
-			printf("%s...\n", longest);
-		else
-			printf("%s\n", longest);
-	}
-	printf("String length - %d chars\n", max);
 	system("pause");
 }
 
-
+/*getlin читает строку в s, возвращает длину*/
 int getlin(char s[], int lim)
 {
 	int c, i;
