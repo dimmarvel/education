@@ -1,0 +1,24 @@
+# CMake generation dependency list for this directory.
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/CMakeLists.txt
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/3.17.1/CMakeCCompiler.cmake
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/3.17.1/CMakeCXXCompiler.cmake
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/3.17.1/CMakeRCCompiler.cmake
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/3.17.1/CMakeSystem.cmake
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/config.h.in
+D:/CMake/share/cmake-3.17/Modules/CMakeCInformation.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeCXXInformation.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeGenericSystem.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeInitializeConfigs.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeLanguageInformation.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeRCInformation.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeSystemSpecificInformation.cmake
+D:/CMake/share/cmake-3.17/Modules/CMakeSystemSpecificInitialize.cmake
+D:/CMake/share/cmake-3.17/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+D:/CMake/share/cmake-3.17/Modules/Compiler/MSVC-C.cmake
+D:/CMake/share/cmake-3.17/Modules/Compiler/MSVC-CXX.cmake
+D:/CMake/share/cmake-3.17/Modules/Platform/Windows-MSVC-C.cmake
+D:/CMake/share/cmake-3.17/Modules/Platform/Windows-MSVC-CXX.cmake
+D:/CMake/share/cmake-3.17/Modules/Platform/Windows-MSVC.cmake
+D:/CMake/share/cmake-3.17/Modules/Platform/Windows.cmake
+D:/CMake/share/cmake-3.17/Modules/Platform/WindowsPaths.cmake

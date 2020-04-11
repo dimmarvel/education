@@ -1,0 +1,6 @@
+#pragma once
+
+#cmakedefine PROJECT_VERSION @PROJECT_VERSION_PATCH@
+//мы говорим СИМЕЙК когда я запущю генераци задейфайнь #define PROJECT_VERSION и тут
+//значение PROJECT_VERSION_PATCH
+//@ - это получить значение переменной PROJECT_VERSION_PATCH
