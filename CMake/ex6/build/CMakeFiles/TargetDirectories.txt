@@ -1,0 +1,3 @@
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex6/build/CMakeFiles/mainLib.dir
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex6/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex6/build/CMakeFiles/ZERO_CHECK.dir
