@@ -4,6 +4,8 @@
 #include <mutex>
 #include <vector>
 
+using namespace std;
+
 std::mutex                       g_mutex;
 std::vector<std::exception_ptr>  g_exceptions;
 
