@@ -17,6 +17,16 @@ void cOUT(vector<int> arr, function<void(int)> fun) {
 		fun(arr[i]);
 	}
 }
+
+void cOUT(vector<int> &arr, vector<function<void(int)>> &fun) {
+	for (int i = 0; i < arr.size(); i++)
+	{
+		for (int j = 0; j < fun.size(); j++)
+		{
+			fun[j](arr[i]);
+		}
+	}
+}
 //-------------------------
 void foo() {
 	cout << "Im is foo!" << endl;
@@ -62,6 +72,11 @@ int main() {
 	f3 = chet;
 	cOUT(arr, f3);
 
+	//-------------------------
+	function<void(int)> f4;
+	vector<function<void(int)>> vecF = { NEchet,chet,chet };
+	cout << endl; cout << endl;
+	cOUT(arr, vecF);
 
 	system("Pause");
 }
