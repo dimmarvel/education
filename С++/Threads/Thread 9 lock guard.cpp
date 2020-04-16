@@ -22,18 +22,21 @@ public:
 };
 mutex mtx;
 void Print(char ch) {
-	mtx.lock();
-	for (int i = 0; i < 5; i++)
+	this_thread::sleep_for(chrono::milliseconds(2000));
 	{
-		for (int i = 0; i < 10; i++)
+		lock_guard<mutex> guard(mtx);
+		for (int i = 0; i < 5; i++)
 		{
-			cout << ch;
-			this_thread::sleep_for(chrono::milliseconds(20));
+			for (int i = 0; i < 10; i++)
+			{
+				cout << ch;
+				this_thread::sleep_for(chrono::milliseconds(20));
+			}
+			cout << endl;
 		}
-		cout << endl;
 	}
-	cout << endl;
-	mtx.unlock();
+	this_thread::sleep_for(chrono::milliseconds(2000));
+	
 }
 
 
