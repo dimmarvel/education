@@ -20,11 +20,14 @@ public:
 	}
 
 };
+
 mutex mtx;
 void Print(char ch) {
+
+	unique_lock<mutex> ul(mtx, defer_lock);
+	//defer_lock отменяет вызов метода lock и мы должны вызвать его сами
 	this_thread::sleep_for(chrono::milliseconds(2000));
-	{
-		lock_guard<mutex> guard(mtx);
+	ul.lock(); //можно не вызывать unlock он в конце области видимости уничтожется
 		for (int i = 0; i < 5; i++)
 		{
 			for (int i = 0; i < 10; i++)
@@ -34,7 +37,7 @@ void Print(char ch) {
 			}
 			cout << endl;
 		}
-	}
+		ul.unlock(); //у lock_guard нельзя вызывать unlock
 	this_thread::sleep_for(chrono::milliseconds(2000));
 	
 }
