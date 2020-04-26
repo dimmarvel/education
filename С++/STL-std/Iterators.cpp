@@ -9,9 +9,8 @@ int main() {
 
 	vector<int> arr = { 1,204,555,2,42,5,6,26,7,2 };
 
-	vector<int>::iterator it;
-
-	it = arr.begin();
+	auto it = arr.begin();
+	//vector<int>::iterator it;
 
 	cout << "it = " << *it << endl;
 
@@ -31,6 +30,7 @@ int main() {
 	vector<int> arr2 = { 1,204,555,2,42,5,6,26,7,2 };
 
 	vector<int>::iterator itErase = arr2.begin();
+	//auto itErase = arr2.begin();
 
 	cout << "erase(5 elem delete) " << endl;
 
@@ -51,7 +51,7 @@ int main() {
 	//--------------------------------------------------------------------------------------------------
 
 	cout << "\nJustIT: ";
-	for (vector<int>::iterator iter = arr.begin(); iter != arr.end(); iter++)
+	for (auto iter = arr.begin(); iter != arr.end(); iter++)
 	{
 		cout << *iter << " ";
 	}
