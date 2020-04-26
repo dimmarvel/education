@@ -55,28 +55,26 @@ void DQueue<T>::Out() {
 
 template<typename T>
 void DQueue<T>::pop_back() {
-	cout << "Pop_front( " << lst.end() << " size(" << --size << ")" << endl;
+	cout << "Pop_back(" << lst.back() << ") size(" << --size << ")" << endl;
 	lst.pop_back();
 }
 
 template<typename T>
 void DQueue<T>::pop_front() {
-	cout << "Pop_front( " << lst.front() << " size(" << --size << ")" << endl;
-	lst.pop_back();
+	cout << "Pop_front(" << lst.front() << ") size(" << --size << ")" << endl;
+	lst.pop_front();
 }
 
 template<typename T>
 void DQueue<T>::push_back(T _val) {
-	size++;
 	lst.push_back(_val);
-	cout << "Push_back( " << _val << " size(" << size << ")" << endl;
+	cout << "Push_back(" << lst.back() << ") size(" << ++size << ")" << endl;
 }
 
 template<typename T>
 void DQueue<T>::push_front(T _val) {
-	size++;
 	lst.push_front(_val);
-	cout << "Push_front( " << _val << " size(" << size << ")" << endl;
+	cout << "Push_front(" << lst.front() << ") size(" << ++size << ")" << endl;
 }
 
 int main() {
