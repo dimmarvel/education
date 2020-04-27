@@ -60,7 +60,7 @@ int main() {
 	}
 
 	auto it = mset.find(1);
-	cout << "\nfind 1 - " << *it << endl;
+	cout << "find 1 - " << *it << endl;
 
 	if (mset.find(2) != mset.end()) {
 		cout << "numb " << 2 << " finded!" << endl;
