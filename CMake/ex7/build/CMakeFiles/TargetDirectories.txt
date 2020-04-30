@@ -1,0 +1,3 @@
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex7/build/CMakeFiles/cmake_ex_7.dir
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex7/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex7/build/CMakeFiles/ZERO_CHECK.dir

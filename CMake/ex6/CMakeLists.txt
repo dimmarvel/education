@@ -35,7 +35,7 @@ set(CMAKE_MODULE_PATH
 find_package(sumLib MODULE REQUIRED)
 
 message("SUMLIB_INCLUDE_DIRS = $SUMLIB_INCLUDE_DIRS}")
-message("SUMLIB_LIB = ${SUMLIB_LIB}}")
+message("SUMLIB_LIB = ${SUMLIB_LIB}")
 
 target_include_directories(mainLib PRIVATE ${SUMLIB_INCLUDE_DIRS})
 target_link_libraries(mainLib ${SUMLIB_LIB})
