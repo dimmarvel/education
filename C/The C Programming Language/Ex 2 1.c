@@ -3,7 +3,6 @@
 #include<stdio.h>
 main()
 {
-
 	printf("char -\t\t\t %d to %d \n", CHAR_MAX, CHAR_MIN);
 	printf("unsigned char -\t\t %d\n", UCHAR_MAX);
 	printf("int -\t\t\t %d to %d \n", INT_MAX, INT_MIN);
