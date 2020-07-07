@@ -15,6 +15,7 @@ int main()
 	setlocale(LC_ALL, "Rus");
 	vector<Transport*> roles;
 	int choice;
+
 	while (true)
 	{
 		cout << "Наземный(1) Морской(2) Воздушный(3) Go(0): ";
@@ -38,6 +39,7 @@ public:
 		cout << "Наземный транспорт.\n";
 	}
 };
+
 class Sea : public Transport
 {
 public:
@@ -46,6 +48,7 @@ public:
 		cout << "Морской транспорт\n";
 	}
 };
+
 class Air : public Transport
 {
 public:
