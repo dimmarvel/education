@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h> //for atof()
 #include <math.h>
+#include <string.h>
 
 #define MAXOP 100 //max size of operand or operator
 #define NUMBER '0' //signal that a number was found
-
+#define NAME_WAS_FOUND 'n' // signal name was found
 int getop(char[]);
 void push(double);
 double pop(void);
 void showStack(void);
 void showLast(void);
-void doubElem(int index);
+void doubElem(int);
 void swapElem();
-
+void mat(char[]);
 /* reverse polish calculator */
 int main()
 {
@@ -68,6 +69,9 @@ int main()
 		case 'w':
 			swapElem();
 			getop(s);
+			break;
+		case NAME_WAS_FOUND:
+			mat(s);
 			break;
 		case '\n':
 			printf("\t%.8g\n", pop());
@@ -145,6 +149,28 @@ void swapElem()
 	push(last);
 	push(unlast);
 }
+void mat(char s[])
+{
+	double op2;
+	op2 = pop();
+	if (strcmp(s, "sin") == 0)
+	{
+		push(sin(pop()));
+	}
+	else if (strcmp(s, "exp") == 0)
+	{
+		push(exp(pop()));
+	}
+	else if (strcmp(s, "pow") == 0)
+	{
+		op2 = pop();
+		push(pow(pop(), op2));
+	}
+	else
+	{
+		printf("Error: unknown name - %s\n", s);
+	}
+}
 
 #include <ctype.h>
 
@@ -158,6 +184,20 @@ int getop(char s[])
 	while ((s[0] = c = getch()) == ' ' || c == '\t')
 		;
 	s[1] = '\0';
+	i = 0;
+	if (islower(c)) 
+	{
+		while (islower(s[++i] = c = getch()))
+			;
+		s[i] = '\0';
+		if (c != EOF)
+			ungetch(c);
+		if (strlen(s) > 1)
+			return NAME_WAS_FOUND;
+		else
+			return c;
+	}
+
 	if (!isdigit(c) && c != '.' && c != '-') // not a number
 		return c;
 	i = 0;
