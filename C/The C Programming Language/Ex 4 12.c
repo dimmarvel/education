@@ -36,5 +36,4 @@ void itoa(int n, char s[])
 	
 	s[i++] = abs(n % 10) + '0';
 	s[i] = '\0';
-
 }
