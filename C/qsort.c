@@ -59,8 +59,6 @@ void qsort2(int arr[], int left, int right)
 	qsort2(arr, left, last - 1);
 	qsort2(arr, last+1, left);
 
-
-
 }
 
 //void qsort(double arr[], int left, int right)
