@@ -31,14 +31,14 @@ void qsort1(int arr[], int left, int right)
 
 	swap(arr, left, last);
 	qsort1(arr, left, last - 1);
-	qsort1(arr, last + 1 , left);
+	qsort1(arr, last + 1, left);
 
 }
 void qsort2(int arr[], int left, int right)
 {
 	int i;
 	int last;
-	
+
 	if (left >= right)
 	{
 		return;
@@ -57,7 +57,7 @@ void qsort2(int arr[], int left, int right)
 
 	swap(arr, left, last);
 	qsort2(arr, left, last - 1);
-	qsort2(arr, last+1, left);
+	qsort2(arr, last + 1, left);
 
 }
 void qsort3(int arr[], int left, int right)
@@ -71,7 +71,7 @@ void qsort3(int arr[], int left, int right)
 	}
 	swap(arr, left, (left + right) / 2);
 	last = left;
-	for (int i = last+1; i <= right; i++)
+	for (int i = last + 1; i <= right; i++)
 	{
 		if (arr[i] < arr[left])
 		{
@@ -80,7 +80,29 @@ void qsort3(int arr[], int left, int right)
 	}
 	swap(arr, left, last);
 	qsort3(arr, left, last - 1);
-	qsort3(arr, last+1, left);
+	qsort3(arr, last + 1, left);
+}
+
+void qsort4(int arr[], int left, int right)
+{
+	int i;
+	int last;
+	if (left >= right)
+	{
+		return;
+	}
+	swap(arr, left, (left + right) / 2);
+	last = left;
+	for (int i = last + 1; i <= right; i++)
+	{
+		if (arr[i] < arr[left])
+		{
+			swap(arr, ++last, i);
+		}
+	}
+	swap(arr, left, last);
+	qsort4(arr, left, last - 1);
+	qsort4(arr, last + 1, left);
 }
 //void qsort(double arr[], int left, int right)
 //{
@@ -142,7 +164,7 @@ main() {
 
 	int arr[10] = { 4,6,7,12,53,12,5,6,78,9 };
 
-	qsort3(arr, 0, 9);
+	qsort4(arr, 0, 9);
 
 	for (int i = 0; i < 10; i++)
 	{
