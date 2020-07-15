@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
 
 void strcat(char*, char*);
 
