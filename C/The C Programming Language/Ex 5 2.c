@@ -6,14 +6,16 @@ int getfloat(float *pn)
 	int c, sign, mark;
 	float fract;
 
-	while (isspace(c = getch())) //skip white space
-		;
+	while (isspace(c = getch()));
+
 	if (!isdigit(c) && c != EOF && c != '+' && c != '-' && c != '.')
 	{
 		ungetch(c); //it's not a number
 		return 0;
 	}
+	
 	sign = (c == '-') ? -1 : 1;
+
 	if (c == '+' || c == '-')
 	{
 		mark = c; //remember a sign
