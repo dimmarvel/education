@@ -48,7 +48,7 @@ void month_day(int year, int yearday, int *pmonth, int *pday)
 }
 main()
 {
-	int m = 13;
+	int m = 7;
 	int d = 19;
 	int y = 2020;
 	printf("%d\n", day_of_year(y, m, d));
