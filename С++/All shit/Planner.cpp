@@ -3,23 +3,14 @@
 #include<string>
 
 using namespace std;
-
-int next_month(int current)
-{
-	if (current > 12)
-	{
-		return 1;
-	}
-	else {
-		return current + 1;
-	}
-}
+int next_month(int current);
 
 int main()
 {
 	int size;
 	int currentmonth = 1;
 	string command;
+
 
 	vector<vector<vector<string>>> month = {
 		vector<vector<string>>(NULL),
@@ -50,6 +41,8 @@ int main()
 			cin >> day;
 			cin >> plan;
 
+			
+
 			month[currentmonth][day].push_back(plan);
 		}
 		else if (command == "NEXT")
@@ -70,18 +63,30 @@ int main()
 					{
 						while (currentMonth_daySize > nextMonth_daySize) //wrote this month in next month last day
 						{
+
 							for (int j = 0; j < month[currentmonth][currentMonth_daySize].size(); j++) {
 								month[next_month(currentmonth)][nextMonth_daySize].push_back
 								(month[currentmonth][currentMonth_daySize][j]);
 							}
+
+							if (month[currentmonth][currentMonth_daySize].size() != 0) // delete before month
+							{
+								month[currentmonth][currentMonth_daySize].clear();
+							}
 							currentMonth_daySize--;
 						}
+						
 					}
 					else // if not more then just wrote in this day
 					{
 						for (int j = 0; j < month[currentmonth][i].size(); j++) {
 							month[next_month(currentmonth)][i].push_back
 							(month[currentmonth][i][j]);
+						}
+
+						if (month[currentmonth][i].size() != 0) // delete before month
+						{
+							month[currentmonth][i].clear();
 						}
 					}
 				}
@@ -121,3 +126,14 @@ DUMP 28
 ADD 28 Payment
 DUMP 28
 */
+
+int next_month(int current)
+{
+	if (current >= 12)
+	{
+		return 1;
+	}
+	else {
+		return current + 1;
+	}
+}
