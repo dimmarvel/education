@@ -18,7 +18,7 @@ int main()
 
 	while (true)
 	{
-		cout << "Наземный(1) Морской(2) Воздушный(3) Go(0): ";
+		cout << "Наземный(1) Морской(2) Воздушный(3) Машинный(4) Космический(5) Go(0): ";
 		cin >> choice;
 		if (choice == 0)
 			break;
@@ -58,12 +58,34 @@ public:
 	}
 };
 
+class Car : public Transport
+{
+public:
+	void info()
+	{
+		cout << "Машинный транспорт\n";
+	}
+};
+
+class Cosmos : public Transport
+{
+public:
+	void info()
+	{
+		cout << "Космический транспорт\n";
+	}
+};
+
 Transport *Transport::make_transport(int choice)
 {
 	if (choice == 1)
 		return new Land;
 	else if (choice == 2)
 		return new Sea;
-	else
+	else if(choice == 3)
 		return new Air;
+	else if (choice == 4)
+		return new Car;
+	else if(choice == 5)
+		return new Cosmos;
 }
