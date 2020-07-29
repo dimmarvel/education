@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-// »ерархи€ классов, определ€юща€ алгоритмы сжати€ файлов
+
+
 class Compression
 {
 public:
@@ -33,6 +34,14 @@ public:
 	}
 };
 
+class WIN_Compression : public Compression
+{
+public:
+	void compress(const string & file) {
+		cout << "WIN compression" << endl;
+	}
+};
+
 
 //  ласс дл€ использовани€
 class Compressor
@@ -48,7 +57,7 @@ private:
 };
 int main()
 {
-	Compressor* p = new Compressor(new ZIP_Compression);
+	Compressor* p = new Compressor(new WIN_Compression);
 	p->compress("file.txt");
 	delete p;
 	system("pause");
