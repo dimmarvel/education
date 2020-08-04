@@ -1,14 +1,19 @@
 #include <iostream>
+#include <sstream>
+#include <set>
+#include <vector>
+#include <map>
 using namespace std;
 
-int gcd(int a, int b) {
-	if (a % b == 0)
-		return b;
-	if (b % a == 0)
-		return a;
-	if (a > b)
-		return gcd(a%b, b);
-	return gcd(a, b%a);
+class Rational;
+double toReal(const Rational& r);
+
+static int gcd(int a, int b) {
+	while (b) {
+		a %= b;
+		swap(a, b);
+	}
+	return a;
 }
 
 int nok(int a, int b)
@@ -54,84 +59,98 @@ public:
 	{
 		return den;
 	}
-	bool operator==(Rational r)
+	friend bool operator==(const Rational& lhs, const Rational& rhs)
 	{
-		return r.num == this->num && r.den == this->den;
+		return rhs.num == lhs.num && rhs.den == lhs.den;
 	}
 
-	Rational operator+(Rational r)
+	friend const Rational& operator+ (const Rational& lhs, const Rational& rhs)
 	{
-		if (r.den == this->den)
-		{
-			return Rational(this->num + r.num, this->den);
-		}
-		else
-		{
-			int nokcalc = nok(r.den, this->den);
-			int mnojitel1 = nokcalc / r.den;
-			int mnojitel2 = nokcalc / this->den;
-
-			r.num *= mnojitel1;
-			r.den *= mnojitel1;
-			this->num *= mnojitel2;
-			this->den *= mnojitel2;
-
-			return Rational(this->num + r.num, this->den);
-		}
+		return Rational{
+			lhs.Numerator() * rhs.Denominator() + lhs.Denominator() * rhs.Numerator(),
+			lhs.Denominator() * rhs.Denominator() };
 	}
 
-	Rational operator-(Rational r)
+	friend const Rational& operator-(const Rational& lhs, const Rational& rhs)
 	{
-		if (r.den == this->den)
-		{
-			return Rational(this->num - r.num, this->den);
-		}
-		else
-		{
-			int nokcalc = nok(r.den, this->den);
-			int mnojitel1 = nokcalc / r.den;
-			int mnojitel2 = nokcalc / this->den;
+		return Rational{
+			lhs.Numerator() * rhs.Denominator() - lhs.Denominator() * rhs.Numerator(),
+			lhs.Denominator() * rhs.Denominator() };
+	}
 
-			r.num *= mnojitel1;
-			r.den *= mnojitel1;
-			this->num *= mnojitel2;
-			this->den *= mnojitel2;
+	friend const Rational& operator*(const Rational& lhs, const Rational& rhs)
+	{
+		return Rational{
+			lhs.Numerator() * rhs.Numerator(),
+			 lhs.Denominator() * rhs.Denominator() };
+	}
 
-			return Rational(this->num - r.num, this->den);
-		}
+	friend const Rational& operator/(const Rational& lhs, const Rational& rhs)
+	{
+		return Rational{
+			lhs.Numerator() * rhs.Denominator(),
+			lhs.Denominator() * rhs.Numerator() };
+	}
+
+	friend istream& operator>>(istream& stream, Rational& r)
+	{
+		stream >> r.num;
+		stream.ignore(1);
+		stream >> r.den;
+		r = Rational{ r.num, r.den };
+
+		return stream;
+	}
+
+	friend ostream& operator<<(ostream& stream, const Rational& r)
+	{
+		stream << r.num << '/' << r.den;
+		return stream;
+	}
+	friend bool operator>(const Rational& lhs, const Rational& rhs)
+	{
+		return (toReal(lhs) > toReal(rhs));
+	}
+
+	friend bool operator<(const Rational& lhs, const Rational& rhs)
+	{
+		return (toReal(lhs) < toReal(rhs));
 	}
 
 };
 
+double toReal(const Rational& r)
+{
+	return r.Numerator() / r.Denominator();
+}
+
 int main() {
 	{
-		Rational r1(4, 6);
-		Rational r2(2, 3);
-		bool equal = r1 == r2;
-		if (!equal) {
-			cout << "4/6 != 2/3" << endl;
+		const set<Rational> rs = { {1, 2}, {1, 25}, {3, 4}, {3, 4}, {1, 2} };
+		if (rs.size() != 3) {
+			cout << "Wrong amount of items in the set" << endl;
 			return 1;
 		}
-	}
 
-	{
-		Rational a(2, 3);
-		Rational b(4, 3);
-		Rational c = a + b;
-		bool equal = c == Rational(2, 1);
-		if (!equal) {
-			cout << "2/3 + 4/3 != 2" << endl;
+		vector<Rational> v;
+		for (auto x : rs) {
+			v.push_back(x);
+		}
+		if (v != vector<Rational>{ {1, 25}, { 1, 2 }, { 3, 4 }}) {
+			cout << "Rationals comparison works incorrectly" << endl;
 			return 2;
 		}
 	}
 
 	{
-		Rational a(5, 7);
-		Rational b(2, 9);
-		Rational c = a - b;
-		bool equal = c == Rational(31, 63);
-		if (!equal) {
-			cout << "5/7 - 2/9 != 31/63" << endl;
+		map<Rational, int> count;
+		++count[{1, 2}];
+		++count[{1, 2}];
+
+		++count[{2, 3}];
+
+		if (count.size() != 2) {
+			cout << "Wrong amount of items in the map" << endl;
 			return 3;
 		}
 	}
