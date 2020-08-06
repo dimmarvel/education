@@ -154,6 +154,30 @@ void qsort5(int arr[], int left, int right)
 	qsort5(arr, last + 1, left);
 }
 
+void qsort6(int arr[], int left, int right)
+{
+	int i;
+	int last;
+	if (left >= right)
+	{
+		return;
+	}
+
+	swap(arr, left, (left + right) / 2);
+	last = left;
+	for (int i = last + 1; i <= right; i++)
+	{
+		if (arr[i] < arr[left])
+		{
+			swap(arr, ++last, i);
+		}
+	}
+
+	swap(arr, left, last);
+	qsort6(arr, left, last - 1);
+	qsort6(arr, last + 1, left);
+}
+
 //void qsort(double arr[], int left, int right)
 //{
 //	int i, last;
