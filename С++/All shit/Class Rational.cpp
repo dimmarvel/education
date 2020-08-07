@@ -6,7 +6,6 @@
 using namespace std;
 
 class Rational;
-double toReal(const Rational& r);
 
 static int gcd(int a, int b) {
 	while (b) {
@@ -61,7 +60,7 @@ public:
 	}
 	friend bool operator==(const Rational& lhs, const Rational& rhs)
 	{
-		return rhs.num == lhs.num && rhs.den == lhs.den;
+		return rhs.Numerator() == lhs.Numerator() && rhs.Denominator() == lhs.Denominator();
 	}
 
 	friend const Rational& operator+ (const Rational& lhs, const Rational& rhs)
@@ -109,13 +108,38 @@ public:
 	}
 	friend bool operator>(const Rational& lhs, const Rational& rhs)
 	{
-		return (toReal(lhs) > toReal(rhs));
+		if (lhs.Denominator() == rhs.Denominator())
+		{
+			return lhs.Numerator() > rhs.Numerator();
+		}
+		else if (lhs.Numerator() == rhs.Numerator())
+		{
+			return lhs.Denominator() < rhs.Denominator();
+		}
+		else
+		{
+			int temp = nok(lhs.Denominator(), rhs.Denominator());
+			return  ((temp / lhs.Denominator())*lhs.Numerator()) > ((temp / rhs.Denominator())* rhs.Numerator());
+		}
 	}
 
 	friend bool operator<(const Rational& lhs, const Rational& rhs)
 	{
-		return (toReal(lhs) < toReal(rhs));
+		if (lhs.Denominator() == rhs.Denominator())
+		{
+			return lhs.Numerator() < rhs.Numerator();
+		}
+		else if (lhs.Numerator() == rhs.Numerator())
+		{
+			return lhs.Denominator() > rhs.Denominator();
+		}
+		else
+		{
+			int temp = nok(lhs.Denominator(), rhs.Denominator());
+			return ((temp / lhs.Denominator())*lhs.Numerator()) < ((temp / rhs.Denominator())* rhs.Numerator());
+		}
 	}
+
 
 };
 
