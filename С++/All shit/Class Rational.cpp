@@ -1,4 +1,4 @@
-#include <iostream>
+A#include <iostream>
 #include <sstream>
 #include <set>
 #include <vector>
@@ -32,22 +32,15 @@ public:
 
 	Rational(int numerator, int denominator)
 	{
-		if (numerator >= 0 && denominator < 0)
+		if (denominator < 0)
 		{
 			denominator = -denominator;
 			numerator = -numerator;
 		}
-		else if (numerator < 0 && denominator < 0)
-		{
-			numerator = abs(numerator);
-			denominator = abs(denominator);
-		}
 
-		int x = gcd(numerator, denominator);
+		int x = gcd(abs(numerator), denominator);
 		num = numerator /= x;
 		den = denominator /= x;
-
-
 	}
 
 	int Numerator() const
@@ -63,7 +56,7 @@ public:
 		return rhs.Numerator() == lhs.Numerator() && rhs.Denominator() == lhs.Denominator();
 	}
 
-	friend const Rational& operator+ (const Rational& lhs, const Rational& rhs)
+	friend const Rational& operator+(const Rational& lhs, const Rational& rhs)
 	{
 		return Rational{
 			lhs.Numerator() * rhs.Denominator() + lhs.Denominator() * rhs.Numerator(),
@@ -106,47 +99,17 @@ public:
 		stream << r.num << '/' << r.den;
 		return stream;
 	}
+
 	friend bool operator>(const Rational& lhs, const Rational& rhs)
 	{
-		if (lhs.Denominator() == rhs.Denominator())
-		{
-			return lhs.Numerator() > rhs.Numerator();
-		}
-		else if (lhs.Numerator() == rhs.Numerator())
-		{
-			return lhs.Denominator() < rhs.Denominator();
-		}
-		else
-		{
-			int temp = nok(lhs.Denominator(), rhs.Denominator());
-			return  ((temp / lhs.Denominator())*lhs.Numerator()) > ((temp / rhs.Denominator())* rhs.Numerator());
-		}
+		return (lhs.Numerator() * rhs.Denominator()) < (lhs.Denominator() * rhs.Numerator());
 	}
 
 	friend bool operator<(const Rational& lhs, const Rational& rhs)
 	{
-		if (lhs.Denominator() == rhs.Denominator())
-		{
-			return lhs.Numerator() < rhs.Numerator();
-		}
-		else if (lhs.Numerator() == rhs.Numerator())
-		{
-			return lhs.Denominator() > rhs.Denominator();
-		}
-		else
-		{
-			int temp = nok(lhs.Denominator(), rhs.Denominator());
-			return ((temp / lhs.Denominator())*lhs.Numerator()) < ((temp / rhs.Denominator())* rhs.Numerator());
-		}
+		return (lhs.Numerator() * rhs.Denominator()) < (lhs.Denominator() * rhs.Numerator());
 	}
-
-
 };
-
-double toReal(const Rational& r)
-{
-	return r.Numerator() / r.Denominator();
-}
 
 int main() {
 	{
@@ -168,9 +131,9 @@ int main() {
 
 	{
 		map<Rational, int> count;
-		++count[{1, 2}];
-		++count[{1, 2}];
 
+		++count[{1, 2}];
+		++count[{1, 2}];
 		++count[{2, 3}];
 
 		if (count.size() != 2) {
