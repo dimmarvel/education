@@ -5,129 +5,163 @@
 
 using namespace std;
 
-class Matrix {
+class Matrix
+{
 private:
-  int num_rows_;
-  int num_columns_;
-
-  vector<vector<int>> elements_;
-
+	vector<vector<int>> vec;
+	int num_rows;
+	int num_cols;
 public:
-  Matrix() {
-    num_rows_ = 0;
-    num_columns_ = 0;
-  }
+	Matrix() {
+		num_rows = 0;
+		num_cols = 0;
+	};
 
-  Matrix(int num_rows, int num_columns) {
-    Reset(num_rows, num_columns);
-  }
+	Matrix(int num_rows, int num_cols) 
+	{
+		Reset(num_rows, num_cols);
+	};
 
-  void Reset(int num_rows, int num_columns) {
-    if (num_rows < 0) {
-      throw out_of_range("num_rows must be >= 0");
-    }
-    if (num_columns < 0) {
-      throw out_of_range("num_columns must be >= 0");
-    }
-    if (num_rows == 0 || num_columns == 0) {
-      num_rows = num_columns = 0;
-    }
+	void Reset(int num_rows, int num_cols)
+	{
+		if (num_rows < 0) {
+			throw out_of_range("out_of_range");
+		}
+		if (num_cols < 0) {
+			throw out_of_range("out_of_range");
+		}
+		if (num_rows == 0 || num_cols == 0) {
+			num_rows = num_cols = 0;
+		}
 
-    num_rows_ = num_rows;
-    num_columns_ = num_columns;
-    elements_.assign(num_rows, vector<int>(num_columns));
-  }
+		this->num_cols = num_cols;
+		this->num_rows = num_rows;
 
-  int& At(int row, int column) {
-    return elements_.at(row).at(column);
-  }
+		vec.assign(num_rows, vector<int>(num_cols));
+	}
 
-  int At(int row, int column) const {
-    return elements_.at(row).at(column);
-  }
+	int At(int num_rows, int num_cols) const
+	{
+		if (num_rows >= vec.size() || num_cols >= vec[0].size()
+			|| num_rows < 0 || num_cols < 0)
+		{
+			throw out_of_range("Must be >=0");
+		}
+		return vec[num_rows][num_cols];
+	}
 
-  int GetNumRows() const {
-    return num_rows_;
-  }
+	int& At(int num_rows, int num_cols)
+	{
+		if (num_rows >= vec.size() || num_cols >= vec[1].size()
+			|| num_rows < 0 || num_cols < 0) {
+			throw out_of_range("Must be >=0");
+		}
+		return vec[num_rows][num_cols];
+	}
 
-  int GetNumColumns() const {
-    return num_columns_;
-  }
+	int GetNumRows() const
+	{
+		return num_rows;
+	}
+
+	int GetNumColumns() const
+	{
+		return num_cols;
+	}
+
+
+
+	friend istream& operator>>(istream& istr, Matrix& mat);
+	friend ostream& operator<<(ostream& ostr,const Matrix& mat);
+	friend Matrix operator+(const Matrix& lhs,const Matrix& rhs);
+	friend bool operator==(const Matrix& lhs,const Matrix& rhs);
 };
 
-bool operator==(const Matrix& one, const Matrix& two) {
-  if (one.GetNumRows() != two.GetNumRows()) {
-    return false;
-  }
 
-  if (one.GetNumColumns() != two.GetNumColumns()) {
-    return false;
-  }
+Matrix operator+(const Matrix& lhs,const Matrix& rhs)
+{
+	if (lhs.GetNumRows() != rhs.GetNumRows()) {
+		throw invalid_argument("invalid_argument");
+	}
 
-  for (int row = 0; row < one.GetNumRows(); ++row) {
-    for (int column = 0; column < one.GetNumColumns(); ++column) {
-      if (one.At(row, column) != two.At(row, column)) {
-        return false;
-      }
-    }
-  }
+	if (lhs.GetNumColumns() != rhs.GetNumColumns()) {
+		throw invalid_argument("invalid_argument");
+	}
 
-  return true;
+	Matrix result(lhs.GetNumRows(), lhs.GetNumColumns());
+
+	for (int i = 0; i < lhs.GetNumRows(); i++)
+	{
+		for (int j = 0; j < lhs.GetNumColumns(); j++)
+		{
+			result.At(i, j) = lhs.At(i, j) + rhs.At(i, j);
+		}
+	}
+
+	return result;
 }
 
-Matrix operator+(const Matrix& one, const Matrix& two) {
-  if (one.GetNumRows() != two.GetNumRows()) {
-    throw invalid_argument("Mismatched number of rows");
-  }
+bool operator==(const Matrix& lhs,const Matrix& rhs)
+{
+	if (lhs.GetNumRows() != rhs.GetNumRows()) {
+		return false;
+	}
 
-  if (one.GetNumColumns() != two.GetNumColumns()) {
-    throw invalid_argument("Mismatched number of columns");
-  }
+	if (lhs.GetNumColumns() != rhs.GetNumColumns()) {
+		return false;
+	}
 
-  Matrix result(one.GetNumRows(), one.GetNumColumns());
-  for (int row = 0; row < result.GetNumRows(); ++row) {
-    for (int column = 0; column < result.GetNumColumns(); ++column) {
-      result.At(row, column) = one.At(row, column) + two.At(row, column);
-    }
-  }
+	for (int row = 0; row < lhs.GetNumRows(); ++row) {
+		for (int column = 0; column < lhs.GetNumColumns(); ++column) {
+			if (lhs.At(row, column) != rhs.At(row, column)) {
+				return false;
+			}
+		}
+	}
 
-  return result;
+	return true;
 }
 
-istream& operator>>(istream& in, Matrix& matrix) {
-  int num_rows, num_columns;
-  in >> num_rows >> num_columns;
+istream& operator>>(istream& istr, Matrix& mat)
+{
+	int ROW, COL;
+	istr >> ROW >> COL;
+	
+	mat.Reset(ROW, COL);
 
-  matrix.Reset(num_rows, num_columns);
-  for (int row = 0; row < num_rows; ++row) {
-    for (int column = 0; column < num_columns; ++column) {
-      in >> matrix.At(row, column);
-    }
-  }
+	for (int i = 0; i < ROW; i++)
+	{
+		for (int j = 0; j < COL; j++)
+		{
+			istr >> mat.At(i, j);
+		}
+	}
 
-  return in;
+	return istr;
 }
 
-ostream& operator<<(ostream& out, const Matrix& matrix) {
-  out << matrix.GetNumRows() << " " << matrix.GetNumColumns() << endl;
-  for (int row = 0; row < matrix.GetNumRows(); ++row) {
-    for (int column = 0; column < matrix.GetNumColumns(); ++column) {
-      if (column > 0) {
-        out << " ";
-      }
-      out << matrix.At(row, column);
-    }
-    out << endl;
-  }
+ostream& operator<<(ostream& ostr,const Matrix& mat)
+{
+	ostr << mat.GetNumRows() << " " << mat.GetNumColumns() << endl;
+	for (int i = 0; i < mat.GetNumRows(); i++)
+	{
+		for (int j = 0; j < mat.GetNumColumns(); j++)
+		{
+			ostr << mat.At(i, j) << " ";
+		}
+		ostr << endl;
+	}
 
-  return out;
+	return ostr;
 }
+
 
 int main() {
-  Matrix one;
-  Matrix two;
-
-  cin >> one >> two;
-  cout << one + two << endl;
-  return 0;
+	Matrix one;
+	Matrix two;
+	
+	cin >> one >> two;
+	cout << one + two << endl;
+	
+	return 0;
 }
