@@ -1,40 +1,11 @@
+/*entab*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #define TAB 8
 
 void entab(int m, int n);
-void detab(int m, int n);
-
-void detab(int m, int n)
-{
-	int c, i, symvol, ntab;
-
-	m = -m;
-	symvol = 1;
-	while ((c = getchar()) != EOF)
-	{
-		if (m-- > 0)
-			putchar(c);
-		else
-			if (c == '\t')
-			{
-				ntab = n - (symvol - 1);
-				for (i = 0; i < ntab; i++)
-					putchar(' ');
-			}
-			else if (c == '\n')
-			{
-				symvol = 0;
-				printf("\n");
-			}
-			else
-				putchar(c);
-		symvol++;
-		if (symvol == n)
-			symvol = 0;
-	}
-}
 
 void entab(int m, int n)
 {
@@ -120,6 +91,7 @@ int main(int argc, char *argv[])
 	}
 	return 0;
 
+
 	/*int pos, tabinc;
 
 	if (argc > 3)
@@ -143,3 +115,33 @@ int main(int argc, char *argv[])
 	return 0;*/
 }
 
+
+void detab(int m, int n)
+{
+	int c, i, symvol, ntab;
+
+	m = -m;
+	symvol = 1;
+	while ((c = getchar()) != EOF)
+	{
+		if (m-- > 0)
+			putchar(c);
+		else
+			if (c == '\t')
+			{
+				ntab = n - (symvol - 1);
+				for (i = 0; i < ntab; i++)
+					putchar(' ');
+			}
+			else if (c == '\n')
+			{
+				symvol = 0;
+				printf("\n");
+			}
+			else
+				putchar(c);
+		symvol++;
+		if (symvol == n)
+			symvol = 0;
+	}
+}
