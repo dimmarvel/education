@@ -24,11 +24,12 @@ void free(char* ptr)
 	}
 }
 
-main()
-{
-	char *some = alloc(10);
-	printf("%s", some);
-	free(some);
-
-	system("pause");
-}
+//
+//main()
+//{
+//	char *some = alloc(10);
+//	printf("%s", some);
+//	free(some);
+//
+//	system("pause");
+//}
