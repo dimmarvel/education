@@ -1,77 +1,101 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
-enum com {NUMERIC, DEC, FOLD};
+#define NUMERIC 1
+#define DECR 2
+#define FOLD 4
+#define ALLOCSIZE 10000
+#define MAXLINES 5000
+#define MAXLEN 1000
 
-#define MAXLENS 500
-char *lineptr[MAXLENS];
-int dec = 0;
+static char allocbuf[ALLOCSIZE];
+static char* allocp = allocbuf;
+char* lineptr[MAXLINES];
+int decr = 0;
 
-int numcmp(char *, char *);
-
-void qsort(void *lineptr[], int left, int right, int(*comp)(void*, void*));
-void writelines(char *lineptr[], int nlines, int enter);
-int readlines(char *lineptr[], int maxlines);
-void swap(void *v[], int i, int j);
-int getline(char*, int);
-//--------------------------------------
-#define ALLOCSIZE 1000
-
-static char allocbuff[ALLOCSIZE];
-static char *allocp = allocbuff;
-
-char* alloc(int n);
-
-//--------------------------------------
-
+int readlines(char*[], int);
+void writelines(char*[], int);
+void qsort(int, int, int(*)(void*, void*));
+int numcmp(char*, char*);
 
 main(int argc, char* argv[])
 {
-	int nlines;
-	int numeric = 0;
+	int nlines, c;
+	int option = 0;
 
-	argc = 4;
-	argv[0] = "sort ";
-	argv[1] = "-n";
-	argv[2] = "-r";
-	argv[3] = "-f";
-	writelines(argv, argc, 0);
-
-	while (argc > 0)
+	while (--argc > 0 && (*++argv)[0] == '-')
 	{
-		if (strcmp(argv[--argc], "-n"))
+		while (c = *++argv[0])
 		{
-			numeric = NUMERIC;
-		}
-		else if (strcmp(argv[--argc], "-r"))
-		{
-			dec = DEC;
-		}
-		else if (strcmp(argv[--argc], "-f"))
-		{
-			dec = DEC;
+			switch (c)
+			{
+			case 'f':
+				option |= FOLD;
+				break;
+			case 'n':
+				option |= NUMERIC;
+				break;
+			case 'r':
+				decr = DECR;
+				break;
+			}
 		}
 	}
-
-	if ((nlines = readlines(lineptr, MAXLENS)) >= 0)
+	if ((nlines = readlines(lineptr, MAXLINES)) >= 0)
 	{
-		qsort((void **)lineptr, 0, nlines - 1, (int(*)(void*, void*))(numeric ? numcmp : strcmp));
-		writelines(lineptr, nlines, 1);
+		qsort(0, nlines - 1, (int(*)(void*, void*))(option & NUMERIC ? numcmp : option & FOLD ? _stricmp : strcmp));
+		writelines(lineptr, nlines);
 		return 0;
 	}
 	else
 	{
-		printf("input too big to sort/n");
+		printf("Error\n");
 		return 1;
 	}
-
-	return 0;
 }
 
-/*compare strings for number value*/
-int numcmp(char * s1, char * s2)
+void qsort(int left, int right, int(*comp)(void*, void*))
+{
+	int i, last;
+
+	void swap(void*[], int, int);
+
+	if (left >= right)
+	{
+		return;
+	}
+
+	swap(lineptr, left, (left + right) / 2);
+
+	last = left;
+
+	for (i = left + 1; i <= right; i++)
+	{
+		if (decr == 0 && (*comp)(lineptr[i], lineptr[left]) < 0)
+		{
+			swap(lineptr, ++last, i);
+		}
+		else if (decr != 0 && (*comp)(lineptr[i], lineptr[left]) > 0)
+		{
+			swap(lineptr, ++last, i);
+		}
+	}
+
+	swap(lineptr, left, last);
+	qsort(left, last - 1, comp);
+	qsort(last + 1, right, comp);
+}
+
+void swap(void* v[], int i, int j)
+{
+	void* temp = v[i];
+	v[i] = v[j];
+	v[j] = temp;
+}
+
+int numcmp(char* s1, char* s2)
 {
 	double v1, v2;
 
@@ -92,76 +116,19 @@ int numcmp(char * s1, char * s2)
 	}
 }
 
-void qsort(void *v[], int left, int right, int(*comp)(void*, void*))
+int readlines(char* lineptr[], int maxlines)
 {
-	int i, last;
+	int len, nlines;
+	char* p, line[MAXLEN];
 
-	void swap(void*[], int, int);
+	int getline(char*, int);
+	char* alloc(int);
 
-	if (left >= right)
+	nlines = 0;
+
+	while ((len = getline(line, MAXLEN)) > 0)
 	{
-		return;
-	}
-
-	swap(v, left, (left + right) / 2);
-
-	last = left;
-
-	for (i = left + 1; i <= right; i++)
-	{
-		if (dec == 0 && (*comp)(v[i], v[left]) < 0)
-		{
-			swap(v, ++last, i);
-		}
-		else if (dec != 0 && (*comp)(v[i], v[left]) > 0)
-		{
-			swap(v, ++last, i);
-		}
-	}
-
-	swap(v, left, last);
-	qsort(v, left, last - 1, comp);
-	qsort(v, last + 1, right, comp);
-}
-
-void swap(void *v[], int i, int j)
-{
-	void* temp;
-	temp = v[i];
-	v[i] = v[j];
-	v[j] = temp;
-}
-
-char* alloc(int n)
-{
-	if (allocbuff + ALLOCSIZE - allocp >= 0)
-	{
-		allocp += n;
-		return (allocp - n);
-	}
-	else
-	{
-		return 0;
-	}
-}
-
-void free(char* ptr)
-{
-	if (ptr > allocbuff && ptr < allocbuff + ALLOCSIZE)
-	{
-		allocp = ptr;
-	}
-}
-
-int readlines(char *lineptr[], int maxlines)
-{
-	int len, nlines = 0;
-
-	char* p, line[MAXLENS];
-
-	while ((len = getline(line, MAXLENS)) > 0)
-	{
-		if (nlines >= maxlines || ((p = alloc(len)) == NULL))
+		if (nlines >= maxlines || (p = alloc(len)) == NULL)
 		{
 			return -1;
 		}
@@ -172,25 +139,16 @@ int readlines(char *lineptr[], int maxlines)
 			lineptr[nlines++] = p;
 		}
 	}
+
 	return nlines;
 }
 
-void writelines(char *lineptr[], int nlines, int enter)
+void writelines(char* lineptr[], int nlines)
 {
-
-	for (int i = 0; i < nlines; i++)
+	while (nlines-- > 0)
 	{
-		if (enter == 1)
-		{
-			printf("%s\n", lineptr[i]);
-		}
-		else
-		{
-			printf("%s", lineptr[i]);
-		}
+		printf("%s\n", *lineptr++);
 	}
-	if (enter == 0) printf("\n");
-
 }
 
 int getline(char* s, int lim)
@@ -211,4 +169,17 @@ int getline(char* s, int lim)
 	*s = '\0';
 
 	return s - temp;
+}
+
+char* alloc(int n)
+{
+	if (allocbuf + ALLOCSIZE - allocp >= n)
+	{
+		allocp += n;
+		return allocp - n;
+	}
+	else
+	{
+		return NULL;
+	}
 }
