@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #define MAXLINES 5000 //max lines to be sorted
 #define BUFSIZE 5000
@@ -17,14 +16,12 @@ int numcmp(char *s1, char *s2);
 int regcmp(char *r1, char *r2);
 
 int numeric, order, reg, dir;
-int pos1 = 0;
-int pos2 = 0;
 
 /* sort input lines */
 int main(int argc, char *argv[])
 {
 	int nlines; //number of input lines read
-	int c, wk; // 1 if numeric sort & order sort
+	int c, wk;
 	char buf[BUFSIZE];
 	int(*pFunc)(int *);
 	numeric = 0;
@@ -33,43 +30,30 @@ int main(int argc, char *argv[])
 	dir = 0;
 
 
-	while (--argc > 0 && (c = (*++argv)[0]) == '-' || c == '+')
-	{
-		if (c == '-' && !isdigit(*(argv[0] + 1)))
-			while (c = *++argv[0])
-				switch (c)
-				{
-				case 'd'://directory order
-					dir = 1;
-					break;
-				case 'n': //numerically sort
-					numeric = 1;
-					break;
-				case 'f'://sort upper & lower case together
-					reg = 1;
-					break;
-				case 'r'://sorting in reverse
-					order = 1;
-					break;
-				default:
-					printf("wrong key\n");
-					wk = -1;
-					argc = 1;
-					break;
-				}
-		else if (c == '-')
-			pos2 = atoi(argv[0] + 1);
-		else if ((pos1 = atoi(argv[0] + 1)) < 0)
-		{
-			printf("ERROR\n");
-			exit(1);
-		}
-	}
-	if (argc || pos1 > pos2)
-	{
+	while (--argc > 0 && (*++argv)[0] == '-')
+		while (c = *++argv[0])
+			switch (c)
+			{
+			case 'd'://directory order
+				dir = 1;
+				break;
+			case 'n': //numerically sort
+				numeric = 1;
+				break;
+			case 'f'://sort upper & lower case together
+				reg = 1;
+				break;
+			case 'r'://sorting in reverse
+				order = 1;
+				break;
+			default:
+				printf("wrong key\n");
+				wk = -1;
+				argc = 1;
+				break;
+			}
+	if (argc)
 		printf("ERROR\n");
-		exit(1);
-	}
 	else
 	{
 		if ((nlines = readlines(lineptr, buf, MAXLINES)) >= 0)
@@ -115,45 +99,20 @@ void sort(void *v[], int left, int right,
 }
 
 #include <stdlib.h>
-#include <math.h>
-
-#define MAXSTR 5000
-
-void sortstr(char *s, char *t, int maxstr);
 
 /* numcmp: compare s1 and s2 numericalli */
 int numcmp(char *s1, char *s2)
 {
 	double v1, v2;
-	char str[MAXSTR];
 
-	sortstr(s1, str, MAXSTR);
-	v1 = atof(str);
-	sortstr(s2, str, MAXSTR);
-	v2 = atof(str);
+	v1 = atof(s1);
+	v2 = atof(s2);
 	if (v1 < v2)
 		return -1;
 	else if (v1 > v2)
 		return 1;
 	else
 		return 0;
-}
-
-void sortstr(char *s, char *t, int maxstr)
-{
-	int i, j, len;
-
-	len = strlen(s);
-	if (pos2 > 0 && len > pos2)
-		len = pos2;
-	else if (pos2 > 0 && len < pos2)
-	{
-		printf("ERROR\n");
-		exit(1);
-	}
-	for (i = 0, j = pos1; j < len; i++, j++)
-		t[i] = s[j];
-	t[i] = '\0';
 }
 
 void swap(void *v[], int i, int j)
@@ -225,46 +184,39 @@ int getlin(char *l, int lim)
 
 int regcmp(char *r1, char *r2)
 {
-	int i, j, lastpos;
-
-	i = j = pos1;
-	if (pos2 > 0)
-		lastpos = pos2;
-	else if ((lastpos = strlen(r1)) > strlen(r2))
-		lastpos = strlen(r2);
 	if (reg == 1 && dir == 0)
 	{
-		for (; tolower(r1[i]) == tolower(r2[j]) && i < lastpos && j < lastpos; i++, j++)
-			if (r1[i] == '\0')
+		for (; tolower(*r1) == tolower(*r2); r1++, r2++)
+			if (*r1 == '\0')
 				return 0;
-		return tolower(r1[i]) - tolower(r2[j]);
+		return tolower(*r1) - tolower(*r2);
 	}
 	else if (reg == 0 && dir == 1)
 	{
-		while (r1[i] == r2[j] && i < lastpos && j < lastpos)
+		while (*r1 == *r2)
 		{
-			while (i < lastpos && !isalnum(r1[i]) && r1[i] != '\0' && r1[i] != ' ')
-				i++;
-			while (j < lastpos && !isalnum(r2[j]) && r2[j] != '\0' && r2[j] != ' ')
-				j++;
+			while (!isalnum(*r1) && *r1 != '\0' && *r2 != ' ')
+				r1++;
+			while (!isalnum(*r2) && *r1 != '\0' && *r2 != ' ')
+				r2++;
 		}
-		if (r1[i] == r2[j] && r1[i] == '\0')
+		if (*r1 == *r2 && *r1 == '\0')
 			return 0;
 		else
-			return r1[i] - r2[j];
+			return *r1 - *r2;
 	}
 	else
 	{
-		while (r1[i] == r2[j] && i < lastpos && j < lastpos)
+		while (*r1 == *r2)
 		{
-			while (i < lastpos && !isalnum(tolower(r1[i])) && r1[i] != '\0' && r1[i] != ' ')
-				i++;
-			while (j < lastpos && !isalnum(tolower(r2[j])) && r2[j] != '\0' && r2[j] != ' ')
-				j++;
+			while (!isalnum(tolower(*r1)) && *r1 != '\0' && *r2 != ' ')
+				r1++;
+			while (!isalnum(tolower(*r2)) && *r1 != '\0' && *r2 != ' ')
+				r2++;
 		}
-		if (tolower(r1[i]) == tolower(r2[j]) && r1[i] == '\0')
+		if (tolower(*r1) == tolower(*r2) && *r1 == '\0')
 			return 0;
 		else
-			return tolower(r1[i]) - tolower(r2[j]);
+			return tolower(*r1) - tolower(*r2);
 	}
 }
