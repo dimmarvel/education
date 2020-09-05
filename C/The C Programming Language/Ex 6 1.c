@@ -1,3 +1,5 @@
+
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -57,8 +59,8 @@ struct key
 int getword(char*, int);
 int binsearch(char *word, struct key tab[], int n);
 
-int getch(void);        
-void ungetch(int);  
+int getch(void);
+void ungetch(int);
 
 main()
 {
@@ -90,7 +92,7 @@ int binsearch(char *word, struct key tab[], int n)
 	while (low <= high)
 	{
 		mid = (low + high) / 2;
-		
+
 		if ((cond = strcmp(word, tab[mid].word)) < 0)
 			high = mid - 1;
 		else if (cond > 0)
