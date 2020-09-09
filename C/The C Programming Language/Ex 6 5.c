@@ -3,7 +3,6 @@
 #include <string.h>
 
 char *s_dup(char *s);
-
 struct nlist{
 	struct nlist * next;
 	char * name;
