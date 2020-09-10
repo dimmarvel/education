@@ -1,5 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
+
+char *s_dup(char *s);
 
 struct nlist{
 	struct nlist * next;
@@ -33,7 +36,7 @@ struct nlist * lookup(char* s)
 	return NULL;
 }
 
-struct nlist* install(char* name, char * defn)
+struct nlist* minstall(char* name, char * defn)
 {
 	struct nlist * np;
 	unsigned hashval;
@@ -41,7 +44,7 @@ struct nlist* install(char* name, char * defn)
 	if ((np = lookup(name)) == NULL)
 	{
 		np = (struct nlist*)malloc(sizeof(*np));
-		if (np == NULL || (np->name = strdup(name)) == NULL)
+		if (np == NULL || (np->name = s_dup(name)) == NULL)
 			return NULL;
 
 		hashval = hash(name);
@@ -53,16 +56,42 @@ struct nlist* install(char* name, char * defn)
 		free((void*)np->defn);
 	}
 	
-	if ((np->defn = strdun(defn)) == NULL)
+	if ((np->defn = s_dup(defn)) == NULL)
 	{
 		return NULL;
 	}
 	return np;
 }
 
+void undef(char* name)
+{
+	unsigned hashI = hash(name);
+
+	if (hashtab[hashI] != NULL) 
+	{
+		free((void*)hashtab[hashI]->name);
+		free((void*)hashtab[hashI]->defn);
+		free((void*)hashtab[hashI]);
+	}
+}
+
 main()
 {
+	struct nlist* nl = minstall("IN", "1");
 
+	printf("%s -> %s", hashtab[hash("IN")]->name, hashtab[hash("IN")]->defn);
+	undef("IN");
 	return 0;
 
+}
+
+/* make a duplicate of s */
+char *s_dup(char *s)
+{
+	char *p;
+
+	p = (char *)malloc(strlen(s) + 1); // +1 for '\0'
+	if (p != NULL)
+		strcpy(p, s);
+	return p;
 }
