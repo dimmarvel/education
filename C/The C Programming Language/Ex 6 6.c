@@ -247,6 +247,7 @@ int getword(char *word, int lim)
 	return c;
 }
 
+
 int in_comment(void)
 {
 	int c;
