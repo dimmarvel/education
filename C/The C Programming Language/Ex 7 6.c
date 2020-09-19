@@ -1,46 +1,45 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
 
-main(int argc, char* argv[])
+#define MAXNAME 20
+#define MAXLINE 100
+
+FILE *first, *second;
+
+int main()
 {
-	FILE* fp;
-	void filecopy(FILE *ifp, FILE *ofp);
-	
-	char* prog = argv[0];
+	char f[MAXNAME], s[MAXNAME], str1[MAXLINE], str2[MAXLINE];
 
-	if (argc = 1)
+	printf("type the names of the compared files\n");
+	printf("first: ");
+	gets(f);
+	printf("second: ");
+	gets(s);
+	if ((first = fopen(f, "r")) == NULL)
 	{
-		filecopy(stdin, stdout);
+		perror(f);
+		return 1;
+	}
+	else if ((second = fopen(s, "r")) == NULL)
+	{
+		perror(s);
+		return 1;
 	}
 	else
+		printf("files open\n\n");
+	while (!feof(first) && !feof(second))
 	{
-		while (--argc > 0)
+		fgets(str1, MAXLINE - 1, first);
+		fgets(str2, MAXLINE - 1, second);
+		if (strcmp(str1, str2) != 0)
 		{
-			if ((fp = fopen(fp, "r")) == NULL)
-			{
-				fprintf(stderr, "%s: can't open %s\n", prog, *argv);
-				exit(1);
-			}
-			else
-			{
-				filecopy(fp, stdout);
-				fclose(fp);
-			}
+			printf("first different strings:\n\n");
+			printf("%s\n%s\n", str1, str2);
+			break;
 		}
 	}
-	if (ferror(stdout))
-	{
-		fprintf(stderr, "")
-	}
-
+	fclose(first);
+	fclose(second);
 	return 0;
-}
-
-void filecopy(FILE *ifp, FILE *ofp)
-{
-	int c;
-	while ((c = getc(ifp)) != EOF)
-	{
-		putc(c, ofp);
-	}
 }
