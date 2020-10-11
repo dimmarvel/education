@@ -10,11 +10,13 @@ typedef union {
 		unsigned int sign : 1;
 	} parts;
 } double_cast;
+
 void manticce(double m)
 {
 	double_cast dc = {m};
 	printf("%x\n", dc.parts.mantisa);
 }
+
 int main()
 {
 	manticce(1.21411577);
