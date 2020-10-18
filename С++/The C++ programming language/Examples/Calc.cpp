@@ -4,7 +4,6 @@
 using namespace std;
 
 int no_of_errors;
-
 double error(const char* s)
 {
 	cerr << "Error: " << s << '\n';
@@ -25,11 +24,6 @@ double expr();
 double term();
 double prim();
 double get_token();
-
-int main()
-{
-	return 0;
-}
 
 double expr()
 {
@@ -222,6 +216,18 @@ name* look(const char* p, int ins)
 	return nn;
 }
 
-
-
+// main == driver. He init and stat proccess
+int main()
+{
+	insert("pi")->value = 3.141592;
+	insert("e")->value = 2.718281;
+	while(cin)
+	{
+		get_token();
+		if(curr_tok == END) break;
+		if(curr_tok == PRINT) continue;
+		cout << expr() << endl;
+	}
+	return 0;
+}
 
