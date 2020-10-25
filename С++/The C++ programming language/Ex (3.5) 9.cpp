@@ -18,12 +18,24 @@ char* cat(char* p1, char* p2)
 	}
 	return result;
 }
+
+void rev(char* p)
+{
+	char* str = new char(strlen(p));
+	for(int i = strlen(p) - 1, j = 0; i >= 0; i--,j++)
+	{
+		str[j] = p[i];
+	}
+	strcpy(p,str);
+}
 int main()
 {
 	char str1[4] = "qwe";
 	char str2[4] = "asd";
 	char* p = cat(str1,str2);
 	cout << p;
+	rev(p);
+	cout << "\nrev = " << p;
 	return 0;
 }
 
