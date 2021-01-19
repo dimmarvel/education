@@ -27,17 +27,21 @@ void cOUT(vector<int> &arr, vector<function<void(int)>> &fun) {
 		}
 	}
 }
+
 //-------------------------
 void foo() {
 	cout << "Im is foo!" << endl;
 }
+
 void bar() {
 	cout << "Im is bar!" << endl;
 }
+
 //-------------------------
 int sum(int a, int b) {
 	return a + b;
 }
+
 //-------------------------
 int main() {
 
@@ -45,7 +49,6 @@ int main() {
 	//-------------------------
 	function<void()> f; //создаем переменную типа function
 	// которая принимает функцию с типом возвр. значения void и принимающей 0 аргуменртов
-
 	
 	f = foo;
 

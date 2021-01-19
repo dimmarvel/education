@@ -11,6 +11,7 @@ void PrintList(forward_list<T>& flst) {
 }
 
 int main() {
+	
 	setlocale(LC_ALL, "Rus");
 
 	forward_list<int> flst;
@@ -29,9 +30,9 @@ int main() {
 
 	flst.insert_after(it, 9999);
 	PrintList(flst);
-	//it--; //ERROR потому что мы не храним адрес предыдущего
-	cout << "IT - "<< *it << endl;
+	cout << "IT - " << *it << endl;
 
+	//it--; //ERROR потому что мы не храним адрес предыдущего
 	//lst[1]; ERROR
 
 	system("Pause");

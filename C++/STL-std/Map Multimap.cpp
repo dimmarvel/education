@@ -33,12 +33,12 @@ int main() {
 
 	multimap<string, int> mmap2;
 
-	mmap2.emplace("monithor",2); //create obj in runtime
+	mmap2.emplace("monithor", 2); //create obj in runtime
 
-	mmap2.insert(make_pair("telephone",4));
-	mmap2.insert(pair<string, int>("notepad",3)); //copy obj or move
+	mmap2.insert(make_pair("telephone", 4));
+	mmap2.insert(pair<string, int>("notepad", 3)); //copy obj or move
 
-	mmap2.emplace("keyboard",6); //create obj in runtime
+	mmap2.emplace("keyboard", 6); //create obj in runtime
 
 	auto it2 = mmap2.find("telephone");
 
