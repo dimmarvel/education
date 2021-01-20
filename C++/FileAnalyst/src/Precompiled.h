@@ -6,5 +6,6 @@
 #include<limits>
 #include<string>
 #include<memory>
+#include<vector>
 
 #endif /* PRECOMPILED_H_ */
