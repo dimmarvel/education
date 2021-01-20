@@ -8,6 +8,8 @@ enum mode
 {
 	SYMB = 0,
 	PARAGRAPH = 1,
+	WORDS = 2,
+	SPECCHAR = 3,
 	END = 9
 };
 

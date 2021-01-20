@@ -12,12 +12,15 @@ void Menu::show_info()
 			"Choice action:\n" <<
 			"0 - count symbols;\n" <<
 			"1 - count paragraphs;\n" <<
+			"2 - count words;\n" <<
+			"3 - count specific characters;\n" <<
 			"9 - end.\n";
 }
 
 int Menu::mode_check(mode m)
 {
 	int c = (int)m;
+
 	if(c == mode::SYMB)
 	{
 		std::cout << "Start count symbols...\n";
@@ -29,6 +32,22 @@ int Menu::mode_check(mode m)
 		std::cout << "Start count paragraphs...\n";
 		std::cout << "All paragraphs - "
 				  << _fAnalyst.paragraph_count() << std::endl;
+	}
+	else if(c == mode::WORDS)
+	{
+		std::cout << "Start count words...\n";
+		std::cout << "All words - "
+				  << _fAnalyst.words_count() << std::endl;
+	}
+	else if(c == mode::SPECCHAR)
+	{
+		char ch;
+		std::cout << "Input specific character: ";
+		std::cin.clear();
+		std::cin >> ch;
+		std::cout << "Start count specific characters...\n";
+		std::cout << "All specific characters (" << ch << ") - "
+				  << _fAnalyst.spec_char_count((int)ch) << std::endl;
 	}
 	else if(c == mode::END)
 	{
@@ -45,13 +64,13 @@ int Menu::mode_check(mode m)
 
 void Menu::menu()
 {
-	show_info();
 	int c;
+	show_info();
 
 	do
 	{
 		std::cout << "Input: ";
 		std::cin >> c;
-	}while(mode_check((mode)c) != (int)mode::END);
+	} while(mode_check((mode)c) != (int)mode::END);
 }
 

@@ -22,18 +22,42 @@ void FileAnalyst::read_data_to_buffer()
 
 std::size_t FileAnalyst::symb_count()
 {
-	//TODO...
-	return 1u;
+	return _ofset;
 }
 
 std::size_t FileAnalyst::paragraph_count()
 {
-	//TODO...
-	return 1u;
+	std::size_t paragraphs = 0u;
+
+	for(std::size_t i = 0; i < _ofset - 1; i ++)
+		if(_buffer[i] == '\n')
+			paragraphs++;
+
+	return paragraphs;
+}
+
+std::size_t FileAnalyst::words_count()
+{
+	std::size_t count = 0u;
+
+	for(std::size_t i = 0; i < _ofset - 1; i ++)
+		if(_buffer[i] == ' ' && _buffer[i+1] != ' ')
+			count++;
+
+	return count;
+}
+
+std::size_t FileAnalyst::spec_char_count(int ch)
+{
+	std::size_t count = 0u;
+	for(std::size_t i = 0; i < _ofset - 1; i ++)
+		if(_buffer[i] == ch)
+			count++;
+	return count;
 }
 
 void FileAnalyst::show_buffer()
 {
-	for(std::size_t i = 0; i < _ofset - 1; i ++)
+	for(std::size_t i = 0; i < _ofset - 1; i++)
 		std::cout << _buffer[i];
 }
