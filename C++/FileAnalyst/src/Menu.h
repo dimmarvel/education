@@ -10,6 +10,7 @@ enum mode
 	PARAGRAPH = 1,
 	WORDS = 2,
 	SPECCHAR = 3,
+	FWORD = 4,
 	END = 9
 };
 
