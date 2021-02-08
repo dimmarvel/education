@@ -28,6 +28,7 @@ public:
 	std::size_t words_count();
 	std::size_t spec_char_count(int ch);
 	std::unique_ptr<info> find_word(std::string w);
+	void show_words_info();
 	void show_buffer();
 };
 

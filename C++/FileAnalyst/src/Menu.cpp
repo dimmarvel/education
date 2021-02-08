@@ -15,6 +15,7 @@ void Menu::show_info()
 			"2 - count words;\n" <<
 			"3 - count specific characters;\n" <<
 			"4 - find word;\n" <<
+			"5 - show words;\n" <<
 			"9 - end.\n";
 }
 
@@ -59,9 +60,14 @@ int Menu::mode_check(mode m)
 
 		std::unique_ptr<info> inf = std::move(_fAnalyst.find_word(word));
 		if(inf != NULL)
-			std::cout << "Word info(" << inf->_paragraph << ", " << inf->_pos << ")\n";
+			std::cout << "Word info (" << inf->_paragraph << ", " << inf->_pos << ")\n";
 		else
 			std::cout << "Word not found." << std::endl;
+	}
+	else if(c == mode::SWORD)
+	{
+		std::cout << "Words and info:\n";
+		_fAnalyst.show_words_info();
 	}
 	else if(c == mode::END)
 	{

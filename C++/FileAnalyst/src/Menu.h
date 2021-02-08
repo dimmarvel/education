@@ -11,6 +11,7 @@ enum mode
 	WORDS = 2,
 	SPECCHAR = 3,
 	FWORD = 4,
+	SWORD = 5,
 	END = 9
 };
 

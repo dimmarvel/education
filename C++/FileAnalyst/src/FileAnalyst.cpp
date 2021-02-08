@@ -72,9 +72,6 @@ std::vector<info> FileAnalyst::get_vector_words()
 		return _words_cache;
 	}
 
-	for(auto& it : _words_cache)
-		std::cout << it._paragraph << " " << it._pos << " " << it._word << std::endl;
-
 	return v;
 }
 
@@ -100,7 +97,8 @@ std::size_t FileAnalyst::words_count()
 	std::size_t count = 0u;
 
 	for(std::size_t i = 0; i < _ofset - 1; i ++)
-		if(_buffer[i] == ' ' && _buffer[i+1] != ' ')
+		if((_buffer[i] == ' ' && _buffer[i+1] != ' ')
+				|| (_buffer[i+1] == '\n'  || _buffer[i+1] == EOF))
 			count++;
 
 	return count;
@@ -131,7 +129,6 @@ std::unique_ptr<info> FileAnalyst::find_word(std::string w)
 			}
 	}
 
-
 	return inf;
 }
 
@@ -139,4 +136,15 @@ void FileAnalyst::show_buffer()
 {
 	for(std::size_t i = 0; i < _ofset - 1; i++)
 		std::cout << _buffer[i];
+}
+
+void FileAnalyst::show_words_info()
+{
+	std::vector<info> vec = get_vector_words();
+	for(const auto& it : vec)
+	{
+		std::cout << "Word: " << it._word << "\n"
+				<< "Position: " << it._pos << "\n"
+				<< "Paragraph: " << it._paragraph << std::endl;
+	}
 }
