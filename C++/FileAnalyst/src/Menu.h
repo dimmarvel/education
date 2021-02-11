@@ -3,15 +3,12 @@
 
 #include "Precompiled.h"
 #include "FileAnalyst.h"
+#include "Searcher.h"
 
 enum mode
 {
-	SYMB = 0,
-	PARAGRAPH = 1,
-	WORDS = 2,
-	SPECCHAR = 3,
-	FWORD = 4,
-	SWORD = 5,
+	INFO = 0,
+	WORD = 1,
 	END = 9
 };
 
@@ -19,16 +16,17 @@ class Menu
 {
 private:
 	FileAnalyst _fAnalyst;
+	Searcher* _searcher;
+
 private:
 	void show_info();
 	int mode_check(mode m);
 
 public:
-	Menu(const std::string& path);
+	Menu(std::vector<std::string>& path);
+	~Menu() { delete _searcher; };
 	void change_path(const std::string& path);
 	void menu();
 };
-
-
 
 #endif /* MENU_H_ */

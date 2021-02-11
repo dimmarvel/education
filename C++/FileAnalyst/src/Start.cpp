@@ -2,6 +2,7 @@
 
 int main()
 {
-	Menu m("qwe.txt");
+	std::vector<std::string> v = {"qwe.txt", "zxc.txt"};
+	Menu m(v);
 	return 0;
 }
