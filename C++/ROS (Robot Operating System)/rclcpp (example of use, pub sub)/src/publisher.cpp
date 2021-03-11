@@ -21,23 +21,22 @@ private:
     void timer_callback()
     {
         auto message = std_msgs::msg::String();
-        message.data = "Hello! -> " + std::to_string(_count++);
 
-        if((_count %2) == 0)
-            RCLCPP_INFO(this->get_logger(), "Publisher: '%s' -> 'DEAM'", message.data.c_str());
-        else
-            RCLCPP_INFO(this->get_logger(), "Publisher: '%s' -> 'WOW'", message.data.c_str());
+        std::cout << "Input message(" << 10 - _count << "): ";
+        std::getline(std::cin,message.data);
+
+        RCLCPP_INFO(this->get_logger(), "Publisher: '%s' ", message.data.c_str());
 
         _publisher->publish(message);
 
-        if(_count > 10)
+        if(++_count > 10)
             if(rclcpp::shutdown())
                 RCLCPP_FATAL(this->get_logger(), "Work end correctly, _count = '%d'", _count);
     }
 private:
     rclcpp::TimerBase::SharedPtr _timer;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _publisher;
-    size_t _count;
+    uint16_t _count;
 };
 
 int main(int argc, char* argv[])
