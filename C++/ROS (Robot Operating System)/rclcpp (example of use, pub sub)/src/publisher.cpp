@@ -11,10 +11,10 @@ using namespace std::chrono_literals;
 class MinimalPublisher : public rclcpp::Node
 {
 public:
-    MinimalPublisher()
+    MinimalPublisher(std::string topic)
     : Node("some_publisher"), _count(0)
     {
-        _publisher = this->create_publisher<std_msgs::msg::String>("topic", 10);
+        _publisher = this->create_publisher<std_msgs::msg::String>(topic.c_str(), 10);
         _timer = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
     }
 private:
@@ -22,14 +22,16 @@ private:
     {
         auto message = std_msgs::msg::String();
 
-        std::cout << "Input message(" << 10 - _count << "): ";
+        std::cout << "Input message(" << 5 - _count << "): ";
+        std::cin.clear();
+        std::cin.ignore();
         std::getline(std::cin,message.data);
 
         RCLCPP_INFO(this->get_logger(), "Publisher: '%s' ", message.data.c_str());
 
         _publisher->publish(message);
 
-        if(++_count > 10)
+        if(++_count > 5)
             if(rclcpp::shutdown())
                 RCLCPP_FATAL(this->get_logger(), "Work end correctly, _count = '%d'", _count);
     }
@@ -42,6 +44,11 @@ private:
 int main(int argc, char* argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<MinimalPublisher>());
+
+    std::string topic;
+    std::cout << "Input topic: ";
+    std::cin >> topic;
+
+    rclcpp::spin(std::make_shared<MinimalPublisher>(topic));
     return 0;
 }
