@@ -1,3 +1,0 @@
-﻿  String.cpp
-String.obj : error LNK2019: ссылка на неразрешенный внешний символ "int __cdecl strLength(char *)" (?strLength@@YAHPEAD@Z) в функции "public: class MyString & __cdecl MyString::operator=(class MyString const &)" (??4MyString@@QEAAAEAV0@AEBV0@@Z)
-C:\Users\dimma\Desktop\С++\MyString\x64\Debug\MyString.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
