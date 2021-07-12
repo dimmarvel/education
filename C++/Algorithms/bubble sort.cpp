@@ -7,8 +7,8 @@ using namespace std;
 int main() {
     vector<int> vec = {1,2,4,3,6,9,7,6};
 
-    for (int i = 0; i < vec.size(); ++i){
-        for (int j = 0; j < vec.size(); ++j) {
+    for (int i = 0; i < vec.size()-1; ++i) {
+        for (int j = 0; j < vec.size()-1; ++j) {
             if(vec[j] > vec[j+1])
             {
                 int temp = vec[j];
