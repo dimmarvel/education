@@ -1,4 +1,0 @@
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/sumLib.dir
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/INSTALL.dir
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,4 +1,0 @@
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/install/lib/sumLib.lib
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/install/include/sumLib.h
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/install/lib/cmake/SumLib/sumLibConfig.cmake
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex5/sumLib/build/install/lib/cmake/SumLib/sumLibConfig-debug.cmake

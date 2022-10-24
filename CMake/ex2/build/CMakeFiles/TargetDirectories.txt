@@ -1,3 +1,0 @@
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex2/build/CMakeFiles/version.dir
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex2/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/dimma.DESKTOP-J4JFB5D/Desktop/All/CMake/ex2/build/CMakeFiles/ZERO_CHECK.dir
