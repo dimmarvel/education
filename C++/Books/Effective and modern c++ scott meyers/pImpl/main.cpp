@@ -1,7 +1,5 @@
-#include <iostream>
 #include "widget.hpp"
-
-
+#include <iostream>
 
 int main()
 {

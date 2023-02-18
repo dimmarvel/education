@@ -13,13 +13,14 @@
 using namespace std;
 int main()
 {
-	char ch;
-	int a = 0;
-	cout << "Введите число:";
-	while ((ch = getchar()) != '\n'){  //выход по нажатию Enter
-		a = a * 10 + ch - '0';  //Преобразуем строку в число
-	}
-	cout << "Получилось число:" << a << endl;
-	system("pause");
-	return 0;
+    char ch;
+    int a = 0;
+    cout << "Введите число:";
+    while ((ch = getchar()) != '\n')
+    {                          //выход по нажатию Enter
+        a = a * 10 + ch - '0'; //Преобразуем строку в число
+    }
+    cout << "Получилось число:" << a << endl;
+    system("pause");
+    return 0;
 }

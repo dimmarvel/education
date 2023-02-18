@@ -9,15 +9,14 @@ struct FileInfo;
 class Searcher
 {
 public:
-	Searcher() {_data.clear();};
-	Searcher(const std::vector<FileInfo>&);
+    Searcher() { _data.clear(); };
+    Searcher(const std::vector<FileInfo>&);
 
-	void show_data();
-	void find_word(std::string word);
+    void show_data();
+    void find_word(std::string word);
+
 private:
-	std::vector<FileInfo> _data;
+    std::vector<FileInfo> _data;
 };
-
-
 
 #endif /* SEARCHER_H_ */

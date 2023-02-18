@@ -27,29 +27,33 @@
 Введите секунды: 5
 Время = 1:10:05
 */
-#include<iostream>
-#include<fstream>
+#include <fstream>
+#include <iostream>
 using namespace std;
-class time {
+class time
+{
 private:
-	int hour;
-	int min;
-	int sec;
-public:
-	time(): hour(0),min(0),sec(0){}
-	void get_time() {
-		cout << "Input\n Hour:"; cin >> hour;
-		cout << "Min:"; cin >> min;
-		cout << "Sec:"; cin >> sec;
-	}
-	void put_time() {
+    int hour;
+    int min;
+    int sec;
 
-	}
+public:
+    time() : hour(0), min(0), sec(0) {}
+    void get_time()
+    {
+        cout << "Input\n Hour:";
+        cin >> hour;
+        cout << "Min:";
+        cin >> min;
+        cout << "Sec:";
+        cin >> sec;
+    }
+    void put_time() {}
 };
 int main()
 {
-	setlocale(LC_ALL, "Rus");
+    setlocale(LC_ALL, "Rus");
 
-	system("pause");
-	return 0;
+    system("pause");
+    return 0;
 }

@@ -1,33 +1,33 @@
 #include <iostream>
-#include <string>
 #include <memory>
+#include <string>
 
 using namespace std;
 
 class Some
 {
 public:
-	int a;
-	string data;
-public:
+    int a;
+    string data;
 
-	void get_data()
-	{
-		cout << a << endl;
-		cout << data << endl;
-	}
+public:
+    void get_data()
+    {
+        cout << a << endl;
+        cout << data << endl;
+    }
 };
 
 Some& SomeInstance()
 {
-	static Some* s = new Some();
-	return *s;
+    static Some* s = new Some();
+    return *s;
 }
 
 int main()
 {
-	SomeInstance().a = 1;
-	SomeInstance().data = "string";
-	SomeInstance().get_data();
-	return 0;
+    SomeInstance().a = 1;
+    SomeInstance().data = "string";
+    SomeInstance().get_data();
+    return 0;
 }

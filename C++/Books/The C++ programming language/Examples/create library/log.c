@@ -1,4 +1,1 @@
-double log(double b)
-{
-	return b*7;
-}
+double log(double b) { return b * 7; }

@@ -1,19 +1,20 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<string>
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
+int main()
+{
 
-int main() {
+    setlocale(LC_ALL, "Rus");
+    int arr[] = {1, 2, 3, 6, 10, 7};
 
-	setlocale(LC_ALL, "Rus");
-	int arr[] = { 1, 2, 3, 6, 10, 7};
+    for_each(begin(arr), end(arr), [](int a) { cout << a << endl; });
+    for (auto a : arr)
+    {
+        cout << a << endl;
+    }
 
-	for_each(begin(arr), end(arr), [](int a) {cout << a << endl; });
-	for (auto a : arr) {
-		cout << a << endl;
-	}
-
-	system("Pause");
+    system("Pause");
 }

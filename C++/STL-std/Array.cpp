@@ -1,20 +1,22 @@
-#include<iostream>
-#include<array>
+#include <array>
+#include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
 
-	setlocale(LC_ALL, "Rus");
+    setlocale(LC_ALL, "Rus");
 
-	array<int, 10> arr; //статик массив
+    array<int, 10> arr; //статик массив
 
-	cout << arr.front() << endl;
-	cout << arr.back() << endl;
+    cout << arr.front() << endl;
+    cout << arr.back() << endl;
 
-	arr.fill(10);
-	for (auto elem : arr) {
-		cout << elem << endl;
-	}
+    arr.fill(10);
+    for (auto elem : arr)
+    {
+        cout << elem << endl;
+    }
 
-	system("Pause");
+    system("Pause");
 }

@@ -1,13 +1,13 @@
-#include<stdio.h>
+#include <stdio.h>
 
-main(int argc, char *argv[])
+main(int argc, char* argv[])
 {
 
-	for (int i = 0; i < argc; i++)
-	{
-		printf("%s%s", argv[i], (i < argc) ? "" : "");
-	}
+    for (int i = 0; i < argc; i++)
+    {
+        printf("%s%s", argv[i], (i < argc) ? "" : "");
+    }
 
-	printf("\n");
-	return 0;
+    printf("\n");
+    return 0;
 }

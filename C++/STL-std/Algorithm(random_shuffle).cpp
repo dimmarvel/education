@@ -1,76 +1,70 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<string>
-#include<ctime>
+#include <algorithm>
+#include <ctime>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 class IAction
 {
 public:
-	virtual void Action() = 0;
+    virtual void Action() = 0;
 };
 
-class CatAction : public IAction 
+class CatAction : public IAction
 {
-	virtual void Action() override {
-		cout << "Glaju kota" << endl;
-	}
+    virtual void Action() override { cout << "Glaju kota" << endl; }
 };
 
 class TeaAction : public IAction
 {
-	virtual void Action() override {
-		cout << "Eat tea" << endl;
-	}
+    virtual void Action() override { cout << "Eat tea" << endl; }
 };
 
 class DogAction : public IAction
 {
-	virtual void Action() override {
-		cout << "Walking with dog" << endl;
-	}
+    virtual void Action() override { cout << "Walking with dog" << endl; }
 };
 
 class SleepAction : public IAction
 {
-	virtual void Action() override {
-		cout << "I sleep" << endl;
-	}
+    virtual void Action() override { cout << "I sleep" << endl; }
 };
 
-int main() {
+int main()
+{
 
-	setlocale(LC_ALL, "Rus");
-	int arr[5] = {1,2,3,4,5};
+    setlocale(LC_ALL, "Rus");
+    int arr[5] = {1, 2, 3, 4, 5};
 
-	srand(time(NULL));
+    srand(time(NULL));
 
-	random_shuffle(begin(arr), end(arr));
+    random_shuffle(begin(arr), end(arr));
 
-	for (auto i : arr) {
-		cout << i << endl;
-	}
+    for (auto i : arr)
+    {
+        cout << i << endl;
+    }
 
+    cout << "---------------------------------" << endl;
 
-	cout << "---------------------------------" << endl;
+    vector<IAction*> act = {
+        &CatAction(),
+        &DogAction(),
+        &SleepAction(),
+        &TeaAction(),
+    };
 
-	vector<IAction*> act = 
-	{
-		&CatAction(),
-		&DogAction(),
-		&SleepAction(),
-		&TeaAction(),
-	};
+    for (auto element : act)
+    {
+        element->Action();
+    }
+    cout << endl;
+    random_shuffle(begin(act), end(act));
+    for (auto element : act)
+    {
+        element->Action();
+    }
 
-	for (auto element : act) {
-		element->Action();
-	}
-	cout << endl;
-	random_shuffle(begin(act), end(act));
-	for (auto element : act) {
-		element->Action();
-	}
-
-	system("Pause");
+    system("Pause");
 }

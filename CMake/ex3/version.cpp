@@ -1,10 +1,9 @@
 #include "version.h"
 #include "config.h"
 
-namespace examples{
+namespace examples
+{
 
-    int getVersion(){
-        return (PROJECT_VERSION);
-    }
+int getVersion() { return (PROJECT_VERSION); }
 
-}
+} // namespace examples

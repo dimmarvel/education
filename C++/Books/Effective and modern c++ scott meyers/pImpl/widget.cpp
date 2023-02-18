@@ -3,22 +3,19 @@
 #include <string>
 #include <vector>
 
-Widget::Widget() 
-: pImpl(std::make_unique<Impl>())
-{}
+Widget::Widget() : pImpl(std::make_unique<Impl>()) {}
 
-//move
-Widget::Widget(const Widget&& rhs)
-: pImpl(nullptr)
+// move
+Widget::Widget(const Widget&& rhs) : pImpl(nullptr)
 {
-    if(rhs.pImpl)
+    if (rhs.pImpl)
         pImpl = std::make_unique<Impl>(*rhs.pImpl);
 }
 
-//copy
+// copy
 Widget& Widget::operator=(const Widget&& rhs)
 {
-    if(!rhs.pImpl)
+    if (!rhs.pImpl)
         pImpl.reset();
     else if (!pImpl)
         pImpl = std::make_unique<Impl>(*rhs.pImpl);

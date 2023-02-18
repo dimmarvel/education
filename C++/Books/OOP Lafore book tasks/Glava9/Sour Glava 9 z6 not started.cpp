@@ -5,55 +5,58 @@
 
 #include <iostream>
 using namespace std;
-#include <process.h>      // для функции exit
-const int LIMIT = 1000;    // размер массива
+#include <process.h>    // для функции exit
+const int LIMIT = 1000; // размер массива
 
 class safearray
 {
 protected:
-	int arr[LIMIT];
+    int arr[LIMIT];
+
 public:
-	// обратите внимание, что функция возвращает ссылку!
-	int& operator[ ] (int n)
-	{
-		if (n < 0 || n >= LIMIT)
-		{
-			cout << "\nОшибочный индекс!"; exit(1);
-		}
-		return arr[n];
-	}
+    // обратите внимание, что функция возвращает ссылку!
+    int& operator[](int n)
+    {
+        if (n < 0 || n >= LIMIT)
+        {
+            cout << "\nОшибочный индекс!";
+            exit(1);
+        }
+        return arr[n];
+    }
 };
 
-class safehilo : public safearray {
+class safehilo : public safearray
+{
 private:
-	int up, down, down2, differ = 0;
+    int up, down, down2, differ = 0;
+
 public:
-	safehilo() : safearray() {}
-	safehilo(int up, int low) : up(up), down(low) {}
-	void getarr() {
-		differ = up - 100;
-		down2 = down;
-		for (int i = down - differ; i < up - differ; i++)
-			arr[i] = (down2++) * 10;
-	}
-	void showarray() {
-		for (int i = down - differ; i < up - differ; i++)
-		{
-			int temp = arr[i];  // используем функцию справа от знака =
-			cout << "Element " << down++ << " equal " << temp << endl;
-		}
-	}
+    safehilo() : safearray() {}
+    safehilo(int up, int low) : up(up), down(low) {}
+    void getarr()
+    {
+        differ = up - 100;
+        down2 = down;
+        for (int i = down - differ; i < up - differ; i++)
+            arr[i] = (down2++) * 10;
+    }
+    void showarray()
+    {
+        for (int i = down - differ; i < up - differ; i++)
+        {
+            int temp = arr[i]; // используем функцию справа от знака =
+            cout << "Element " << down++ << " equal " << temp << endl;
+        }
+    }
 };
 int main()
 {
-	safehilo s1(100,5);
-	s1.getarr();
-	s1.showarray();
+    safehilo s1(100, 5);
+    s1.getarr();
+    s1.showarray();
 
-	cout << endl;
-	system("pause");
-	return 0;
+    cout << endl;
+    system("pause");
+    return 0;
 }
-
-
-

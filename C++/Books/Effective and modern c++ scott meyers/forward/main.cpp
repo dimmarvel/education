@@ -1,27 +1,27 @@
+#include <chrono>
 #include <iostream>
 #include <vector>
-#include <chrono>
 
 class Widget
 {
 public:
     int a;
-    std::vector<int> b{10};
+    std::vector<int> b {10};
 };
 
 void process(const Widget& lvalArg) // lvalue
 {
     std::cout << "lval" << std::endl;
     return;
-}  
+}
 
 void process(Widget&& rvalArg) // rvalue
 {
     std::cout << "rval" << std::endl;
     return;
-}       
+}
 
-template<typename T>
+template <typename T>
 void logAndProcess(T&& param)
 {
     process(std::forward<T>(param));

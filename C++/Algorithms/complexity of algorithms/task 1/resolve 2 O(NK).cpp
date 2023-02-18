@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
 #include <set>
+#include <string>
 /*
 Переберем все символы, встречающиеся в строке, а затем переберем все позиции
 и в случае совпадения прибавим к счетчику единицу. Найдем максимальное значение счетчика
@@ -8,7 +8,8 @@ O(N*K) где N - количество букв, К - количество ра�
 */
 using namespace std;
 
-int main() {
+int main()
+{
     set<char> input;
     string temp;
     cin >> temp;
@@ -19,13 +20,15 @@ int main() {
     char ans = ' ';
     int anscnt = 0;
 
-    for(const auto& it : input) {
+    for (const auto& it : input)
+    {
         int nowcnt = 0;
-        for (int j = 0; j < temp.size(); ++j) {
-            if(it == temp[j])
+        for (int j = 0; j < temp.size(); ++j)
+        {
+            if (it == temp[j])
                 nowcnt++;
         }
-        if(nowcnt > anscnt)
+        if (nowcnt > anscnt)
         {
             ans = it;
             anscnt = nowcnt;

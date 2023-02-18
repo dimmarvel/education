@@ -1,24 +1,42 @@
-//msoftcon.h
+// msoftcon.h
 //Объявления функций консольной графики от Lafore
-//используются консольные функции Windows 
+//используются консольные функции Windows
 
-#ifndef _INC_WCONSOLE    //этот файл не должен включаться
-#define _INC_WCONSOLE    //дважды в тот же исходный файл
+#ifndef _INC_WCONSOLE //этот файл не должен включаться
+#define _INC_WCONSOLE //дважды в тот же исходный файл
 
-#include <windows.h>     //для консольных функций Windows
-#include <conio.h>       //для kbhit(), getche()
-#include <math.h>        //для sin, cos
+#include <conio.h>   //для kbhit(), getche()
+#include <math.h>    //для sin, cos
+#include <windows.h> //для консольных функций Windows
 
-enum fstyle {
-	SOLID_FILL, X_FILL, O_FILL,
-	LIGHT_FILL, MEDIUM_FILL, DARK_FILL
+enum fstyle
+{
+    SOLID_FILL,
+    X_FILL,
+    O_FILL,
+    LIGHT_FILL,
+    MEDIUM_FILL,
+    DARK_FILL
 };
 
-enum color {
-	cBLACK = 0, cDARK_BLUE = 1, cDARK_GREEN = 2, DARK_CYAN = 3,
-	cDARK_RED = 4, cDARK_MAGENTA = 5, cBROWN = 6, cLIGHT_GRAY = 7,
-	cDARK_GRAY = 8, cBLUE = 9, cGREEN = 10, cCYAN = 11,
-	cRED = 12, cMAGENTA = 13, cYELLOW = 14, cWHITE = 15
+enum color
+{
+    cBLACK = 0,
+    cDARK_BLUE = 1,
+    cDARK_GREEN = 2,
+    DARK_CYAN = 3,
+    cDARK_RED = 4,
+    cDARK_MAGENTA = 5,
+    cBROWN = 6,
+    cLIGHT_GRAY = 7,
+    cDARK_GRAY = 8,
+    cBLUE = 9,
+    cGREEN = 10,
+    cCYAN = 11,
+    cRED = 12,
+    cMAGENTA = 13,
+    cYELLOW = 14,
+    cWHITE = 15
 };
 //---------------------------------------------------------
 void init_graphics();

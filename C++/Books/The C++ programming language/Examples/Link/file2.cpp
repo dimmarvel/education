@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 typedef int I;
 
 extern int f();
@@ -8,8 +8,8 @@ extern const double b = 9;
 
 int main()
 {
-	std::cout << f() << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	return 0;
+    std::cout << f() << std::endl;
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    return 0;
 }

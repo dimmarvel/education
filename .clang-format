@@ -1,0 +1,23 @@
+﻿---
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortIfStatementsOnASingleLine: Never
+AlwaysBreakTemplateDeclarations: 'Yes'
+AccessModifierOffset: '-4'
+BinPackParameters: 'false'
+BreakBeforeBraces: Allman
+ColumnLimit: '120'
+CompactNamespaces: 'false'
+ContinuationIndentWidth: '4'
+Cpp11BracedListStyle: 'true'
+IndentWidth: '4'
+IndentWrappedFunctionNames: 'true'
+Language: Cpp
+NamespaceIndentation: None
+PointerAlignment: Left
+SpaceBeforeCpp11BracedList: 'true'
+SpacesInParentheses: 'false'
+SpacesInSquareBrackets: 'false'
+Standard: Auto
+TabWidth: '4'
+UseTab: 'Never'
+...

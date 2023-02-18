@@ -1,40 +1,44 @@
-#include<iostream>
-#include<string>
-#include<vector>
-#include<algorithm>
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-class SortedStrings {
+class SortedStrings
+{
 public:
-	void AddString(const string& s) {
-		str.push_back(s);
-	}
-	vector<string> GetSortedStrings() {
-		sort(begin(str), end(str));
-		return str;
-	}
+    void AddString(const string& s) { str.push_back(s); }
+    vector<string> GetSortedStrings()
+    {
+        sort(begin(str), end(str));
+        return str;
+    }
+
 private:
-	vector<string> str;
+    vector<string> str;
 };
 
-void PrintSortedStrings(SortedStrings& strings) {
-	for (const string& s : strings.GetSortedStrings()) {
-		cout << s << " ";
-	}
-	cout << endl;
+void PrintSortedStrings(SortedStrings& strings)
+{
+    for (const string& s : strings.GetSortedStrings())
+    {
+        cout << s << " ";
+    }
+    cout << endl;
 }
 
-int main() {
-	SortedStrings strings;
+int main()
+{
+    SortedStrings strings;
 
-	strings.AddString("first");
-	strings.AddString("third");
-	strings.AddString("second");
-	PrintSortedStrings(strings);
+    strings.AddString("first");
+    strings.AddString("third");
+    strings.AddString("second");
+    PrintSortedStrings(strings);
 
-	strings.AddString("second");
-	PrintSortedStrings(strings);
+    strings.AddString("second");
+    PrintSortedStrings(strings);
 
-	return 0;
+    return 0;
 }

@@ -1,47 +1,42 @@
 #include <iostream>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 using namespace std;
 
-
-class  ReversibleString
+class ReversibleString
 {
-	string str;
+    string str;
+
 public:
-	ReversibleString(){}
-	ReversibleString(const string& stroke)
-	{
-		str = stroke;
-	}
-	void Reverse()
-	{
-		string temp;
-		for (int i = str.size()-1; i >= 0; i--)
-		{
-			temp += str[i];
-		}
-		str = temp;
-	}
-	string ToString() const
-	{
-		return str;
-	}
+    ReversibleString() {}
+    ReversibleString(const string& stroke) { str = stroke; }
+    void Reverse()
+    {
+        string temp;
+        for (int i = str.size() - 1; i >= 0; i--)
+        {
+            temp += str[i];
+        }
+        str = temp;
+    }
+    string ToString() const { return str; }
 };
 
-int main() {
-	ReversibleString s("live");
-	s.Reverse();
-	cout << s.ToString() << endl;
+int main()
+{
+    ReversibleString s("live");
+    s.Reverse();
+    cout << s.ToString() << endl;
 
-	s.Reverse();
-	const ReversibleString& s_ref = s;
-	string tmp = s_ref.ToString();
-	cout << tmp << endl;
+    s.Reverse();
+    const ReversibleString& s_ref = s;
+    string tmp = s_ref.ToString();
+    cout << tmp << endl;
 
-	ReversibleString empty;
-	cout << '"' << empty.ToString() << '"' << endl;
+    ReversibleString empty;
+    cout << '"' << empty.ToString() << '"' << endl;
 
-	return 0;
+    return 0;
 }

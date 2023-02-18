@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
 #include <map>
+#include <string>
 /*
 Заведем словарь, где ключом является символ, а значением - сколько
 он встретился. Если символ встретился впервые - создаем элемент словаря с ключом,
@@ -10,25 +10,26 @@ O(N+K) = O(N) - где N - количество букв, К - количест�
 */
 using namespace std;
 
-int main() {
-    map<char,int> dct;
+int main()
+{
+    map<char, int> dct;
     string input;
     cin >> input;
 
     char ans = ' ';
     int anscnt = 0;
 
-    for(int i = 0; i < input.size(); i ++)
+    for (int i = 0; i < input.size(); i++)
     {
-        if(dct.find(input[i]) == dct.cend()) //if is not here
+        if (dct.find(input[i]) == dct.cend()) // if is not here
             dct[input[i]] = 0;
 
         dct[input[i]] += 1;
     }
 
-    for(const auto& it : dct)
+    for (const auto& it : dct)
     {
-        if(it.second > anscnt)
+        if (it.second > anscnt)
         {
             anscnt = it.second;
             ans = it.first;

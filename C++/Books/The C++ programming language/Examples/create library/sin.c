@@ -1,6 +1,2 @@
 
-double sin(double b)
-{
-	return b * 3;
-}
-
+double sin(double b) { return b * 3; }

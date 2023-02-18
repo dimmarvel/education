@@ -1,14 +1,16 @@
 #include <memory>
 
-struct Impl {
+struct Impl
+{
     std::string name;
     int i;
 };
 
-class Widget {
-public: 
+class Widget
+{
+public:
     Widget();
-    
+
     Widget(const Widget&& rhs);
     Widget& operator=(const Widget&& rhs);
 

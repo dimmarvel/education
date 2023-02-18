@@ -1,5 +1,6 @@
 #pragma once
 
-namespace examples{
-    int getVersion();
+namespace examples
+{
+int getVersion();
 }

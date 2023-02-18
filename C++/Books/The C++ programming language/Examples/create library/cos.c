@@ -1,6 +1,2 @@
 
-double cos(double b)
-{
-	return b*2;
-}
-
+double cos(double b) { return b * 2; }

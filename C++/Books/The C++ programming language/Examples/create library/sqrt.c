@@ -1,6 +1,2 @@
 
-double sqrt(double b)
-{
-	return b*4;
-}
-
+double sqrt(double b) { return b * 4; }

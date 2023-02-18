@@ -1,39 +1,39 @@
 //функци€ возводит число в степень
 #include <iostream>
 using namespace std;
-double power(double n, int p = 2);//p has default value 2
+double power(double n, int p = 2); // p has default value 2
 
 int main()
 {
-	setlocale(LC_ALL,"Rus");
-	double number, answer;
-	int pow;
-	char yeserno;
-	cout << "\n¬ведите число:";//get number
-	cin >> number;
-	cout << "Ѕудете вводить степень (y/n)?\n";
-	cin >> yeserno;
+    setlocale(LC_ALL, "Rus");
+    double number, answer;
+    int pow;
+    char yeserno;
+    cout << "\n¬ведите число:"; // get number
+    cin >> number;
+    cout << "Ѕудете вводить степень (y/n)?\n";
+    cin >> yeserno;
 
-	if (yeserno == 'y')//пользователю нужен не квадрат 									//числа?
-	{
-	cout << "¬ведите степень:";
-	cin >> pow;
-	answer = power(number, pow);//возвести число в степень
-	}else {
-		answer = power(number);//квадрат числа
-	}
+    if (yeserno == 'y') //пользователю нужен не квадрат 									//числа?
+    {
+        cout << "¬ведите степень:";
+        cin >> pow;
+        answer = power(number, pow); //возвести число в степень
+    }
+    else
+    {
+        answer = power(number); //квадрат числа
+    }
 
-	cout << "ќтвет " << answer << endl;
-	
-	system("pause");
+    cout << "ќтвет " << answer << endl;
+
+    system("pause");
 }
 //возвращает число n, возведенное в степень p
 double power(double n, int p)
 {
-	double result = 1.0;//начать с 1
-	for (int j = 0; j < p; j++)//умножить на n
-		result *= n;//p раз
-	return result;
+    double result = 1.0;        //начать с 1
+    for (int j = 0; j < p; j++) //умножить на n
+        result *= n;            // p раз
+    return result;
 }
-
-

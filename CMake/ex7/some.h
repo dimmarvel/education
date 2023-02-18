@@ -1,3 +1,1 @@
-void printme(){
-    printf("\nprintme is here...\n");
-}
+void printme() { printf("\nprintme is here...\n"); }

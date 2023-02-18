@@ -1,7 +1,8 @@
-#include <iostream>
 #include <chrono>
+#include <iostream>
 #include <thread>
-int main() {
+int main()
+{
     using namespace std::chrono_literals;
     std::cout << "Hello, World!" << std::endl;
     std::cout << "Sleep 10 sec..." << std::endl;

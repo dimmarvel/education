@@ -1,37 +1,39 @@
-#include<iostream>
-#include<vector>
-#include<list>
-#include<deque>
-#include<stack>
+#include <deque>
+#include <iostream>
+#include <list>
+#include <stack>
+#include <vector>
 using namespace std;
 
-int main() {
+int main()
+{
 
-	setlocale(LC_ALL, "Rus");
+    setlocale(LC_ALL, "Rus");
 
-	stack<int,vector<int>> st;
+    stack<int, vector<int>> st;
 
-	st.push(2);
-	st.push(32);
-	st.push(4);
-	st.push(102);
-	
-	st.emplace(10);
+    st.push(2);
+    st.push(32);
+    st.push(4);
+    st.push(102);
 
-	cout << "size = " << st.size() << endl;
+    st.emplace(10);
 
-	st.pop();
+    cout << "size = " << st.size() << endl;
 
-	cout << "top - " << st.top() << endl;
+    st.pop();
 
-	auto a = st._Get_container();
+    cout << "top - " << st.top() << endl;
 
-	cout << "a[0] - " << a[0] << endl;
+    auto a = st._Get_container();
 
-	while (!st.empty()) {
-		cout << st.top() << endl;
-		st.pop();
-	}
+    cout << "a[0] - " << a[0] << endl;
 
-	system("Pause");
+    while (!st.empty())
+    {
+        cout << st.top() << endl;
+        st.pop();
+    }
+
+    system("Pause");
 }

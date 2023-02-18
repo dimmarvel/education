@@ -2,13 +2,13 @@
 
 void threadFunction()
 {
-	// do smth
+    // do smth
 }
 
 int main()
 {
-	std::thread thr(threadFunction);
-	thr.join();
-	system("pause");
-	return 0;
+    std::thread thr(threadFunction);
+    thr.join();
+    system("pause");
+    return 0;
 }

@@ -1,5 +1,1 @@
-double exp(double b)
-{
-	return b * 5;
-}
-
+double exp(double b) { return b * 5; }
