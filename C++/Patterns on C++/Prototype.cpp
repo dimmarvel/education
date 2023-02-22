@@ -20,7 +20,7 @@ public:
     virtual void init(string field) { fieldB = field; }
     virtual unique_ptr<ProductB> clone() { return make_unique<ProductB>(); }
     void info() { std::cout << fieldB << std::endl; }
-    
+
 private:
     string fieldB = "productB";
 };
@@ -35,23 +35,19 @@ public:
 class Prototype : public ProductAbstractFactory
 {
 public:
-    Prototype() 
-    : 
-    prototypeA(make_unique<ProductA>()),
-    prototypeB(make_unique<ProductB>()) 
-    {}
+    Prototype() : prototypeA(make_unique<ProductA>()), prototypeB(make_unique<ProductB>()) {}
 
-    virtual unique_ptr<ProductA> make_productA(string field = {}) override 
-    { 
-        if(!field.empty()) 
+    virtual unique_ptr<ProductA> make_productA(string field = {}) override
+    {
+        if (!field.empty())
             prototypeA->init(field);
-        return prototypeA->clone(); 
+        return prototypeA->clone();
     }
-    virtual unique_ptr<ProductB> make_productB(string field = {}) override 
-    { 
-        if(!field.empty()) 
+    virtual unique_ptr<ProductB> make_productB(string field = {}) override
+    {
+        if (!field.empty())
             prototypeB->init(field);
-        return prototypeB->clone(); 
+        return prototypeB->clone();
     }
 
 private:

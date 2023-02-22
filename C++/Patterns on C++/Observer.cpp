@@ -1,16 +1,3 @@
-/**
- * Паттерн Наблюдатель
- *
- * Назначение: Создаёт механизм подписки, позволяющий одним объектам следить и
- * реагировать на события, происходящие в других объектах.
- *
- * Обратите внимание, что существует множество различных терминов с похожими
- * значениями, связанных с этим паттерном. Просто помните, что Субъекта также
- * называют Издателем, а Наблюдателя часто называют Подписчиком и наоборот.
- * Также глаголы «наблюдать», «слушать» или «отслеживать» обычно означают одно и
- * то же.
- */
-
 #include <iostream>
 #include <list>
 #include <string>
@@ -26,24 +13,15 @@ class IPublisher
 {
 public:
     virtual ~IPublisher() {};
-    virtual void Attach(ISubscriber* subscriber) = 0; // Прикреплять
-    virtual void Detach(ISubscriber* subscriber) = 0; // слушать
-    virtual void Notify() = 0;                        // уведомлять
+    virtual void Attach(ISubscriber* subscriber) = 0;
+    virtual void Detach(ISubscriber* subscriber) = 0;
+    virtual void Notify() = 0;
 };
-
-/**
- * Издатель владеет некоторым важным состоянием и оповещает наблюдателей о его
- * изменениях.
- */
 
 class Publisher : public IPublisher
 {
 public:
     virtual ~Publisher() { std::cout << "Goodbye, I was the Publisher.\n"; }
-
-    /**
-     * Методы управления подпиской.
-     */
 
     void Attach(ISubscriber* subscriber) override { list_subscriber_.push_back(subscriber); }
 
@@ -67,12 +45,6 @@ public:
     }
     void HowManySubscriber() { std::cout << "There are " << list_subscriber_.size() << " subscribers in the list.\n"; }
 
-    /**
-     * Обычно логика подписки – только часть того, что делает Издатель. Издатели
-     * часто содержат некоторую важную бизнес-логику, которая запускает метод
-     * уведомления всякий раз, когда должно произойти что-то важное (или после
-     * этого).
-     */
     void SomeBusinessLogic()
     {
         this->message_ = "change message message";
