@@ -9,7 +9,7 @@ Pet projects:
 - [Simple Blockchain (not end)](https://gitlab.com/dimmarvel/dblockchain)
 - [Kernel server](https://gitlab.com/dimmarvel/cpp_server_kernel)
 - [Coursera Data Base](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/DataBase%20Date(Coursera%20finaly%20task))
-- [Simple File Analyst](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/FileAnalyst/src)
+- [Simple File Analyst](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/FileAnalyst)
 - [Simple MMO Client/Server](https://github.com/dimmarvel/MMO_ClientServerASIO)
 - [Recursive Decent Parcer](https://github.com/dimmarvel/RecursiveDescentParser)
 - [AIS Avtozapchasti C#](https://github.com/dimmarvel/AIS_Avtozapchasi24)
@@ -54,6 +54,9 @@ Patterns:
 - [Observer](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Observer.cpp)
 - [Singleton](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Singleton.cpp)
 - [Strategy](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Strategy.cpp)
+- [Abstract Factory](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Abstract%20Factory.cpp)
+- [Adapter](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Adapter.cpp)
+- [Prototype](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Prototype.cpp)
 
 Build systems:
 - [Make](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Build/Makefile)
