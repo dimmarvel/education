@@ -55,7 +55,7 @@ void remove_elem(array* arr, int index)
 
 void add(array* arr, int element)
 {
-    if((arr->size + 1) <= arr->capacity)
+    if(arr->size < arr->capacity)
     {
         arr->arr[arr->size++] = element;
         return;
@@ -76,12 +76,11 @@ int main(int argc, int** argv)
 {
     array* arr = create_array();
 
-    for(int i = 0; i < 25; i++)
-        add(arr, i);
     print_array(arr);
-    remove_elem(arr, 1);
-    remove_elem(arr, 23);
-    remove_elem(arr, 10);
+    for(int i = 0; i < 100; i++)
+        add(arr, i);
+    for(int i = 99; i >= 0; i--)
+        remove_elem(arr, i);
     print_array(arr);
 
     delete_array(arr);
