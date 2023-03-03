@@ -4,7 +4,7 @@
 
 #define CAPACITY_INCREACE(arr) ((int)(arr->capacity * 2))
 #define CAPACITY_DEFAULT 5
-#define ERROR(info) printf("error: %s\n", info); exit(1)
+#define ERROR(info) { printf("error: %s\n", info); exit(1); }
 
 typedef struct array
 {
@@ -33,13 +33,13 @@ void print_array(array *arr)
 void realloc_array(array* arr, int size)
 {
     int* new_arr = realloc(arr->arr, size * sizeof(int));
-    if(new_arr == NULL) { ERROR("bad realloc array"); }
+    if(new_arr == NULL) ERROR("bad realloc array");
     arr->arr = new_arr;
 }
 
 void remove_elem(array* arr, int index)
 {
-    if(index < 0 || index >= arr->size) { ERROR("index out of range when remove"); }
+    if(index < 0 || index >= arr->size) ERROR("index out of range when remove");
 
     if(index == arr->size - 1)
     {
