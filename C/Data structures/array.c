@@ -90,6 +90,16 @@ void delete_array(array *arr)
     free(arr);
 }
 
+int compare_arrays(array* first, array* second)
+{
+    if(first->size != second->size) return 0;
+
+    for(int i = 0; i < first->size; ++i)
+        if(first->arr[i] != second->arr[i]) 
+            return 0;
+    return 1;
+}
+
 void print_array(array *arr)
 {
     printf("array: \n - address %p \n - size %d \n - capacity %d \n", arr, arr->size, arr->capacity);
@@ -102,17 +112,22 @@ void print_array(array *arr)
     printf("\n");
 }
 
+void fill_array(array* arr, int from, int to)
+{
+    for(int i = from; i < to; ++i)
+        add(arr, i);
+}
+
 void test_removes()
 {
     printf("\n-------test_removes-------\n");
     array* arr = create_array();
 
     printf("test 1: remove_elem - ");
-    for(int i = 0; i < 50; i++)
-        add(arr, i);
+    fill_array(arr, 0, 50);
 
     int should_capacity = ((((CAPACITY_DEFAULT *2) * 2) * 2) *2);
-    for(int i = 49; i >= 0; i--)
+    for(int i = 49; i >= 0; --i)
         remove_elem(arr, i);
 
     if(arr->size == 0 && arr->capacity == should_capacity) printf("passed\n");
@@ -120,10 +135,9 @@ void test_removes()
     
 
     printf("test 2: remove_elem_optimize - ");
-    for(int i = 0; i < 50; i++)
-        add(arr, i);
+    fill_array(arr, 0, 50);
 
-    for(int i = 49; i >= 0; i--)
+    for(int i = 49; i >= 0; --i)
         remove_elem_optimize(arr, i);
     
     if(arr->size == 0 && arr->capacity == 15) printf("passed\n");
@@ -133,8 +147,59 @@ void test_removes()
     printf("--------------------------\n");
 }
 
+void test_clear()
+{
+    printf("\n-------test_clear-------\n");
+    array* arr = create_array();
+
+    printf("test 1: clear - ");
+    fill_array(arr, 0, 50);
+
+    clear_array(arr);
+
+    if(arr->size == 0 && arr->capacity == CAPACITY_DEFAULT) printf("passed\n");
+    else printf("ERROR: (%d == %d && %d == %d)\n", arr->size, 0, arr->capacity, CAPACITY_DEFAULT);
+    
+    delete_array(arr);
+    printf("--------------------------\n");
+}
+
+void test_compare()
+{
+    printf("\n-------test_compare-------\n");
+    array* arr1 = create_array();
+    array* arr2 = create_array();
+    array* arr3 = create_array();
+    array* arr4 = create_array();
+
+    printf("test 1: compare same - ");
+    fill_array(arr1, 0, 50);
+    fill_array(arr2, 0, 50);
+    fill_array(arr3, 0, 1);
+    fill_array(arr4, 1, 51);
+
+    if(compare_arrays(arr1, arr2)) printf("passed\n");
+    else printf("ERROR: bad comapre arr1 != arr2\n");
+
+    printf("test 2: compare different size - ");
+    if(!compare_arrays(arr1, arr3)) printf("passed\n");
+    else printf("ERROR: bad comapre arr1 == arr3\n");
+
+    printf("test 3: compare different values - ");
+    if(!compare_arrays(arr1, arr4)) printf("passed\n");
+    else printf("ERROR: bad comapre arr1 == arr4\n");
+    
+    delete_array(arr1);
+    delete_array(arr2);
+    delete_array(arr3);
+    delete_array(arr4);
+    printf("--------------------------\n");
+}
+
 int main(int argc, int** argv)
 {
     test_removes();
+    test_clear();
+    test_compare();
     return 0;
 }
