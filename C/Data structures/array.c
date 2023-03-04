@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
 #define CAPACITY_INCREACE(arr) ((int)(arr->capacity * 2))
 #define CAPACITY_DEFAULT 5
