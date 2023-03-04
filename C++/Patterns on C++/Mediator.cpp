@@ -1,10 +1,6 @@
 #include <iostream>
 #include <string>
-/**
- * Интерфейс Посредника предоставляет метод, используемый компонентами для
- * уведомления посредника о различных событиях. Посредник может реагировать на
- * эти события и передавать исполнение другим компонентам.
- */
+
 class base_component;
 
 class mediator
@@ -13,10 +9,6 @@ public:
     virtual void notify(base_component* sender, std::string event) const = 0;
 };
 
-/**
- * Базовый Компонент обеспечивает базовую функциональность хранения экземпляра
- * посредника внутри объектов компонентов.
- */
 class base_component
 {
 protected:
@@ -27,11 +19,6 @@ public:
     void set_mediator(mediator* med) { _mediator = med; }
 };
 
-/**
- * Конкретные Компоненты реализуют различную функциональность. Они не зависят от
- * других компонентов. Они также не зависят от каких-либо конкретных классов
- * посредников.
- */
 class component1 : public base_component
 {
 public:
@@ -64,10 +51,6 @@ public:
     }
 };
 
-/**
- * Конкретные Посредники реализуют совместное поведение, координируя отдельные
- * компоненты.
- */
 class concrete_mediator : public mediator
 {
 private:
@@ -88,7 +71,7 @@ public:
             std::cout << "mediator reacts on A and triggers following operations:\n";
             _component2->do_c();
         }
-        
+
         if (event == "D")
         {
             std::cout << "mediator reacts on D and triggers following operations:\n";
