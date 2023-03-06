@@ -125,11 +125,34 @@ void test_shuffle_fisher()
     printf("test 1: fisher shuffle - ");
     shuffle_fisher_array(arr1);
 
-    if(compare_arrays(arr1, arr2)) printf("passed\n");
+    if(!compare_arrays(arr1, arr2)) printf("passed\n");
     else printf("ERROR: bad comapre arr1 == arr2\n");
-
+    
     delete_array(arr1);
     delete_array(arr2);
+    printf("--------------------------\n");
+}
+
+void test_merge()
+{
+    printf("\n-------test_merge-------\n");
+    array* arr1 = create_array();
+    array* arr2 = create_array();
+    array* arr3 = create_array();
+    fill_array(arr1, 0, 50);
+    fill_array(arr2, 50, 100);
+    fill_array(arr3, 0, 100);
+
+    printf("test 1: merge - ");
+    array* arr4 = merge_array(arr1, arr2);
+
+    if(compare_arrays(arr3, arr4)) printf("passed\n");
+    else printf("ERROR: bad comapre arr3 == arr4\n");
+    
+    delete_array(arr1);
+    delete_array(arr2);
+    delete_array(arr3);
+    delete_array(arr4);
     printf("--------------------------\n");
 }
 
@@ -140,4 +163,5 @@ void do_tests()
     test_compare();
     test_helpers_func();
     test_shuffle_fisher();
+    test_merge();
 }

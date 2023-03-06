@@ -13,9 +13,7 @@ do {                    \
 
 static int get_rand(const int from, const int to) 
 {
-    srand(time(NULL));
-    int number = from + rand() % (to - from);
-    return number; 
+    return from + rand() % (to - from); 
 }
 
 #endif /* _HELPERS_H */

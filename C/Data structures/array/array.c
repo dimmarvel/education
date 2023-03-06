@@ -80,8 +80,11 @@ void shuffle_fisher_array(array* arr)
 {
     if(arr->size <= 1) return;
 
-    for(size_t i = 0; i < arr->size - 1; ++i)
-        SWAP(arr[i], arr[get_rand(0, arr->size)]);
+    for(size_t i = 0; i < arr->size; ++i)
+    {
+        int rnd = get_rand(0, arr->size);
+        SWAP(arr->arr[i], arr->arr[rnd]);
+    }
 }
 
 int compare_arrays(array* first, array* second)
@@ -92,6 +95,19 @@ int compare_arrays(array* first, array* second)
         if(first->arr[i] != second->arr[i]) 
             return 0;
     return 1;
+}
+
+array* merge_array(array* first, array* second)
+{
+    array* new_array = create_array();
+    new_array->capacity = CAPACITY_INCREACE_MERGE(first, second);
+    new_array->size = first->size + second->size;
+    new_array->arr = malloc(new_array->capacity * sizeof(int));
+    for(size_t i = 0; i < first->size; ++i)
+        new_array->arr[i] = first->arr[i];
+    for(size_t i = first->size, j = 0; j < second->size; ++i, ++j)
+        new_array->arr[i] = second->arr[j];
+    return new_array;
 }
 
 void print_array(array *arr)
