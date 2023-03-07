@@ -29,6 +29,8 @@ void delete_array(array* arr);
 int compare_arrays(array* first, array* second);
 array* merge_array(array* first, array* second);
 void fill_array(array* arr, int from, int to);
+int find_array(array* arr, int number);
+int binary_search_array(array* arr, int number);
 void print_array(array *arr);
 // Fisher–Yates shuffle algorithm
 void shuffle_fisher_array(array* arr);

@@ -3,6 +3,9 @@
 #include <time.h>
 #include <stdlib.h>
 
+#define FALSE 0
+#define TRUE !(FALSE)
+
 #define SWAP(x,y)       \
 do {                    \
     typeof(x) _x = x;   \

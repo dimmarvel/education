@@ -114,25 +114,6 @@ void test_helpers_func()
     printf("--------------------------\n");
 }
 
-void test_shuffle_fisher()
-{
-    printf("\n-------test_shuffle_fisher-------\n");
-    array* arr1 = create_array();
-    array* arr2 = create_array();
-    fill_array(arr1, 0, 100);
-    fill_array(arr2, 0, 100);
-
-    printf("test 1: fisher shuffle - ");
-    shuffle_fisher_array(arr1);
-
-    if(!compare_arrays(arr1, arr2)) printf("passed\n");
-    else printf("ERROR: bad comapre arr1 == arr2\n");
-    
-    delete_array(arr1);
-    delete_array(arr2);
-    printf("--------------------------\n");
-}
-
 void test_merge()
 {
     printf("\n-------test_merge-------\n");
@@ -156,12 +137,49 @@ void test_merge()
     printf("--------------------------\n");
 }
 
+void test_algorithms()
+{
+    printf("\n-------test_shuffle_fisher-------\n");
+    array* arr1 = create_array();
+    array* arr2 = create_array();
+    array* arr3 = create_array();
+    fill_array(arr1, 0, 100);
+    fill_array(arr2, 0, 100);
+    fill_array(arr3, 0, 100);
+
+    printf("test 1: fisher shuffle - ");
+    shuffle_fisher_array(arr1);
+
+    if(!compare_arrays(arr1, arr2)) printf("passed\n");
+    else printf("ERROR: bad fisher shuffle comapre arr1 == arr2\n");
+
+    printf("test 2: binary search - ");
+
+    if( binary_search_array(arr3, 10) &&
+        !binary_search_array(arr3, -1)) 
+        printf("passed\n");
+    else printf("ERROR: bad binary search\n");
+
+    printf("test 3: default find - ");
+
+    if( find_array(arr3, 10) &&
+        !find_array(arr3, -1) &&
+        !find_array(arr3, 101)) 
+        printf("passed\n");
+    else printf("ERROR: bad default find\n");
+    
+    delete_array(arr1);
+    delete_array(arr2);
+    delete_array(arr3);
+    printf("--------------------------\n");
+}
+
 void do_tests()
 {
     test_removes();
     test_clear();
     test_compare();
     test_helpers_func();
-    test_shuffle_fisher();
     test_merge();
+    test_algorithms();
 }

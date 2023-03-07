@@ -103,11 +103,44 @@ array* merge_array(array* first, array* second)
     new_array->capacity = CAPACITY_INCREACE_MERGE(first, second);
     new_array->size = first->size + second->size;
     new_array->arr = malloc(new_array->capacity * sizeof(int));
+
     for(size_t i = 0; i < first->size; ++i)
         new_array->arr[i] = first->arr[i];
     for(size_t i = first->size, j = 0; j < second->size; ++i, ++j)
         new_array->arr[i] = second->arr[j];
+
     return new_array;
+}
+
+int find_array(array* arr, int number)
+{
+    if(arr->size == 0) return FALSE;
+
+    for(int i = 0; i < arr->size; i++)
+        if(arr->arr[i] == number)
+            return i;
+    return FALSE;
+}
+
+int binary_search_array(array* arr, int number)
+{
+    if(arr->size == 0) return FALSE;
+
+    int min = 0;
+    int max = arr->size - 1;
+    int middle = 0;
+    
+    while(min <= max)
+    {
+        middle = (int)((min + max) / 2);
+        if(number < arr->arr[middle])
+            max = middle - 1;
+        else if(number > arr->arr[middle])
+            min = middle + 1;
+        else
+            return TRUE;
+    }
+    return FALSE;
 }
 
 void print_array(array *arr)
