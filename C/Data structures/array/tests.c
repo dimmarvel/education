@@ -15,9 +15,7 @@ void test_removes()
     for(int i = 49; i >= 0; --i)
         remove_elem(arr, i);
 
-    if(arr->size == 0 && arr->capacity == should_capacity) printf("passed\n");
-    else printf("ERROR: (%ld == %d && %ld == %d)\n", arr->size, 0, arr->capacity, should_capacity);
-    
+    CHECK(arr->size == 0, arr->capacity == should_capacity);
 
     printf("test 2: remove_elem_optimize - ");
     fill_array(arr, 0, 50);
@@ -25,8 +23,7 @@ void test_removes()
     for(int i = 49; i >= 0; --i)
         remove_elem_optimize(arr, i);
     
-    if(arr->size == 0 && arr->capacity == 15) printf("passed\n");
-    else printf("ERROR: (%ld == %d && %ld == %d)\n", arr->size, 0, arr->capacity, 15);
+    CHECK(arr->size == 0, arr->capacity == 15);
 
     delete_array(arr);
     printf("--------------------------\n");
@@ -41,9 +38,7 @@ void test_clear()
     fill_array(arr, 0, 50);
 
     clear_array(arr);
-
-    if(arr->size == 0 && arr->capacity == CAPACITY_DEFAULT) printf("passed\n");
-    else printf("ERROR: (%ld == %d && %ld == %d)\n", arr->size, 0, arr->capacity, CAPACITY_DEFAULT);
+    CHECK(arr->size == 0, arr->capacity == CAPACITY_DEFAULT);
     
     delete_array(arr);
     printf("--------------------------\n");
@@ -63,16 +58,16 @@ void test_compare()
     fill_array(arr3, 0, 1);
     fill_array(arr4, 1, 51);
 
-    if(compare_arrays(arr1, arr2)) printf("passed\n");
-    else printf("ERROR: bad comapre arr1 != arr2\n");
+    CHECK_EXPR( compare_arrays(arr1, arr2),
+                "invalid compare same");
 
     printf("test 2: compare different size - ");
-    if(!compare_arrays(arr1, arr3)) printf("passed\n");
-    else printf("ERROR: bad comapre arr1 == arr3\n");
+    CHECK_EXPR( !compare_arrays(arr1, arr3),
+                "invalid compare different size");
 
     printf("test 3: compare different values - ");
-    if(!compare_arrays(arr1, arr4)) printf("passed\n");
-    else printf("ERROR: bad comapre arr1 == arr4\n");
+    CHECK_EXPR( !compare_arrays(arr1, arr4),
+                "invalid compare different values");
     
     delete_array(arr1);
     delete_array(arr2);
@@ -92,8 +87,7 @@ void test_helpers_func()
     printf("test 1: swap - ");
     SWAP(a, b);
 
-    if(a == 20 && b == 10) printf("passed\n");
-    else printf("ERROR: (%d == %d && %d == %d)\n", a, 20, b, 10);
+    CHECK(a == 20, b == 10);
 
     printf("test 2: random - ");
     {
@@ -127,8 +121,8 @@ void test_merge()
     printf("test 1: merge - ");
     array* arr4 = merge_array(arr1, arr2);
 
-    if(compare_arrays(arr3, arr4)) printf("passed\n");
-    else printf("ERROR: bad comapre arr3 == arr4\n");
+    CHECK_EXPR( compare_arrays(arr3, arr4),
+                "invalid merge");
     
     delete_array(arr1);
     delete_array(arr2);
@@ -154,19 +148,15 @@ void test_algorithms()
     else printf("ERROR: bad fisher shuffle comapre arr1 == arr2\n");
 
     printf("test 2: binary search - ");
-
-    if( binary_search_array(arr3, 10) &&
-        !binary_search_array(arr3, -1)) 
-        printf("passed\n");
-    else printf("ERROR: bad binary search\n");
+    CHECK_EXPR( binary_search_array(arr3, 10) &&
+                !binary_search_array(arr3, -1),
+                "invalid binary search");
 
     printf("test 3: default find - ");
-
-    if( find_array(arr3, 10) &&
-        !find_array(arr3, -1) &&
-        !find_array(arr3, 101)) 
-        printf("passed\n");
-    else printf("ERROR: bad default find\n");
+    CHECK_EXPR( find_array(arr3, 10) && 
+                !find_array(arr3, -1) && 
+                !find_array(arr3, 101),
+                "invalid default find");
     
     delete_array(arr1);
     delete_array(arr2);
