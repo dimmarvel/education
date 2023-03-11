@@ -75,7 +75,7 @@ void delete_array(array *arr)
     free(arr);
 }
 
-//Fisher–Yates shuffle algorithm
+// Fisher–Yates shuffle algorithm
 void shuffle_fisher_array(array* arr)
 {
     if(arr->size <= 1) return;
@@ -143,9 +143,20 @@ int binary_search_array(array* arr, int number)
     return FALSE;
 }
 
+void reverse_array(array* arr)
+{
+
+    if(arr->size <= 1) return;
+
+    for(int i = 0; i < (int)(arr->size / 2); ++i)
+        SWAP(arr->arr[i], arr->arr[arr->size - i - 1]);
+}
+
 void print_array(array *arr)
 {
-    printf("array: \n - address %p \n - size %ld \n - capacity %ld \n", arr, arr->size, arr->capacity);
+    printf( "array: \n - address %p \n - size %ld \n - capacity %ld \n", 
+            arr, arr->size, arr->capacity);
+            
     if(arr->size != 0)
     {
         printf("elements: ");

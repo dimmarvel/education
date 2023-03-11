@@ -153,11 +153,19 @@ void test_algorithms()
                 "invalid binary search");
 
     printf("test 3: default find - ");
-    CHECK_EXPR( find_array(arr3, 10) && 
+    CHECK_EXPR( find_array(arr3, 10)  && 
                 !find_array(arr3, -1) && 
                 !find_array(arr3, 101),
                 "invalid default find");
-    
+
+    printf("test 4: reverse - ");
+    reverse_array(arr3);
+    int bolean = TRUE;
+    for(int i = 99, j = 0; i >= 0 && bolean == TRUE; --i, ++j)
+        if(arr3->arr[i] != j)
+            bolean = FALSE;
+    CHECK_EXPR(TRUE, "invalid reverse");
+
     delete_array(arr1);
     delete_array(arr2);
     delete_array(arr3);

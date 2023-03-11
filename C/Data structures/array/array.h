@@ -19,19 +19,22 @@ typedef struct array
 
 array* create_array();
 
-// base functions
+// Base functions
 void realloc_array(array* arr, int size);
 void remove_elem(array* arr, int index);
 void remove_elem_optimize(array* arr, int index);
 void clear_array(array* arr);
 void add(array* arr, int element);
 void delete_array(array* arr);
+void fill_array(array* arr, int from, int to);
+void print_array(array *arr);
+
+// Algorithms
+void reverse_array(array* arr);
 int compare_arrays(array* first, array* second);
 array* merge_array(array* first, array* second);
-void fill_array(array* arr, int from, int to);
-int find_array(array* arr, int number);
 int binary_search_array(array* arr, int number);
-void print_array(array *arr);
+int find_array(array* arr, int number);
 // Fisher–Yates shuffle algorithm
 void shuffle_fisher_array(array* arr);
 
