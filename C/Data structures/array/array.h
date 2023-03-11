@@ -35,6 +35,9 @@ int compare_arrays(array* first, array* second);
 array* merge_array(array* first, array* second);
 int binary_search_array(array* arr, int number);
 int find_array(array* arr, int number);
+// Hoare Partition
+int partition(array* arr, int left, int right);
+void qsort_array(array* arr, int left, int right);
 // Fisher–Yates shuffle algorithm
 void shuffle_fisher_array(array* arr);
 

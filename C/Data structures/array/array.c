@@ -145,11 +145,36 @@ int binary_search_array(array* arr, int number)
 
 void reverse_array(array* arr)
 {
-
     if(arr->size <= 1) return;
 
     for(int i = 0; i < (int)(arr->size / 2); ++i)
         SWAP(arr->arr[i], arr->arr[arr->size - i - 1]);
+}
+
+int partition(array* arr, int left, int right)
+{
+    int pivot = arr->arr[left + (right - left) / 2];
+    while(TRUE)
+    {
+        while(arr->arr[left] < pivot) left++;
+        while(arr->arr[right] > pivot) right--;
+        if(left >= right) return right;
+        SWAP(arr->arr[left], arr->arr[right]);
+        left++;
+        right--;
+    }
+}
+
+// Hoare Partition
+void qsort_array(array* arr, int left, int right)
+{
+    if(arr->size <= 1) return;
+    if(left < right)
+    {
+        int patr = partition(arr, left, right);
+        qsort_array(arr, left, patr);
+        qsort_array(arr, patr + 1, right);
+    }
 }
 
 void print_array(array *arr)

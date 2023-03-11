@@ -166,6 +166,11 @@ void test_algorithms()
             bolean = FALSE;
     CHECK_EXPR(TRUE, "invalid reverse");
 
+    printf("test 5: qsort - ");
+    qsort_array(arr1, 0, arr1->size - 1);
+    CHECK_EXPR( compare_arrays(arr1, arr2),
+                "invalid qsort");
+
     delete_array(arr1);
     delete_array(arr2);
     delete_array(arr3);
