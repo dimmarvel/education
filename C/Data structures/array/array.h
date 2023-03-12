@@ -6,7 +6,6 @@
 #define CAPACITY_INCREACE(arr) ((int)(arr->capacity * 2))
 #define CAPACITY_INCREACE_MERGE(first, second) ((int)((first->capacity + first->capacity) * 1.3))
 #define CAPACITY_OPTIMIZE_START (CAPACITY_DEFAULT * 2)
-#define ERROR(info) { printf("ERROR: %s\n", info); exit(1); }
 
 typedef unsigned long size_t;
 

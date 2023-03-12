@@ -1,6 +1,6 @@
 #include "tests.h"
 #include "array.h"
-#include "helpers.h"
+#include "../helpers.h"
 #include <stdio.h>
 
 void test_removes()

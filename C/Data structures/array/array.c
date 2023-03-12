@@ -1,5 +1,5 @@
 #include "array.h"
-#include "helpers.h"
+#include "../helpers.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -99,7 +99,7 @@ int compare_arrays(array* first, array* second)
 
 array* merge_array(array* first, array* second)
 {
-    array* new_array = create_array();
+    array* new_array = malloc(sizeof(array));
     new_array->capacity = CAPACITY_INCREACE_MERGE(first, second);
     new_array->size = first->size + second->size;
     new_array->arr = malloc(new_array->capacity * sizeof(int));
