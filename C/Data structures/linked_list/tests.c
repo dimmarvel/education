@@ -3,7 +3,7 @@
 #include "../helpers.h"
 #include <stdio.h>
 
-void test_linked_list()
+void test_base_list()
 {
     printf("\n-------test_linked_list-------\n");
 
@@ -21,7 +21,23 @@ void test_linked_list()
     printf("--------------------------\n");
 }
 
+void test_remove_list()
+{
+    printf("\n-------test_remove_list-------\n");
+
+    printf("test 1: remove - ");
+    linked_list* lst = create_list();
+    fill_list(lst, 0, 10);
+    for(int i = 9; i > 5; --i)
+        remove_list(lst, i);
+
+    CHECK_EXPR(!find_list(lst, 7), "invalid remove");
+    delete_list(lst);
+    printf("--------------------------\n");
+}
+
 void do_tests()
 {
-    test_linked_list();
+    test_base_list();
+    test_remove_list();
 }

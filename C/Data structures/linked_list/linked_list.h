@@ -22,6 +22,8 @@ void fill_list(linked_list* lst, int from, int to);
 void delete_list(linked_list* lst);
 void push_list(linked_list* lst, int data);
 void print_list(linked_list* lst);
+node_t* find_list(linked_list* lst, int number);
+void remove_list(linked_list* lst, int index);
 
 node_t* get_first(linked_list* lst);
 node_t* get_next(linked_list* lst);

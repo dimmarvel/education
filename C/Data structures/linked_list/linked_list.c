@@ -59,6 +59,50 @@ void push_list(linked_list* lst, int data)
     lst->last->next = NULL;
 }
 
+node_t* find_list(linked_list* lst, int number)
+{
+    if(!lst || lst->size <= 0) ERROR("bad list");
+    for(node_t* curr = get_first(lst); get_current(lst); curr = get_next(lst))
+        if(curr->data == number)
+            return curr;
+    return NULL;
+}
+
+void remove_list(linked_list* lst, int index)
+{
+    if(!lst || lst->size <= 0 || lst->size < index) ERROR("index out of range or list size == 0");
+    if(lst->size == 1)
+    {
+        free(lst->last);
+        free(lst->head);
+        --lst->size;
+    }
+
+    int i = 1;
+    node_t* prev = get_first(lst);
+    node_t* next = get_next(lst);
+    while(TRUE)
+    {
+        if(i == index)
+        {
+            if(next->next == NULL)
+            {
+                --lst->size;
+                prev->next = NULL;
+                free(next);
+                return;
+            }
+            prev->next = NULL;
+            --lst->size;
+            free(next);
+            return;
+        }
+        prev = next;
+        next = get_next(lst);
+        ++i;
+    }
+}
+
 node_t* get_first(linked_list* lst)
 {
     if(!lst->head) return NULL;
