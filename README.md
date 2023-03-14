@@ -41,12 +41,15 @@ Books:
 - [The C Programming Language](https://github.com/dimmarvel/education/tree/master/C/The%20C%20Programming%20Language)
 - [Beej's Guide to Network Programming](https://github.com/dimmarvel/Beej_Jorgensen_network)
 
-Data structs - C++:
-- [Linked List](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/LinkedList.cpp)
-- [Queue](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/Queue.cpp)
-- [Stack ](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/Stack.cpp)
-- [String](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/MyString%20on%20C%2B%2B)
-- [Unique ptr](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Pet%20Projects/Smart%20pointers/unique_ptr.cpp)
+Data structs:
+- [Linked List C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/LinkedList.cpp)
+- [Queue C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/Queue.cpp)
+- [Stack C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/Stack.cpp)
+- [String C++](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/MyString%20on%20C%2B%2B)
+- [Unique ptr C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Pet%20Projects/Smart%20pointers/unique_ptr.cpp)
+- [Linked list C](https://github.com/dimmarvel/education/tree/master/C/Data%20structures/linked_list)
+- [Array C](https://github.com/dimmarvel/education/tree/master/C/Data%20structures/array)
+- [Stack C](https://github.com/dimmarvel/education/tree/master/C/Data%20structures/stack)
 
 Patterns - C++:
 - [Builder](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Builder.cpp)
@@ -57,6 +60,19 @@ Patterns - C++:
 - [Abstract Factory](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Abstract%20Factory.cpp)
 - [Adapter](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Adapter.cpp)
 - [Prototype](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Prototype.cpp)
+- [Bridge](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Bridge.cpp)
+- [Chain of responsibillity](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Chain_of_responsibility.cpp)
+- [Command](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Command.cpp)
+- [Composite](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Composite.cpp)
+- [Decorator](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Decorator.cpp)
+- [Facade](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Facade.cpp)
+- [Flyweight](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Flyweight.cpp)
+- [Iterator](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Iterator.cpp)
+- [Mediator](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Mediator.cpp)
+- [Memento](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Memento.cpp)
+- [State](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/State.cpp)
+- [Visitor](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Visitor.cpp)
+- [Template method](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Patterns%20on%20C%2B%2B/Template_method.cpp)
 
 Build systems:
 - [Make](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Build/Makefile)
