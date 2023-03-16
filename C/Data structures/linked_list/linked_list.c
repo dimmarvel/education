@@ -12,6 +12,12 @@ linked_list* create_list()
     return temp;
 }
 
+void clear_list(linked_list* lst)
+{
+    delete_list(lst);
+    lst = create_list();
+}
+
 void delete_list(linked_list* lst)
 {
     if(lst == NULL) return;
