@@ -36,6 +36,18 @@ void test_remove_list()
     printf("--------------------------\n");
 }
 
+void test_clear_list()
+{
+    printf("\n-------test_clear_list-------\n");
+
+    printf("test 1: clear - ");
+    linked_list* lst = create_list();
+    fill_list(lst, 0, 10);
+    clear_list(lst);
+    CHECK_EXPR(!lst->head, "invalid clear");
+    printf("--------------------------\n");
+}
+
 void do_tests()
 {
     test_base_list();
