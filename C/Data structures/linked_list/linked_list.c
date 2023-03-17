@@ -67,7 +67,7 @@ void push_list(linked_list* lst, int data)
 
 node_t* find_list(linked_list* lst, int number)
 {
-    if(!lst || lst->size <= 0) ERROR("bad list");
+    if(!lst || lst->size <= 0) return NULL;
     for(node_t* curr = get_first(lst); get_current(lst); curr = get_next(lst))
         if(curr->data == number)
             return curr;
@@ -134,6 +134,20 @@ void fill_list(linked_list* lst, int from, int to)
         push_list(lst, i);
 }
 
+linked_list* split_half_list(linked_list* lst)
+{
+    linked_list* half = create_list(lst);
+    node_t* curr;
+    get_first(lst);
+    for(int i = 0; i < (lst->size / 2); ++i)
+        curr = get_next(lst);
+
+    half->head = curr->next;
+    curr->next = NULL;
+    half->last = curr;
+    return half;
+}
+
 void print_list(linked_list* lst)
 {
     printf( "list: \n - list address %p \n - size %ld \n", 
@@ -147,6 +161,14 @@ void print_list(linked_list* lst)
         printf("node:\n - address: %p\n - next address: %p \n - data: %d \n",
                     current, current->next, current->data);
         current = current->next;
+    }
+
+    current = lst->head;
+    while(current)
+    {
+        printf("%d->", current->data);
+        current = current->next;
+        if(!current) printf("NULL\n");
     }
     
     printf("\n");

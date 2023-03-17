@@ -45,6 +45,22 @@ void test_clear_list()
     fill_list(lst, 0, 10);
     clear_list(lst);
     CHECK_EXPR(!lst->head, "invalid clear");
+    delete_list(lst);
+    printf("--------------------------\n");
+}
+
+void test_split_list()
+{
+    printf("\n-------test_split_list-------\n");
+
+    printf("test 1: split - ");
+    linked_list* lst = create_list();
+    int before_size = lst->size / 2;
+    fill_list(lst, 0, 10);
+    linked_list* half = split_half_list(lst);
+    CHECK_EXPR(!(lst->size == before_size), "invalid split");
+    delete_list(lst);
+    delete_list(half);
     printf("--------------------------\n");
 }
 
@@ -52,4 +68,6 @@ void do_tests()
 {
     test_base_list();
     test_remove_list();
+    test_clear_list();
+    test_split_list();
 }
