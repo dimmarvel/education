@@ -67,18 +67,80 @@ void test_split_list()
     printf("--------------------------\n");
 }
 
+void test_compare_list()
+{
+    printf("\n-------test_compare_list-------\n");
+
+    linked_list* lst = create_list();
+    linked_list* lst2 = create_list();
+    linked_list* lst3 = create_list();
+    linked_list* lst4 = create_list();
+
+    fill_list(lst, 0, 10);
+    fill_list(lst2, 0, 10);
+    fill_list(lst3, -5, 5);
+    fill_list(lst4, 0, 11);
+
+    printf("test 1: compare same - ");
+    CHECK_EXPR(compare_list(lst, lst2), "invalid compare same");
+    printf("test 2: compare diff size - ");
+    CHECK_EXPR(!compare_list(lst, lst3), "invalid compare diff size");
+    printf("test 3: compare diff elem - ");
+    CHECK_EXPR(!compare_list(lst, lst4), "invalid compare diff elem");
+
+    delete_list(lst);
+    delete_list(lst2);
+    delete_list(lst3);
+    delete_list(lst4);
+    
+    printf("--------------------------\n");
+}
+
 void test_shuffle_list()
 {
     printf("\n-------test_shuffle_list-------\n");
     printf("test 1: shuffle - ");
 
     linked_list* lst = create_list();
-    int before_size = lst->size / 2;
+    linked_list* lst2 = create_list();
     fill_list(lst, 0, 10);
-    print_list(lst);
+    fill_list(lst2, 0, 10);
     shuffle_list(lst);
-    print_list(lst);
+    CHECK_EXPR(!compare_list(lst, lst2), "invalid shuffle");
     delete_list(lst);
+    delete_list(lst2);
+    
+    printf("--------------------------\n");
+}
+
+void test_swap_list()
+{
+    printf("\n-------test_swap_list-------\n");
+    printf("test 1: swap - ");
+
+    linked_list* lst = create_list();
+    fill_list(lst, 0, 3);
+    swap_data_list(lst->head, lst->head->next);
+    delete_list(lst);
+    
+    printf("--------------------------\n");
+}
+
+void test_reverse_list()
+{
+    printf("\n-------test_reverse_list-------\n");
+    printf("test 1: reverse - ");
+
+    linked_list* lst = create_list();
+    linked_list* lst2 = create_list();
+    for(int i = 4; i >= 0; --i)
+        push_list(lst2, i);
+    fill_list(lst, 0, 5);
+    reverse_list(lst);
+    CHECK_EXPR(compare_list(lst, lst2), "invalid reverse");
+
+    delete_list(lst);
+    delete_list(lst2);
     
     printf("--------------------------\n");
 }
@@ -89,5 +151,8 @@ void do_tests()
     test_remove_list();
     test_clear_list();
     test_split_list();
+    test_compare_list();
     test_shuffle_list();
+    test_swap_list();
+    test_reverse_list();
 }

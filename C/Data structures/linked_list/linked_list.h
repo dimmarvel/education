@@ -27,6 +27,10 @@ void remove_list(linked_list* lst, int index);
 void clear_list(linked_list* lst);
 linked_list* split_half_list(linked_list* lst);
 void shuffle_list(linked_list* head);
+int compare_list(linked_list* first, linked_list* second);
+void interleave_list(linked_list* first_half, linked_list* second_half);
+void reverse_list(linked_list* lst);
+void swap_data_list(node_t* first, node_t* second);
 
 node_t* get_first(linked_list* lst);
 node_t* get_next(linked_list* lst);

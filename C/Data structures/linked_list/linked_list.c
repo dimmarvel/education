@@ -188,6 +188,48 @@ void shuffle_list(linked_list* head)
     free(half);
 }
 
+int compare_list(linked_list* first, linked_list* second) 
+{
+    if(first->size != second->size) return FALSE;
+    
+    node_t* curr_first = get_first(first);
+    node_t* curr_second = get_first(second);
+    for(;curr_first && curr_second;)
+    {
+        if(curr_first->data != curr_second->data)
+            return FALSE;
+        curr_first = get_next(first);   
+        curr_second = get_next(second);
+    }
+    return TRUE;
+}
+
+void swap_data_list(node_t* first, node_t* second)
+{
+    int temp = first->data;
+    first->data = second->data;
+    second->data = temp;
+}
+
+void reverse_list(linked_list* lst) 
+{
+    if(lst->size <= 1) return;
+    
+    node_t* prev = NULL;
+    node_t* curr = get_first(lst);
+    node_t* next = curr->next;
+    while(TRUE)
+    {
+        if(!curr->next) break;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        next = curr->next;
+    }
+    curr->next = prev;
+    lst->head = curr;
+}
+
 void print_list(linked_list* lst)
 {
     printf( "list: \n - list address %p \n - size %ld \n", 
