@@ -8,15 +8,14 @@ Pet projects:
 - [Miner - C++](https://gitlab.com/dimmarvel/miner)
 - [Simple Blockchain (not end) - C++](https://gitlab.com/dimmarvel/dblockchain)
 - [Kernel server - C++](https://gitlab.com/dimmarvel/cpp_server_kernel)
+- [AIS Avtozapchasti - C#](https://github.com/dimmarvel/ais_avtozapchasi24)
 - [Coursera Data Base - C++](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/DataBase%20Date(Coursera%20finaly%20task))
 - [Simple File Analyst - C++](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/FileAnalyst)
-- [Simple MMO Client/Server - C++](https://github.com/dimmarvel/MMO_ClientServerASIO)
-- [Recursive Decent Parcer - C++](https://github.com/dimmarvel/RecursiveDescentParser)
-- [AIS Avtozapchasti - C#](https://github.com/dimmarvel/AIS_Avtozapchasi24)
+- [Simple MMO Client/Server - C++](https://github.com/dimmarvel/mmo_client_server_asio)
 - [MQTT Client](https://github.com/dimmarvel/mqtt_client)
-- [Server Json Validator - C++](https://github.com/dimmarvel/Server_CheckJson)
-- [Simple Compiler - C++](https://github.com/dimmarvel/Compiler)
-- [Unity Game Apk File - C#](https://github.com/dimmarvel/GameHumanSimulator)
+- [Server Json Validator - C++](https://github.com/dimmarvel/server_check_json)
+- [Unity Game - C#](https://github.com/dimmarvel/game_human_simulator)
+- [LL zero table parser](https://github.com/dimmarvel/ll_zero_table_parser)
 
 C# C++ teaching and leading projects by myself:
 - [All - TgBot&Binance&Game](https://gitlab.com/c6779)
@@ -36,7 +35,7 @@ Sorts [Link]():
 
 Books:
 - [Effective and modern c++ scott meyers](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Books/Effective%20and%20modern%20c%2B%2B%20scott%20meyers)
-- [OOP Lafore book tasks](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Books/OOP%20Lafore%20book%20tasks)
+- [OOP Lafore book tasks](https://github.com/dimmarvel/oop_in_cpp_author_lafore)
 - [The C++ programming language](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Books/The%20C%2B%2B%20programming%20language)
 - [The C Programming Language](https://github.com/dimmarvel/education/tree/master/C/The%20C%20Programming%20Language)
 - [Beej's Guide to Network Programming](https://github.com/dimmarvel/Beej_Jorgensen_network)
@@ -45,7 +44,6 @@ Data structs:
 - [Linked List C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/LinkedList.cpp)
 - [Queue C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/Queue.cpp)
 - [Stack C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Data%20struct/Stack.cpp)
-- [String C++](https://github.com/dimmarvel/education/tree/master/C%2B%2B/Pet%20Projects/MyString%20on%20C%2B%2B)
 - [Unique ptr C++](https://github.com/dimmarvel/education/blob/master/C%2B%2B/Pet%20Projects/Smart%20pointers/unique_ptr.cpp)
 - [Linked list C](https://github.com/dimmarvel/education/tree/master/C/Data%20structures/linked_list)
 - [Array C](https://github.com/dimmarvel/education/tree/master/C/Data%20structures/array)
@@ -83,4 +81,4 @@ Other:
 - [STL C++ library](https://github.com/dimmarvel/education/tree/master/C%2B%2B/STL-std)
 - [Experiments in C++](https://github.com/dimmarvel/education/tree/master/C%2B%2B/All%20shit)
 - [Docker](https://github.com/dimmarvel/education/tree/master/Docker)
-- [Parser - Python](https://github.com/dimmarvel/Parsers)
+- [Parser - Python](https://github.com/dimmarvel/parsers_)
