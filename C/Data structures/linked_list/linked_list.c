@@ -14,24 +14,29 @@ linked_list* create_list()
 
 void clear_list(linked_list* lst)
 {
-    delete_list(lst);
-    lst = create_list();
+    if(!lst || !lst->head) return;
+    while(lst->head)
+    {
+        node_t* del_node = lst->head;
+        lst->head = lst->head->next;
+        free(del_node);
+        --lst->size;
+    }
 }
 
 void delete_list(linked_list* lst)
 {
-    if(lst == NULL) return;
-    if(lst->head == NULL)
+    if(!lst) return;
+    if(!lst->head)
     {
         free(lst);
         return;
     }
 
-    node_t* current = lst->head;
-    while(current)
+    while(lst->head)
     {
-        node_t* del_node = current;
-        current = current->next;
+        node_t* del_node = lst->head;
+        lst->head = lst->head->next;
         free(del_node);
     }
     free(lst);
@@ -39,7 +44,7 @@ void delete_list(linked_list* lst)
 
 void push_list(linked_list* lst, int data)
 {
-    if(lst->head == NULL)
+    if(!lst->head)
     {
         lst->head = malloc(sizeof(node_t));
         ++lst->size;
@@ -48,7 +53,7 @@ void push_list(linked_list* lst, int data)
         return;
     }
 
-    if(lst->head != NULL && lst->last == NULL)
+    if(lst->head && !lst->last)
     {
         lst->last = malloc(sizeof(node_t));
         lst->head->next = lst->last;
@@ -59,7 +64,7 @@ void push_list(linked_list* lst, int data)
     }
     
     lst->last->next = malloc(sizeof(node_t));
-    lst->size++;
+    ++lst->size;
     lst->last = lst->last->next;
     lst->last->data = data;
     lst->last->next = NULL;
@@ -91,7 +96,7 @@ void remove_list(linked_list* lst, int index)
     {
         if(i == index)
         {
-            if(next->next == NULL)
+            if(!next->next)
             {
                 --lst->size;
                 prev->next = NULL;
@@ -136,16 +141,51 @@ void fill_list(linked_list* lst, int from, int to)
 
 linked_list* split_half_list(linked_list* lst)
 {
-    linked_list* half = create_list(lst);
+    if(lst->size <= 1) ERROR("invalid size");
+
+    linked_list* half = create_list();
+    int half_size = lst->size / 2;
     node_t* curr;
-    get_first(lst);
-    for(int i = 0; i < (lst->size / 2); ++i)
+    curr = get_first(lst);
+    for(int i = 1; i < half_size; ++i)
         curr = get_next(lst);
 
     half->head = curr->next;
     curr->next = NULL;
     half->last = curr;
+    half->size = (lst->size - half_size) - 1;
+    lst->size = half_size;
     return half;
+}
+
+void interleave_list(linked_list* first_half, linked_list* second_half)
+{
+    node_t* tail = NULL;
+    node_t* frst_half = first_half->head;
+    node_t* scnd_half = second_half->head;
+    while(scnd_half && scnd_half)
+    {
+        if(!tail) tail = scnd_half;
+        else tail->next = scnd_half;
+        
+        node_t* next = scnd_half->next;
+        scnd_half->next = frst_half;
+        scnd_half = next;
+        tail = frst_half;
+
+        next = frst_half->next;
+        frst_half->next = NULL;
+        frst_half = next;
+    }
+}
+
+void shuffle_list(linked_list* head) 
+{
+    if (head == NULL) return;
+    linked_list* half = split_half_list(head);
+    interleave_list(half, head);
+    head = half;
+    free(half);
 }
 
 void print_list(linked_list* lst)

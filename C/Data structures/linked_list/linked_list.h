@@ -26,6 +26,7 @@ node_t* find_list(linked_list* lst, int number);
 void remove_list(linked_list* lst, int index);
 void clear_list(linked_list* lst);
 linked_list* split_half_list(linked_list* lst);
+void shuffle_list(linked_list* head);
 
 node_t* get_first(linked_list* lst);
 node_t* get_next(linked_list* lst);

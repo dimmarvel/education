@@ -6,8 +6,8 @@
 void test_base_list()
 {
     printf("\n-------test_linked_list-------\n");
-
     printf("test 1: create list - ");
+
     linked_list* lst = create_list();
     fill_list(lst, 0, 10);
     int i = 0;
@@ -16,16 +16,16 @@ void test_base_list()
         if(curr->data != i++)
             boolean = FALSE;
     CHECK_EXPR(boolean, "invalid create/push/iterator list");
-
     delete_list(lst);
+
     printf("--------------------------\n");
 }
 
 void test_remove_list()
 {
     printf("\n-------test_remove_list-------\n");
-
     printf("test 1: remove - ");
+
     linked_list* lst = create_list();
     fill_list(lst, 0, 10);
     for(int i = 9; i > 5; --i)
@@ -33,27 +33,29 @@ void test_remove_list()
 
     CHECK_EXPR(!find_list(lst, 7), "invalid remove");
     delete_list(lst);
+
     printf("--------------------------\n");
 }
 
 void test_clear_list()
 {
     printf("\n-------test_clear_list-------\n");
-
     printf("test 1: clear - ");
+
     linked_list* lst = create_list();
-    fill_list(lst, 0, 10);
+    fill_list(lst, 0, 3);
     clear_list(lst);
-    CHECK_EXPR(!lst->head, "invalid clear");
+    CHECK_EXPR(!lst->size && !lst->head, "invalid clear");
     delete_list(lst);
+
     printf("--------------------------\n");
 }
 
 void test_split_list()
 {
     printf("\n-------test_split_list-------\n");
-
     printf("test 1: split - ");
+
     linked_list* lst = create_list();
     int before_size = lst->size / 2;
     fill_list(lst, 0, 10);
@@ -61,6 +63,23 @@ void test_split_list()
     CHECK_EXPR(!(lst->size == before_size), "invalid split");
     delete_list(lst);
     delete_list(half);
+
+    printf("--------------------------\n");
+}
+
+void test_shuffle_list()
+{
+    printf("\n-------test_shuffle_list-------\n");
+    printf("test 1: shuffle - ");
+
+    linked_list* lst = create_list();
+    int before_size = lst->size / 2;
+    fill_list(lst, 0, 10);
+    print_list(lst);
+    shuffle_list(lst);
+    print_list(lst);
+    delete_list(lst);
+    
     printf("--------------------------\n");
 }
 
@@ -70,4 +89,5 @@ void do_tests()
     test_remove_list();
     test_clear_list();
     test_split_list();
+    test_shuffle_list();
 }
