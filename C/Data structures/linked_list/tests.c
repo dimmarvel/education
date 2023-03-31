@@ -121,6 +121,7 @@ void test_swap_list()
     linked_list* lst = create_list();
     fill_list(lst, 0, 3);
     swap_data_list(lst->head, lst->head->next);
+    CHECK_EXPR(lst->head->data == 1, "inwalid swap");
     delete_list(lst);
     
     printf("--------------------------\n");
