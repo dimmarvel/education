@@ -22,5 +22,10 @@ node_t* create_node(int data);
 void add_bst(binary_tree* bst, int data);
 void fill_bst(binary_tree* bst);
 void print_bst(node_t* root);
+void delete_tree(node_t* root);
+void delete_bst(binary_tree* bst);
+node_t* find_max(binary_tree* bst);
+node_t* find_min(binary_tree* bst);
+node_t* find_bst(binary_tree* bst, int elem);
 
 #endif /* _BINARY_TREE_H */

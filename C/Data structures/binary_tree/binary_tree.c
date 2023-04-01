@@ -13,7 +13,7 @@ binary_tree* create_bst()
 
 node_t* create_node(int data)
 {
-    node_t* temp = malloc(sizeof(node_t*));
+    node_t* temp = malloc(sizeof(node_t));
     temp->data = data;
     temp->left = temp->right = NULL;
     return temp;
@@ -41,7 +41,60 @@ void add_bst(binary_tree* bst, int data)
         return;
     }
 
-    bst->root = insert_bst(bst->root, data);
+    insert_bst(bst->root, data);
+}
+
+void delete_tree(node_t* root)
+{
+    if(!root) return;
+    
+    if(root->left) delete_tree(root->left);
+    if(root->right) delete_tree(root->right);
+
+    free(root);
+}
+
+void delete_bst(binary_tree* bst)
+{
+    if(!bst) return;
+
+    delete_tree(bst->root); 
+    free(bst);
+}
+
+node_t* find_max(binary_tree* bst)
+{
+    if(!bst || !bst->root) return NULL;
+
+    node_t* find_elem = bst->root;
+    while(find_elem->right) find_elem = find_elem->right;
+
+    return find_elem;
+}
+
+node_t* find_min(binary_tree* bst)
+{
+    if(!bst || !bst->root) return NULL;
+
+    node_t* find_elem = bst->root;
+    while(find_elem->left) find_elem = find_elem->left;
+    
+    return find_elem;
+}
+
+node_t* find(node_t* root, int elem)
+{
+    if(!root) return NULL;
+    if(elem == root->data) return root;
+    if(elem < root->data) return find(root->left, elem);
+    if(elem > root->data) return find(root->right, elem);
+}
+
+node_t* find_bst(binary_tree* bst, int elem)
+{
+    if(!bst) return NULL;
+    if(!bst->root) return NULL;
+    return find(bst->root, elem);
 }
 
 void fill_bst(binary_tree* bst)
