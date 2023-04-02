@@ -5,6 +5,7 @@
 
 #define FALSE 0
 #define TRUE !(FALSE)
+#define BOOL int
 
 #define SWAP(x,y)       \
 do {                    \

@@ -62,23 +62,31 @@ void delete_bst(binary_tree* bst)
     free(bst);
 }
 
-node_t* find_max(binary_tree* bst)
+node_t* find_bst_max(binary_tree* bst)
 {
     if(!bst || !bst->root) return NULL;
+    return find_max(bst->root);
+}
 
-    node_t* find_elem = bst->root;
+node_t* find_bst_min(binary_tree* bst)
+{
+    if(!bst || !bst->root) return NULL;
+    return find_min(bst->root);
+}
+
+node_t* find_max(node_t* root)
+{
+    if(!root) return NULL;
+    node_t* find_elem = root;
     while(find_elem->right) find_elem = find_elem->right;
-
     return find_elem;
 }
 
-node_t* find_min(binary_tree* bst)
+node_t* find_min(node_t* root)
 {
-    if(!bst || !bst->root) return NULL;
-
-    node_t* find_elem = bst->root;
+    if(!root) return NULL;
+    node_t* find_elem = root;
     while(find_elem->left) find_elem = find_elem->left;
-    
     return find_elem;
 }
 
@@ -88,6 +96,7 @@ node_t* find(node_t* root, int elem)
     if(elem == root->data) return root;
     if(elem < root->data) return find(root->left, elem);
     if(elem > root->data) return find(root->right, elem);
+    return NULL;
 }
 
 node_t* find_bst(binary_tree* bst, int elem)
@@ -95,16 +104,6 @@ node_t* find_bst(binary_tree* bst, int elem)
     if(!bst) return NULL;
     if(!bst->root) return NULL;
     return find(bst->root, elem);
-}
-
-void fill_bst(binary_tree* bst)
-{
-    add_bst(bst, 10);
-    add_bst(bst, 0);
-    add_bst(bst, 11);
-    add_bst(bst, 14);
-    add_bst(bst, 13);
-    add_bst(bst, 7);
 }
 
 void print_bst(node_t* root)
