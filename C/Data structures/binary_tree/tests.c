@@ -37,11 +37,13 @@ void test_find_bst()
 
     CHECK_EXPR(all_find, "bad find binary tree");
 
-    printf("test 2: find max - ");
-    CHECK_EXPR(find_max(bst)->data == 10, "bad find max != 10");
+    printf("test 2: find bst max - ");
+    CHECK_EXPR(find_bst_max(bst)->data == 10, "bad find max != 10");
 
-    printf("test 3: find min - ");
-    CHECK_EXPR(find_min(bst)->data == 0, "bad find min != 0");
+    printf("test 3: find bst min - ");
+    CHECK_EXPR(find_bst_min(bst)->data == 0, "bad find min != 0");
+    
+    //TODO: add default root find min max
 
     delete_bst(bst);
     printf("--------------------------\n");

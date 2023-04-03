@@ -20,13 +20,17 @@ typedef struct binary_tree
 binary_tree* create_bst();
 node_t* create_node(int data);
 void add_bst(binary_tree* bst, int data);
-void print_bst(node_t* root);
-void delete_tree(node_t* root);
-void delete_bst(binary_tree* bst);
 node_t* find_bst_max(binary_tree* bst);
 node_t* find_bst_min(binary_tree* bst);
 node_t* find_max(node_t* root);
 node_t* find_min(node_t* root);
 node_t* find_bst(binary_tree* bst, int elem);
+void delete_bst(binary_tree* bst);
+// post-order
+void delete_tree(node_t* root);
+// pre-order
+void print_pre_ordered_bst(node_t* root);
+// in-order
+void print_bst(node_t* root);
 
 #endif /* _BINARY_TREE_H */

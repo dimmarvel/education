@@ -113,3 +113,12 @@ void print_bst(node_t* root)
     printf("%d\n", root->data);
     print_bst(root->right);
 }
+
+void print_pre_ordered_bst(node_t* root)
+{
+    if(!root) return;
+    printf("%d\n", root->data);
+    print_bst(root->left);
+    print_bst(root->right);
+}
+
