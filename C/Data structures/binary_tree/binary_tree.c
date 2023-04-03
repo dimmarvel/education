@@ -122,3 +122,74 @@ void print_pre_ordered_bst(node_t* root)
     print_bst(root->right);
 }
 
+int get_height(node_t* root)
+{
+    if(!root) return 0;
+    int height_l = get_height(root->left);
+    int height_r = get_height(root->right);
+    return (height_l > height_r) ? height_l + 1 : height_r + 1;
+}
+
+void bfs(node_t* root)
+{
+    int h = get_height(root);
+    for(int i = 0; i < h; i++)
+        print_lvl(root, i);
+}
+
+void print_lvl(node_t* root, int lvl)
+{
+    if(!root) return;
+    if(lvl == 0) 
+    {
+        printf("%d ", root->data);
+    }
+    else
+    {
+        print_lvl(root->left, lvl - 1);
+        print_lvl(root->right, lvl - 1);
+    }
+}
+
+queue* create_queue()
+{
+    queue* q = malloc(sizeof(queue));
+    q->que = malloc(sizeof(int) * BASE_CAPASITY);
+    q->capacity = BASE_CAPASITY;
+    q->size = 0;
+    return q;
+}
+
+void realloc_queue(queue* q, int size)
+{
+    int* new_que = realloc(q->que, size * sizeof(int));
+    if(new_que == NULL) ERROR("bad realloc array");
+    q->que = new_que;
+}
+
+void push(queue* q, int elem)
+{
+    if(q->size == q->capacity)
+    {
+        q->capacity *= INCREASE_CAPASITY;
+        realloc_queue(q, q->capacity);
+    }
+    q->que[q->size++] = elem;
+}
+
+int pop(queue* q)
+{
+    return q->que[--q->size];
+}
+
+size_t size_queue(queue* q)
+{
+    return q->size;
+}
+
+void print_queue(queue* q)
+{
+    for(int i = 0; i < q->size; ++i)
+        printf("%d) %d", i, q->que[i]);
+}
+

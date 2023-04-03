@@ -49,8 +49,24 @@ void test_find_bst()
     printf("--------------------------\n");
 }
 
+void test_bfs_bst()
+{
+    printf("\n-------test_bfs_tree-------\n");
+    printf("test 1: default find - ");
+    binary_tree* bst = create_bst();
+    fill_test(bst);
+
+    printf("\n %d \n, ", get_height(bst->root));
+
+    bfs(bst->root);
+
+    delete_bst(bst);
+    printf("--------------------------\n");
+}
+
 void do_tests()
 {
     test_bst();
     test_find_bst();
+    test_bfs_bst();
 }
