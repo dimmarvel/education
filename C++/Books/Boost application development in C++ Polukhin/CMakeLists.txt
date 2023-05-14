@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.24)
 project(run_cpp)
 
+set(CMAKE_CXX_STANDARD 17)
+
 set(Boost_USE_STATIC_LIBS OFF) 
 set(Boost_USE_MULTITHREADED ON)  
 set(Boost_USE_STATIC_RUNTIME OFF) 
