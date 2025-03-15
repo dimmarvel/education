@@ -5,6 +5,8 @@
 #include <mutex>
 #include <queue>
 #include <optional>
+#include <condition_variable>
+#include <deque>
 
 template <typename T>
 class concurrent_queue
@@ -18,6 +20,7 @@ public:
     {
         std::lock_guard g(m);
         q.push_back(std::move(val));
+        cv_empty.notify_one();
     }
 
     bool empty() const
@@ -28,8 +31,14 @@ public:
 
     T pop()
     {
-        std::lock_guard g(m);
-        T res = std::move(q.front());
+        std::unique_lock g(m);
+
+        cv.wait(g, [this]
+        {
+            return !q.empty();
+        });
+
+        T res = std::move(q.back());
         q.pop_front();
         return res;
     }
@@ -40,14 +49,15 @@ public:
         if(q.empty())
             return std::nullopt;
 
-        T res = std::move(q.front());
+        T res = std::move(q.back());
         q.pop_front();
         return res;
     }
 
 private:
-    std::queue<T> q;
+    std::deque<T> q;
     std::mutex m;
+    std::condition_variable cv_empty;
 };
 
 int main()
