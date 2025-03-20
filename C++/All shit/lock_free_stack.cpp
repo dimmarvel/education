@@ -15,6 +15,8 @@ class lf_stack
     std::atomic<node*> head;
 
 public:
+    lf_stack() : head(nullptr) {}
+
     void push(T data)
     {
         node* new_node = new node(data);
@@ -26,14 +28,13 @@ public:
 
     bool pop(T& value)
     {
-        Node* old_head;
-        do
-        {
-            old_head = head.load();
-            if(!old_head) return false;
-        } while (head.compare_exchange_weak(old_head, ));
+        if(!head) return false;
+        node* old_head = head.load();
+        while (!head.compare_exchange_weak(old_head, old_head->next)){
+            if(!old_head) 
+                return false;
+        }
         value = old_head->data;
-        delete old_head;
         return true;
     }
 
@@ -45,5 +46,17 @@ public:
 };
 
 int main() {
+    std::cout << "start" << std::endl;
+    lf_stack<int> stack;
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    int val; 
+
+    while(stack.pop(val)) {
+        std::cout << val << std::endl;
+    }
+    
     return 0;
 }
