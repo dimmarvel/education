@@ -15,7 +15,7 @@ fi
 
 output_name="${source_file%.cpp}"
 
-g++ -std=c++20 -Wall -Wextra -pedantic -o "$output_name" "$source_file"
+g++ -std=c++20 -g -Wall -Wextra -pedantic -o "$output_name" "$source_file"
 
 if [ $? -eq 0 ]; then
     echo "✓ Компиляция успешна"
